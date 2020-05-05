@@ -19,7 +19,7 @@ export default {
   watch: {
     $route: {
       handler: (to) => {
-        document.title = to.meta.title || 'Rental Mobil Kurang Terpercaya | Carrent'
+        document.title = to.meta.title || 'Rental Mobil Terpercaya | Carrent'
       },
       immediate: true
     }

@@ -10,7 +10,7 @@ const routes = [
     name: 'Landing Page',
     component: LandingPage,
     meta: {
-      title: 'Rental Mobil Kurang Terpercaya | Carrent'
+      title: 'Rental Mobil Terpercaya | Carrent'
     }
   },
   {
