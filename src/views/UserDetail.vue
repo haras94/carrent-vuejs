@@ -1,11 +1,13 @@
 <template>
-  <div class="user-detail">
-    <div class="info-user">
-      <section class="image-user">
+  <div class="container-fluid">
+    <div class="info-user row">
+      <section class="image-user col-md-4">
         <img src="../assets/img/isyana-sarasvati.jpg" alt="foto" class="img-user" />
       </section>
-      <section class="flash-info">
-        <article class="name-user"><h1>Isyana Sarasvati</h1></article>
+      <section class="flash-info col-md-6">
+        <article class="name-user">
+          <h1>Isyana Sarasvati</h1>
+        </article>
         <article class="adress">
           <i class="fas fa-home mr-4"></i>
           <p>Jl. Pesona Depok Estate Blok B No.2 , Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431</p>
@@ -16,118 +18,148 @@
         </article>
         <article class="adress">
           <i class="fas fa-venus-mars mr-4"></i>
-          Female
+          <p>Perempuan</p>
         </article>
       </section>
     </div>
     <div class="sub-menu">
       <section class="tablist">
         <div class="tab">
-          <section class="menu">
-            <p>Status order</p>
+          <section class="menu" @click="order">
+            <p>Status Order</p>
           </section>
-          <section class="menu">
+          <section class="menu" @click="history">
             <p>History</p>
           </section>
-          <section class="menu">
+          <section class="menu" @click="set">
             <p>Setting</p>
           </section>
         </div>
       </section>
-      <section class="main-menu"></section>
+      <menuSetprofile v-bind:tablist="tablist" />
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from '../components/Footer.vue'
+import menuSetprofile from '../components/base_/menuSetProfile.vue'
+
 export default {
-  name: 'UserDetail'
+  name: 'userrDetail',
+  components: {
+    Footer,
+    menuSetprofile
+  },
+  data () {
+    return {
+      tablist: 'Status Order'
+    }
+  },
+  methods: {
+    order () {
+      this.tablist = 'Status Order'
+      document.querySelector('.status-order').style.display = 'flex'
+      document.querySelector('.history').style.display = 'none'
+      document.querySelector('.setting').style.display = 'none'
+    },
+    history () {
+      this.tablist = 'History'
+      document.querySelector('.history').style.display = 'flex'
+      document.querySelector('.status-order').style.display = 'none'
+      document.querySelector('.setting').style.display = 'none'
+    },
+    set () {
+      this.tablist = 'Setting'
+      document.querySelector('.setting').style.display = 'flex'
+      document.querySelector('.history').style.display = 'none'
+      document.querySelector('.status-order').style.display = 'none'
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.user-detail {
-  width: 100%;
+.container-fluid {
   display: flex;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   .info-user {
     display: flex;
-    height: 450px;
     background: #c82022;
     padding: 16px;
     .image-user {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 35%;
       height: 410px;
-      // background: salmon;
+      padding: 16px;
+      margin-left: 20px;
+      margin-right: 20px;
       .img-user {
         width: 350px;
         height: 350px;
         border-radius: 50%;
         border: 2px solid #ffffff;
+        object-fit: cover;
       }
     }
     .flash-info {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 50%;
       height: 410px;
       margin-left: 50px;
-      font-family: 'Roboto', sans-serif;
-        .name-user h1 {
-          font-size: 30px;
-          color: #ffffff;
-          padding-bottom: 10px;
-          border-bottom: 2px solid #ffffff;
-          margin-bottom: 10px;
-        }
-        .adress{
-          width: 100%;
-          margin-bottom: 10px;
-          display: flex;
-          justify-self: start;
-              color: #ffffff;
-              font-size: 17px;
-              text-align: left;
-        }
+      font-family: "Roboto", sans-serif;
+      .name-user h1 {
+        font-size: 30px;
+        color: #ffffff;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #ffffff;
+        margin-bottom: 10px;
+      }
+      .adress {
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+        justify-self: start;
+        color: #ffffff;
+        font-size: 17px;
+        text-align: left;
+      }
     }
   }
   .sub-menu {
     display: flex;
-    height: 500px;
     padding: 16px;
-      .tablist {
+    .tablist {
+      display: flex;
+      width: 20%;
+      .tab {
         display: flex;
-        width: 25%;
-          .tab{
-            display: flex;
-            flex-direction: column;
-            width: 200px;
-            height: 150px;
-            background: #ffffff;
-            box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 10px 0px;
-            margin: 20px 0 0 100px;
-            padding: 16px;
-              .menu{
-                font-size: 16px;
-                width: 100%;
-                text-align: left;
-                cursor: pointer;
-              }
-              .menu:hover{
-                    background: #f8f6f6;
-              }
-          }
+        flex-direction: column;
+        width: 200px;
+        height: 150px;
+        background: #ffffff;
+        box-shadow: rgba(0, 0, 0, 0.164) 0px 2px 10px 0px;
+        margin: 20px 0 0 50px;
+        padding: 16px;
+        .menu {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-content: center;
+          font-size: 16px;
+          width: 100%;
+          text-align: left;
+          cursor: pointer;
+        }
+        .menu:hover {
+          background: #f8f6f6;
+        }
       }
-      .main-menu {
-        display: flex;
-        width: 70%;
-        background: lightcoral;
-      }
+    }
   }
 }
 </style>

@@ -14,18 +14,18 @@
       </article>
       <article class="status">
         <h6 class="text-success">Status :</h6>
-        <h6 >waiting for confirmation</h6>
+        <h6 >Done !</h6>
       </article>
     </section>
     <section class="down">
       <article class="info-car">
-        <img src="../../assets/img/zoids.jpg" alt class="car-img" />
+        <img src="../../assets/img/optimus.png" alt class="car-img" />
         <div class="flash-info">
           <section>
-            <h3>Zoids blade liger</h3>
+            <h3>truck optimus prime</h3>
           </section>
           <section>
-            <i class="far fa-user mr-2"></i>2
+            <i class="far fa-user mr-2"></i>4
           </section>
           <section>
             <i class="fas fa-star text-warning mr-1" v-for="star in 5" :key="star.id"></i>

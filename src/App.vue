@@ -3,16 +3,22 @@
     <div id="nav">
     </div>
     <router-view/>
+    <!-- <Footer/> -->
   </div>
 </template>
 
 <script>
+// import Footer from './components/Footer.vue'
+
 export default {
   name: 'Carret App',
+  components: {
+    // Footer
+  },
   watch: {
     $route: {
       handler: (to) => {
-        document.title = to.meta.title || 'Rental Mobil Kurang Terpercaya | Carrent'
+        document.title = to.meta.title || 'Rental Mobil Terpercaya | Carrent'
       },
       immediate: true
     }
