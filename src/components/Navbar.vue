@@ -13,10 +13,10 @@ export default {
 .navParent{
   background-color: rgba(255, 0, 0, 0.829);
   width: 100vw;
-  height: 40px;
+  height: 60px;
   position: fixed;
   top: 0;
-  // z-index: 1;
+  z-index: 5;
 }
 
 </style>

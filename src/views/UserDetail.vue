@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid our-wrapper">
     <div class="info-user row">
       <section class="image-user col-md-4">
         <img src="../assets/img/isyana-sarasvati.jpg" alt="foto" class="img-user" />
@@ -38,18 +38,15 @@
       </section>
       <menuSetprofile v-bind:tablist="tablist" />
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
-import Footer from '../components/Footer.vue'
 import menuSetprofile from '../components/base_/menuSetProfile.vue'
 
 export default {
   name: 'userrDetail',
   components: {
-    Footer,
     menuSetprofile
   },
   data () {

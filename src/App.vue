@@ -11,7 +11,7 @@ import Footer from './components/Footer.vue'
 import Navbar from './components/Navbar.vue'
 
 export default {
-  name: 'CarretApp',
+  name: 'CarrentApp',
   components: {
     Footer,
     Navbar
@@ -34,8 +34,10 @@ export default {
   font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2a2a2a;
+}
+.our-wrapper {
+  margin-top: 60px;
 }
 
 </style>
