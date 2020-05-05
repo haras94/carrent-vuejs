@@ -1,5 +1,5 @@
 <template>
-  <div class="mobil-detail">
+  <div class="mobil-detail our-wrapper">
     <div class="nav-route">
       <ul class="route gap">
         <li><router-link to="/"><i class="fas fa-home"></i>Home</router-link><i class="fas fa-angle-right"></i></li>

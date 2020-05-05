@@ -1,22 +1,20 @@
 <template>
   <div id="app">
-    <div id="nav">
-    </div>
+    <Navbar/>
     <router-view/>
     <Footer/>
-    <!-- <navbar/> -->
   </div>
 </template>
 
 <script>
 import Footer from './components/Footer.vue'
-// import Navbar from './components/Navbar.vue'
+import Navbar from './components/Navbar.vue'
 
 export default {
-  name: 'Carrent App',
+  name: 'CarrentApp',
   components: {
-    Footer
-    // Navbar
+    Footer,
+    Navbar
   },
   watch: {
     $route: {
@@ -37,6 +35,9 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2a2a2a;
+}
+.our-wrapper {
+  margin-top: 60px;
 }
 
 </style>
