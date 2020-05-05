@@ -14,6 +14,9 @@ export default {
   background-color: rgba(255, 0, 0, 0.829);
   width: 100vw;
   height: 40px;
+  position: fixed;
+  top: 0;
+  // z-index: 1;
 }
 
 </style>
