@@ -78,6 +78,14 @@ const routes = [
     }
   },
   {
+    path: '/:idRentaler/add-car',
+    name: 'Tambah Mobil',
+    component: () => import('@/views/AddCar.vue'),
+    meta: {
+      title: 'Tambah Mobil | Carrent'
+    }
+  },
+  {
     path: '/:idRentaler/:idMobil',
     name: 'Mobil Detail',
     component: () => import('@/views/MobilDetail.vue'),
