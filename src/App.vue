@@ -1,19 +1,20 @@
 <template>
   <div id="app">
-    <div id="nav">
-    </div>
+    <Navbar/>
     <router-view/>
-    <!-- <Footer/> -->
+    <Footer/>
   </div>
 </template>
 
 <script>
-// import Footer from './components/Footer.vue'
+import Footer from './components/Footer.vue'
+import Navbar from './components/Navbar.vue'
 
 export default {
-  name: 'Carret App',
+  name: 'CarretApp',
   components: {
-    // Footer
+    Footer,
+    Navbar
   },
   watch: {
     $route: {
