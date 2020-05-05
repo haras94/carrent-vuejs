@@ -30,7 +30,7 @@ const routes = [
     }
   },
   {
-    path: '/m/list-car',
+    path: '/list-car',
     name: 'Car List',
     component: () => import('@/views/ListCar.vue'),
     meta: {
