@@ -11,7 +11,7 @@
 import Footer from './components/Footer.vue'
 
 export default {
-  name: 'Carret App',
+  name: 'Carrent App',
   components: {
     Footer
   },
@@ -33,7 +33,6 @@ export default {
   font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2a2a2a;
 }
 
