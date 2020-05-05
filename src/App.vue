@@ -1,27 +1,25 @@
 <template>
   <div id="app">
-    <div id="nav">
-    </div>
+    <Navbar/>
     <router-view/>
     <Footer/>
-    <!-- <navbar/> -->
   </div>
 </template>
 
 <script>
 import Footer from './components/Footer.vue'
-// import Navbar from './components/Navbar.vue'
+import Navbar from './components/Navbar.vue'
 
 export default {
-  name: 'Carret App',
+  name: 'CarretApp',
   components: {
-    Footer
-    // Navbar
+    Footer,
+    Navbar
   },
   watch: {
     $route: {
       handler: (to) => {
-        document.title = to.meta.title || 'Rental Mobil Kurang Terpercaya | Carrent'
+        document.title = to.meta.title || 'Rental Mobil Terpercaya | Carrent'
       },
       immediate: true
     }
