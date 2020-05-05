@@ -1,12 +1,14 @@
 <template>
   <div class="landing-page">
-    Halaman Landing
+    <nabar/>
   </div>
 </template>
 
 <script>
+import Navbar from '../components/Navbar'
 
 export default {
-  name: 'LandingPage'
+  name: 'LandingPage',
+  components: Navbar
 }
 </script>
