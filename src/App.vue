@@ -3,12 +3,18 @@
     <div id="nav">
     </div>
     <router-view/>
+    <Footer/>
   </div>
 </template>
 
 <script>
+import Footer from './components/Footer.vue'
+
 export default {
   name: 'Carret App',
+  components: {
+    Footer
+  },
   watch: {
     $route: {
       handler: (to) => {
