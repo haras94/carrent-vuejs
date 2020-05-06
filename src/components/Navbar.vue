@@ -26,6 +26,7 @@ export default {
   display: flex;
   justify-content: space-between;
   position: fixed;
+  top: 0;
   max-width: 100%;
   z-index: 5;
   .navLogo{
