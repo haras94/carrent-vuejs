@@ -37,7 +37,7 @@ export default {
   color: #2a2a2a;
 }
 .our-wrapper {
-  margin-top: 60px;
+  margin-top: 70px;
 }
 
 </style>
