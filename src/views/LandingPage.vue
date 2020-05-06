@@ -75,16 +75,13 @@
       <div class="upProfile"><h1>Best Rent Profile</h1></div>
       <div class="downProfile"></div>
     </div>
-  <navbar/>
   </div>
 </template>
 
 <script>
-import Navbar from '../components/Navbar.vue'
 
 export default {
-  name: 'LandingPage',
-  components: Navbar
+  name: 'LandingPage'
 }
 </script>
 
