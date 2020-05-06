@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import Footer from './components/Footer.vue'
+// import Footer from './components/Footer.vue'
 // import Navbar from './components/Navbar.vue'
 
 export default {
   name: 'Carret App',
   components: {
-    Footer
+    // Footer
     // Navbar
   },
   watch: {
