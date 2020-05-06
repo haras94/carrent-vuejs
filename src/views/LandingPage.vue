@@ -4,38 +4,38 @@
       <img src="../assets/img/2018-bugatti-chiron-sport-2.jpg" alt="">
     </div>
     <div class="partner">
-      <div class="partnerText"><h1>Our Partner</h1></div>
+      <div class="partnerText"><h3>Our Partner</h3></div>
       <div class="partnerLogo">
         <div class="logoWrap">
           <div class="firstLine">
-            <h3>Buggati</h3>
-            <h3>Ferrari</h3>
-            <h3>Bmw</h3>
-            <h3>Ford</h3>
-            <h3>Audi</h3>
-            <h3>Lamborghini</h3>
+            <h5>Buggati</h5>
+            <h5>Ferrari</h5>
+            <h5>Bmw</h5>
+            <h5>Ford</h5>
+            <h5>Audi</h5>
+            <h5>Lamborghini</h5>
           </div>
           <div class="secondLine">
-            <h3>Toyota</h3>
-            <h3>Suzuki</h3>
-            <h3>Honda</h3>
-            <h3>Wuling</h3>
-            <h3>Mazda</h3>
-            <h3>Hyundai</h3>
+            <h5>Toyota</h5>
+            <h5>Suzuki</h5>
+            <h5>Honda</h5>
+            <h5>Wuling</h5>
+            <h5>Mazda</h5>
+            <h5>Hyundai</h5>
           </div>
           <div class="thirdLine">
-            <h3>Volvo</h3>
-            <h3>Chevorlet</h3>
-            <h3>Nissan</h3>
-            <h3>Jeep</h3>
-            <h3>Mitsubishi</h3>
-            <h3>Daihatsu</h3>
+            <h5>Volvo</h5>
+            <h5>Chevorlet</h5>
+            <h5>Nissan</h5>
+            <h5>Jeep</h5>
+            <h5>Mitsubishi</h5>
+            <h5>Daihatsu</h5>
           </div>
         </div>
       </div>
     </div>
     <div class="ourService">
-      <div class="ourServiceText"><p>Why you should choose us</p></div>
+      <div class="ourServiceText"><h3>Why you should choose us</h3></div>
       <div class="ourServiceCard">
         <div class="card">
           <div class="upside">
@@ -57,8 +57,15 @@
       </div>
     </div>
     <div class="listCar">
-      <div class="upperSide"></div>
-      <div class="downSide"></div>
+      <div class="cardList">
+        <div class="upside"><img src="../assets/img/2018-bugatti-chiron-sport-2.jpg" alt="car"></div>
+        <div class="downside">
+          <div class="headCard"><p>Buggati Cheron</p></div>
+          <div class="bodyCard"><img src="../assets/img/Vector.png" alt="star">
+          <img src="../assets/img/Vector.png" alt="star"><img src="../assets/img/Vector.png" alt="star"><img src="../assets/img/Vector.png" alt="star"></div>
+          <div class="footerCard"></div>
+        </div>
+      </div>
     </div>
     <div class="bestProfile">
       <div class="upProfile"><h1>Best Rent Profile</h1></div>
@@ -88,6 +95,7 @@ export default {
       object-fit: cover;
       width: 100%;
       height: 100%;
+      opacity: .9;
     }
   }
   .partner{
@@ -104,7 +112,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      h1{
+      h3{
         color: white;
       }
     }
@@ -121,7 +129,7 @@ export default {
         flex-direction: column;
         justify-content: center;
         opacity: .6;
-        h3{
+        h5{
           color: rgb(92, 91, 91);
         }
         .firstLine{
@@ -159,10 +167,10 @@ export default {
       // background-color: rgb(0, 0, 0);
       width: 100%;
       height: 70px;
-      p{
+      display: flex;
+      justify-content: center;
+      h3{
         color: white;
-        font-size: 25px;
-        font-weight: 700;
       }
     }
     .ourServiceCard{
@@ -199,6 +207,50 @@ export default {
     margin-top: 80px;
     width: 100%;
     height: 400px;
+    display: flex;
+    align-items: center;
+    .cardList{
+      background-color: white;
+      width: 300px;
+      height: 250px;
+      border-radius: 3px;
+      overflow: hidden;
+      &:active{
+        background-color: rgba(128, 128, 128, 0.24);
+      }
+      .upside{
+        background-color: rgba(128, 128, 128, 0.233);
+        width: 100%;
+        height: 60%;
+        img{
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .downside{
+        width: 100%;
+        height: 40%;
+        .headCard{
+          width: 100%;
+          height: 30px;
+          p{
+            font-size: 20px;
+            font-weight: 500;
+          }
+        }
+        .bodyCard{
+          width: 10%;
+          height: 20px;
+          display: flex;
+          img{
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
   }
   .bestProfile{
     background-color: #C93624;
