@@ -39,7 +39,7 @@
             <p>Enable Car</p>
           </section>
           <section class="menu" @click="info">
-            <p>More Info</p>
+            <p>Request</p>
           </section>
         </div>
       </section>
