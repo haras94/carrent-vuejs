@@ -1,19 +1,20 @@
 <template>
   <div id="app">
-    <div id="nav">
-    </div>
+    <Navbar/>
     <router-view/>
-    <!-- <Footer/> -->
+    <Footer/>
   </div>
 </template>
 
 <script>
-// import Footer from './components/Footer.vue'
+import Footer from './components/Footer.vue'
+import Navbar from './components/Navbar.vue'
 
 export default {
-  name: 'Carret App',
+  name: 'CarrentApp',
   components: {
-    // Footer
+    Footer,
+    Navbar
   },
   watch: {
     $route: {
@@ -33,8 +34,10 @@ export default {
   font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2a2a2a;
+}
+.our-wrapper {
+  margin-top: 70px;
 }
 
 </style>

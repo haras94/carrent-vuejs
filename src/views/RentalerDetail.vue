@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid our-wrapper">
     <div class="info-user row">
       <section class="image-user col-md-4">
         <img src="../assets/img/isyangif.gif" alt="foto" class="img-user" />
@@ -45,18 +45,15 @@
       </section>
       <menuListCar v-bind:tablist="tablist" />
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
-import Footer from '../components/Footer.vue'
 import menuListCar from '../components/base_/menuListCar.vue'
 
 export default {
   name: 'RentalerDetail',
   components: {
-    Footer,
     menuListCar
   },
   data () {

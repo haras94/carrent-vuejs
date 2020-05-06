@@ -63,7 +63,7 @@ const routes = [
   },
   {
     path: '/user/:idUser/checkout',
-    name: 'History',
+    name: 'Checkout',
     component: () => import('@/views/Checkout.vue'),
     meta: {
       title: 'Checkout | Carrent'
