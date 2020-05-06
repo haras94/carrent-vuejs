@@ -68,14 +68,23 @@
       <header class="text-light">
         <h1>ORDER NOW!</h1>
       </header>
-      <Card />
+      <div class="cardList">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
       <footer class="foot"></footer>
     </div>
     <div class="bestProfile">
       <div class="upProfile">
         <h1>Best Rent Profile</h1>
       </div>
-      <div class="downProfile"></div>
+      <div class="downProfile">
+        <cardRentail />
+        <cardRentail />
+        <cardRentail />
+      </div>
     </div>
   </div>
 </template>
@@ -83,12 +92,14 @@
 <script>
 import Card from '../components/Card.vue'
 import Carousel from '../components/base_/Caroucel.vue'
+import cardRentail from '../components/base_/cardRentail.vue'
 
 export default {
   name: 'LandingPage',
   components: {
     Card,
-    Carousel
+    Carousel,
+    cardRentail
   }
 }
 </script>
@@ -220,46 +231,13 @@ export default {
     flex-direction: column;
     align-items: center;
     .cardList {
-      background-color: white;
-      width: 300px;
-      height: 250px;
-      border-radius: 3px;
-      overflow: hidden;
-      &:active {
-        background-color: rgba(128, 128, 128, 0.24);
-      }
-      .upside {
-        background-color: rgba(128, 128, 128, 0.233);
-        width: 100%;
-        height: 60%;
-        img {
-          object-fit: cover;
-          width: 100%;
-          height: 100%;
-        }
-      }
-      .downside {
-        width: 100%;
-        height: 40%;
-        .headCard {
-          width: 100%;
-          height: 30px;
-          p {
-            font-size: 20px;
-            font-weight: 500;
-          }
-        }
-        .bodyCard {
-          width: 10%;
-          height: 20px;
-          display: flex;
-          img {
-            object-fit: contain;
-            width: 100%;
-            height: 100%;
-          }
-        }
-      }
+      // background-color: white;
+      display: flex;
+      justify-content: center;
+      // width: 100%;
+      height: 400px;
+      column-count: 4;
+      column-fill: auto;
     }
   }
   .bestProfile {
@@ -280,10 +258,15 @@ export default {
       }
     }
     .downProfile {
-      background-color: beige;
+      // background-color: rgb(255, 255, 255);
       margin-top: 40px;
       width: 100%;
-      height: 300px;
+      height: 350px;
+      column-count: 4;
+      column-fill: auto;
+      // display: flex;
+      // justify-content: center;
+      column-gap: 10px;
     }
   }
 }

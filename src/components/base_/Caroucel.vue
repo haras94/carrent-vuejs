@@ -5,26 +5,33 @@
     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
     <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
   </ol>
-  <div class="carousel-inner">
+  <div class="carousel-inner our-wrapper">
     <div class="carousel-item active">
       <img src="../../assets/img/isyana-sarasvati.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <h5>Isyana Sarasvati</h5>
+        <p>Artis asal Indonesia</p>
       </div>
     </div>
     <div class="carousel-item">
       <img src="../../assets/img/2018-bugatti-chiron-sport-2.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h5>Buggati Cheron</h5>
+        <p>Mobil pabrikan asala negara france yang telah berdiri sejak 1909 oleh Ettore Buggati</p>
       </div>
     </div>
     <div class="carousel-item">
       <img src="../../assets/img/toyota-agya.png" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        <h5>Bmw 320i</h5>
+        <p>Mobil pabrikan asal german yang telah berdiri sejak 1916 oleh Franz Josef Popp</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../../assets/img/ferrarifix.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Ferrari 458</h5>
+        <p>Mobil pabrikan asal negara itali yang telah berdiri sejak 1947 oleh Enzo Ferrari</p>
       </div>
     </div>
   </div>
@@ -45,6 +52,16 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.carousel-inner{
+  // margin-top: 120px;
+  .carousel-item{
+    height: 500px;
+    img{
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
 </style>
