@@ -1,6 +1,6 @@
 <template>
   <!-- <div class="lokols"> -->
-    <div class="lmskal">
+    <router-link to="/1/1" class="lmskal">
       <div class="lksmkl">
         <img src="@/assets/img/toyota-agya.png">
       </div>
@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </router-link>
   <!-- </div> -->
 </template>
 
@@ -44,9 +44,12 @@ export default {
     position: relative;
     width: 270px;
     border: none;
-    margin-right: 25px;
-    margin-bottom: 20px;
+    margin: 20px;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    color: #000000;
+    border-radius: 3px;
+    overflow: hidden;
     .lksmkl{
       position: relative;
       width: 100%;
@@ -62,6 +65,7 @@ export default {
       flex-direction: column;
       align-items: flex-start;
       padding: 5px 10px 0 10px;
+      background: #ffffff;
       .aslesk{
         position: relative;
         // margin-top: 5px;

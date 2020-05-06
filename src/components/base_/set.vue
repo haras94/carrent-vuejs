@@ -1,43 +1,31 @@
 <template>
   <div class="container-fluid">
-    <form>
-      <div class="form-group d-flex">
-        <label for="exampleInputPassword1">KTP</label>
-        <input type="number" class="form-control" id="exampleInputPassword1" />
-      </div>
-      <div class="form-group d-flex">
-        <label for="exampleInputPassword1">NAMA</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" />
-      </div>
-      <div class="form-group d-flex">
-        <label for="exampleInputPassword1">ALAMAT</label>
-        <input type="textarea" class="form-control" id="exampleInputPassword1" />
-      </div>
-      <div class="form-group d-flex">
-        <label for="exampleInputPassword1">SEX</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" />
-      </div>
-      <div class="form-group d-flex">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" />
-      </div>
-      <div class="form-group d-flex">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" />
-      </div>
-      <div class="form-group d-flex">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" />
-      </div>
-    </form>
+    <section> ok</section>
   </div>
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+
 export default {
-  name: 'set'
+  name: 'set',
+  methods: {
+    sweet () {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!'
+      })
+    }
+  }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.container-fluid{
+  width: 880px;
+  height: 500px;
+  display: flex;
+  background: #c82022;
+}
 </style>

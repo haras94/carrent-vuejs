@@ -1,12 +1,12 @@
 <template>
   <div class="navbarParent">
-    <div class="navLogo"><h1>CARRENT</h1></div>
-    <div class="navSearch"><input type="text" placeholder="Search"></div>
-    <div class="navAdditional">
-      <div class="trolly">
-        <img src="../assets/img/trolly.png" alt="trolly">
+    <router-link to="/" class="navLogo"><h1>CARRENT</h1></router-link>
+    <div class="navSearch">
+      <img src="../assets/img/search.svg" alt="search" width="20px" height="20px">
+      <input type="text" placeholder="Search">
       </div>
-      <div class="btn-login"><p>Login</p></div>
+    <div class="navAdditional">
+      <router-link to="login" class="btn-login"><p>Login</p></router-link>
       <div class="btn-register"><p>Register</p></div>
     </div>
   </div>
@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss" scoped>
 .navbarParent{
-  background-color: #C93624;
+  background-color: #c82022;
   width: 100vw;
   height: 70px;
   display: flex;
@@ -30,12 +30,12 @@ export default {
   max-width: 100%;
   z-index: 5;
   .navLogo{
-    // background-color: rosybrown;
     width: 180px;
     margin-left: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
     h1{
       color: white;
       font-weight: bold;
@@ -47,13 +47,18 @@ export default {
     width: 400px;
     display: flex;
     align-items: center;
+    position: relative;
     input{
       width: 400px;
       height: 50%;
       border-radius: 3px;
       outline: none;
       border: none;
-      padding-left: 80px;
+      padding-left: 50px;
+    }
+    img{
+      position: absolute;
+      margin-left: 15px;
     }
   }
   .navAdditional{
