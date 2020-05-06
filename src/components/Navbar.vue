@@ -11,9 +11,9 @@ export default {
 
 <style lang="scss" scoped>
 .navParent{
-  background-color: rgba(255, 0, 0, 0.829);
+  background-color: #C93624;
   width: 100vw;
-  height: 60px;
+  height: 70px;
   position: fixed;
   top: 0;
   z-index: 5;
