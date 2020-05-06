@@ -52,7 +52,7 @@ export default {
   position: relative;
   width: 100%;
   height: 300px;
-  background: #212121;
+  background: #c82022;
   display: flex;
   padding: 40px 40px;
   justify-content: space-around;
@@ -63,8 +63,8 @@ export default {
   justify-content: space-around;
   width: 100%;
   height: 100%;
-  background: #212121;
-  border-top: 2px solid #363636;
+  background: #c82022;
+  border-top: 2px solid #ffffff;
   padding-top: 35px;
 }
 .uixi32{
