@@ -1,7 +1,7 @@
 <template>
   <div id="modal" :class="{ 'modal-on': modalActive }">
     <div @click="$emit('bg-click')" class="bg-modal" :class="{ 'bg-on': modalActive }"></div>
-    <div class="modal-wrapper" :style="`width: ${width}`" :class="modalActive ? 'pop-up' : 'pop-down'">
+    <div class="modal-wrapper" :style="`width: ${width || 'auto'}`" :class="modalActive ? 'pop-up' : 'pop-down'">
       <slot></slot>
     </div>
   </div>
@@ -80,17 +80,19 @@ export default {
   }
 }
 .modal-wrapper {
-  width: 100px;
-  height: 400px;
+  width: auto;
+  height: auto;
   background-color: white;
   position: fixed;
   border-radius: 5px;
-  padding: 20px 30px;
   transform: translateY(-50%);
   visibility: hidden;
   opacity: 0;
   z-index: 60;
   max-height: 95vh;
+  &.wrap-on {
+    padding: 20px 30px;
+  }
   &.pop-up {
     animation-name: pop-up;
     animation-duration: .3s;
