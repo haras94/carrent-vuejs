@@ -3,9 +3,6 @@
     <router-link to="/" class="navLogo"><h1>CARRENT</h1></router-link>
     <div class="navSearch"><input type="text" placeholder="Search"></div>
     <div class="navAdditional">
-      <div class="trolly">
-        <img src="../assets/img/trolly.png" alt="trolly">
-      </div>
       <router-link to="login" class="btn-login"><p>Login</p></router-link>
       <div class="btn-register"><p>Register</p></div>
     </div>

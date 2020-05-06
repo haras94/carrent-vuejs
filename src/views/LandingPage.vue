@@ -241,7 +241,7 @@ export default {
     }
   }
   .bestProfile {
-    background-color: #000000;
+    background-color: #c82022;
     margin-top: 80px;
     width: 100%;
     height: 500px;
@@ -264,8 +264,8 @@ export default {
       height: 350px;
       column-count: 4;
       column-fill: auto;
-      // display: flex;
-      // justify-content: center;
+      display: flex;
+      justify-content: center;
       column-gap: 10px;
     }
   }

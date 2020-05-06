@@ -19,5 +19,8 @@ export default {
 <style lang="scss" scoped>
 .cardRentailWrap{
   height: 350px;
+  .card{
+    margin: 0 20px;
+  }
 }
 </style>
