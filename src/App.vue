@@ -7,9 +7,9 @@
     <Footer/>
     <ModalContainer
       :modalActive="modalLogin"
-      width="450px"
       @bg-click="modalLogin = false"
     >
+      <Login/>
     </ModalContainer>
   </div>
 </template>
@@ -18,6 +18,7 @@
 import Footer from './components/Footer.vue'
 import Navbar from './components/Navbar.vue'
 import ModalContainer from './components/base_/ModalContainer.vue'
+import Login from './components/ModalLogin.vue'
 
 export default {
   name: 'CarrentApp',
@@ -31,7 +32,8 @@ export default {
   components: {
     Footer,
     Navbar,
-    ModalContainer
+    ModalContainer,
+    Login
   },
   watch: {
     $route: {
