@@ -40,60 +40,60 @@ export default {
   display: flex;
   margin-left: 15px;
 }
-  .lmskal{
+.lmskal{
+  position: relative;
+  width: 270px;
+  border: none;
+  margin: 20px;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+  color: #000000;
+  border-radius: 3px;
+  overflow: hidden;
+  .lksmkl{
     position: relative;
-    width: 270px;
-    border: none;
-    margin: 20px;
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
-    text-decoration: none;
-    color: #000000;
-    border-radius: 3px;
-    overflow: hidden;
-    .lksmkl{
-      position: relative;
+    width: 100%;
+    height: 60%;
+    img{
       width: 100%;
-      height: 60%;
-      img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .maskls{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px 10px 0 10px;
+    background: #ffffff;
+    .aslesk{
+      position: relative;
+      // margin-top: 5px;
+      h2{
+        font-weight: 600;
+        font-size: 22px;
       }
     }
-    .maskls{
+    .qsasxz{
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .tyghsw{
+      position: relative;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 5px 10px 0 10px;
-      background: #ffffff;
-      .aslesk{
-        position: relative;
-        // margin-top: 5px;
-        h2{
-          font-weight: 600;
-          font-size: 22px;
-        }
-      }
-      .qsasxz{
-        position: relative;
-        margin-bottom: 20px;
-      }
-      .tyghsw{
-        position: relative;
+      width: 100%;
+      height: 100%;
+      color: #5E5E5E;
+      .rtbnhf{
         display: flex;
-        width: 100%;
-        height: 100%;
-        color: #5E5E5E;
-        .rtbnhf{
-          display: flex;
-          position: absolute;
-          right: 0px;
-          i{
-            margin-right: 3px;
-          }
+        position: absolute;
+        right: 0px;
+        i{
+          margin-right: 3px;
         }
       }
     }
   }
+}
 
 </style>
