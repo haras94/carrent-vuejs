@@ -50,7 +50,7 @@ export default {
 <style lang="scss" scoped>
 .jrx1l3{
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 300px;
   background: #212121;
   display: flex;
