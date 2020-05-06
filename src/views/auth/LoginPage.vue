@@ -21,12 +21,12 @@
             <div class="alert-password">
               <p v-if="!$v.password.minLength">Password Minimal 6 karakter!</p>
             </div>
+            <!-- <div class="forgot">
+            </div> -->
             <div class="checkbox">
+              <a href="#">Forgot Password?</a>
               <input type="checkbox" id="checkbox">
               <label for="checkbox">Remember Me</label>
-            </div>
-            <div class="forgot">
-              <a href="#">Forgot Password?</a>
             </div>
             <div class="login">
               <button>Login</button>
@@ -108,6 +108,7 @@ export default {
   margin-bottom: 10px;
 }
 .regis{
+  height: 24px;
   width: 205px;
   margin-top: 10px;
 }
@@ -119,7 +120,7 @@ export default {
   position: relative;
   float: right;
   text-decoration: none;
-  left: 10px;
+  top: -3px;
   color: green;
 }
 .labelemail{
@@ -148,11 +149,11 @@ export default {
   position: relative;
   top: 10px;
   color: #555555;
+  height: auto;
 }
-.forgot a{
-  position: relative;
-  float: right;
-  top: -10px;
+.checkbox a{
+  position: absolute;
+  right: 0;
   color: #555555;
   text-decoration: none;
 }
