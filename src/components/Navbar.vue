@@ -6,7 +6,7 @@
       <input type="text" placeholder="Search">
       </div>
     <div class="navAdditional">
-      <router-link to="login" class="btn-login"><p>Login</p></router-link>
+      <a @click="$emit('login-click')" class="btn-login"><p>Login</p></a>
       <div class="btn-register"><p>Register</p></div>
     </div>
   </div>
@@ -28,7 +28,7 @@ export default {
   position: fixed;
   top: 0;
   max-width: 100%;
-  z-index: 5;
+  z-index: 15;
   .navLogo{
     width: 180px;
     margin-left: 50px;

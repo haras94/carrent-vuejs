@@ -1,20 +1,37 @@
 <template>
   <div id="app">
-    <Navbar v-if="$route.name !== 'Login' && $route.name !== 'Register'"/>
+    <Navbar v-if="$route.name !== 'Login' && $route.name !== 'Register'"
+      @login-click="modalLogin = true"
+    />
     <router-view/>
     <Footer/>
+    <ModalContainer
+      :modalActive="modalLogin"
+      width="450px"
+      @bg-click="modalLogin = false"
+    >
+    </ModalContainer>
   </div>
 </template>
 
 <script>
 import Footer from './components/Footer.vue'
 import Navbar from './components/Navbar.vue'
+import ModalContainer from './components/base_/ModalContainer.vue'
 
 export default {
   name: 'CarrentApp',
+  data () {
+    return {
+      modalLogin: false
+    }
+  },
+  computed: {
+  },
   components: {
     Footer,
-    Navbar
+    Navbar,
+    ModalContainer
   },
   watch: {
     $route: {
