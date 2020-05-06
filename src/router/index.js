@@ -30,6 +30,11 @@ const routes = [
     }
   },
   {
+    path: '/logout',
+    name: 'Logout',
+    component: () => import('@/views/auth/Logout.vue')
+  },
+  {
     path: '/list-car',
     name: 'Car List',
     component: () => import('@/views/ListCar.vue'),
