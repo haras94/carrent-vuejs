@@ -15,19 +15,28 @@
               height="70px"
             />
           </div>
-          <div class="downside"></div>
+          <div class="downside">
+            <header>Easy to Rent</header>
+            <footer>Our service makes easy to rent a car with simple privacy & policy</footer>
+          </div>
         </div>
         <div class="card">
           <div class="upside">
             <img src="../assets/img/icons8-globe-52.png" alt="easy-to-find" />
           </div>
-          <div class="downside"></div>
+          <div class="downside">
+            <header>Easy to Find</header>
+            <footer>Our partner available on every city in Indonesia</footer>
+          </div>
         </div>
         <div class="card">
           <div class="upside">
             <img src="../assets/img/stopwatch.png" width="70px" height="70px" alt="fast-response" />
           </div>
-          <div class="downside"></div>
+          <div class="downside">
+            <header>Fast Response</header>
+            <footer>Our partner also gives best service and</footer>
+          </div>
         </div>
       </div>
     </div>
@@ -208,6 +217,16 @@ export default {
         margin: 60px 20px;
         border-radius: 3px;
         overflow: hidden;
+        header{
+          font-size: 20px;
+          text-align: center;
+          font-weight: 600;
+          line-height: 70px;
+        }
+        footer{
+          font-weight: 500;
+          text-align: center;
+        }
         &:hover {
           transform: scale(1.1);
           transition: ease 0.5s;
