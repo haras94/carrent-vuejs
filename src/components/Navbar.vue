@@ -108,7 +108,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      cursor: ;
+      cursor: pointer;
       p{
         color: white;
         margin: 0;
