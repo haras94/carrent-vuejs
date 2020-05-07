@@ -6,19 +6,19 @@
       </section>
       <section class="flash-info col-md-6">
         <article class="name-user">
-          <h1>Isyana Sarasvati</h1>
+          <h1>{{userLogin.fullname}}</h1>
         </article>
         <article class="adress">
           <i class="fas fa-home mr-4"></i>
-          <p>Jl. Pesona Depok Estate Blok B No.2 , Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431</p>
+          <p>{{userLogin.address}}</p>
         </article>
         <article class="adress">
           <i class="far fa-envelope mr-4"></i>
-          <p>isyana@gmail.com</p>
+          <p>{{userLogin.email}}</p>
         </article>
         <article class="adress">
           <i class="fas fa-venus-mars mr-4"></i>
-          <p>Perempuan</p>
+          <p>{{userLogin.gender}}</p>
         </article>
       </section>
     </div>
@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import menuSetprofile from '../components/base_/menuSetProfile.vue'
 
 export default {
@@ -53,6 +54,11 @@ export default {
     return {
       tablist: 'Status Order'
     }
+  },
+  computed: {
+    ...mapState([
+      'userLogin'
+    ])
   },
   methods: {
     order () {

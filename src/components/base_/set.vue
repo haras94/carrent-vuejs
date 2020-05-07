@@ -41,6 +41,7 @@ export default {
         img {
           width: 250px;
           height: 250px;
+          object-fit: cover;
         }
     }
     .line {
