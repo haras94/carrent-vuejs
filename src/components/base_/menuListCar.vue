@@ -21,7 +21,6 @@
 <script>
 import card from '../Card.vue'
 import Request from '../base_/request.vue'
-// import Swal from 'sweetalert2'
 
 export default {
   name: 'menuListCar',
