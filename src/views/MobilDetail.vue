@@ -89,10 +89,6 @@ li {
 .mobil-detail {
   padding: 30px 0 40px;
 }
-.gap {
-  width: 1200px;
-  margin: 0 auto;
-}
 .detail-car {
   display: flex;
 }

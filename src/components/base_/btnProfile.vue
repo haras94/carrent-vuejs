@@ -1,7 +1,7 @@
 <template>
   <div class="btnProfileWrap">
     <div class="nameProfile">
-      <h6>Nama User</h6>
+      <h6 class="mb-0 mr-3">{{ userLogin.fullname }}</h6>
     </div>
     <div class="photoProfile">
       <img src="../../assets/img/isyana-sarasvati.jpg" alt="user-photo">
@@ -10,30 +10,34 @@
 </template>
 
 <script>
-export default {
+import { mapState } from 'vuex'
 
+export default {
+  name: 'BtnProfile',
+  computed: {
+    ...mapState([
+      'userLogin'
+    ])
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .btnProfileWrap{
-  position: absolute;
-  top: 0;
-  right: 10px;
-  width: 200px;
-  height: 70px;
+  margin-right: 120px;
+  height: 100%;
   display: flex;
+  align-items: center;
   z-index: 20;
-  .nameProfile{
+  cursor: pointer;
+  .nameProfile {
     align-items: flex-end;
-    position: absolute;
-    top: 30px;
-    right: 90px;
-    h6{
+    h6 {
       color: white;
+      white-space: nowrap;
     }
   }
-  .photoProfile{
+  .photoProfile {
     background-color: aquamarine;
     width: 60px;
     height: 60px;
@@ -41,7 +45,6 @@ export default {
     overflow: hidden;
     margin-top: 5px;
     margin-left: 5px;
-    position: absolute;
     top: 0;
     right: 20px;
     cursor: pointer;
