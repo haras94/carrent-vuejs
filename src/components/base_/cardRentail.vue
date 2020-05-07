@@ -1,5 +1,5 @@
 <template>
-  <div class="cardRentailWrap">
+  <div class="cardRentailWrap" :style="{'background-image': 'url('+require('../../assets/img/optimus.png')+')'}">
     <div class="downside">
       <header>PT. Minjem mobil boleh</header>
       <footer>Boleh nya minjem mobil nya aja</footer>
@@ -25,8 +25,7 @@ export default {
   width: 250px;
   height: 250px;
   border-radius: 100%;
-  background-image: url('../../assets/img/isyana-sarasvati.jpg');
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   opacity: .9;
