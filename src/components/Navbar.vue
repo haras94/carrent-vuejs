@@ -5,16 +5,26 @@
       <img src="../assets/img/search.svg" alt="search" width="20px" height="20px">
       <input type="text" placeholder="Search">
       </div>
-    <div class="navAdditional">
+    <div v-if="userLogin.id === undefined" class="navAdditional">
       <a @click="$emit('login-click')" class="btn-login"><p>Login</p></a>
-      <div class="btn-register"><p>Register</p></div>
+      <router-link to="/register" class="btn-register"><p>Register</p></router-link>
+    </div>
+    <div v-else class="navAdditional">
+
     </div>
   </div>
 </template>
 
 <script>
-export default {
+import { mapState } from 'vuex'
 
+export default {
+  name: 'Navbar',
+  computed: {
+    ...mapState([
+      'userLogin'
+    ])
+  }
 }
 </script>
 
