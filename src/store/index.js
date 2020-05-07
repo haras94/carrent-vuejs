@@ -9,6 +9,9 @@ export default new Vuex.Store({
     userLogin: {},
     modalLogin: false
   },
+  getters: {
+    isLogin: (state) => localStorage.id !== undefined
+  },
   mutations: {
     SET_USER_LOGIN (state, data) {
       state.userLogin = data

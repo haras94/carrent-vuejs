@@ -81,10 +81,7 @@ export default {
         localStorage.id = res.data.data.id
         this.$store.commit('MODAL_LOGIN_OFF')
         this.code = 0
-        if (this.$route.path === '/') {
-          this.$router.go()
-        }
-        this.$router.go('/')
+        this.$router.go()
       }
     }
   },

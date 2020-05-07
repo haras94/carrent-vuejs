@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store'
 import LandingPage from '@/views/LandingPage.vue'
 
 Vue.use(VueRouter)
@@ -18,7 +19,8 @@ const routes = [
     name: 'Login',
     component: () => import('@/views/auth/LoginPage.vue'),
     meta: {
-      title: 'Masuk | Carrent'
+      title: 'Masuk | Carrent',
+      requiresVisitor: true
     }
   },
   {
@@ -26,7 +28,8 @@ const routes = [
     name: 'Register',
     component: () => import('@/views/auth/RegisterPage.vue'),
     meta: {
-      title: 'Daftar | Carrent'
+      title: 'Daftar | Carrent',
+      requiresVisitor: true
     }
   },
   {
@@ -71,7 +74,8 @@ const routes = [
     name: 'Checkout',
     component: () => import('@/views/Checkout.vue'),
     meta: {
-      title: 'Checkout | Carrent'
+      title: 'Checkout | Carrent',
+      requiresAuth: true
     }
   },
   {
@@ -112,6 +116,13 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth) && !store.getters.isLogin) next({ name: 'Login' })
+  else next()
+  if (to.matched.some(record => record.meta.requiresVisitor) && store.getters.isLogin) next({ name: 'Landing Page' })
+  else next()
 })
 
 export default router
