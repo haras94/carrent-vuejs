@@ -6,7 +6,8 @@
     <router-view/>
     <Footer/>
     <ModalContainer
-      :modalActive="modalLogin"
+      :modalToggle="modalLogin"
+      :modalWrap="false"
       @bg-click="modalLogin = false"
     >
       <Login/>
