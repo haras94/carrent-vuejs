@@ -2,8 +2,8 @@
   <div>
     <form>
       <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Nama</label>
-        <div class="col-sm-10">
+        <label for="staticEmail" class="col-sm-2 col-form-label mr-2">Nama</label>
+        <div class="col-sm-9">
           <input
             type="text"
             readonly
@@ -14,8 +14,8 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Gender</label>
-        <div class="col-sm-10">
+        <label for="staticEmail" class="col-sm-2 col-form-label mr-2">Gender</label>
+        <div class="col-sm-9">
           <input
             type="text"
             readonly
@@ -25,15 +25,15 @@
           />
         </div>
       </div>
-      <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Alamat</label>
-        <div class="col-sm-10">
+      <div v-if="withButton || false" class="form-group row">
+        <label  for="staticEmail" class="col-sm-2 col-form-label mr-2">Alamat</label>
+        <div class="col-sm-9">
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
       </div>
       <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">No Hp</label>
-        <div class="col-sm-10">
+        <label for="staticEmail" class="col-sm-2 col-form-label mr-2">Phone</label>
+        <div class="col-sm-9">
           <input
             type="text"
             readonly
@@ -44,8 +44,8 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
+        <label for="staticEmail" class="col-sm-2 col-form-label mr-2">Email</label>
+        <div class="col-sm-9">
           <input
             type="text"
             readonly
@@ -55,15 +55,15 @@
           />
         </div>
       </div>
-      <div class="form-group row">
-        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
+      <div v-if="withButton || false" class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label mr-2">Password</label>
+        <div class="col-sm-9">
           <input type="password" class="form-control" id="inputPassword" />
         </div>
       </div>
     </form>
     <footer class="foot">
-      <button class="save" @click="save">Save</button>
+      <button v-if="withButton || false" class="save" @click="save">Save</button>
     </footer>
   </div>
 </template>
@@ -73,6 +73,7 @@ import Swal from 'sweetalert2'
 
 export default {
   name: 'form',
+  props: ['withButton'],
   methods: {
     save () {
       Swal.fire({

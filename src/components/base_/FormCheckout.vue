@@ -14,11 +14,11 @@
     </div>
     <div class="d-flex flex-column">
       <div class="row">
-        <div class="col mt-3">
-          <h5>Total Harga Rp. 120000</h5>
+        <div class="col mt-5">
+          <h5 class="font-weight-bold text-success">Total Harga Rp. 120000</h5>
         </div>
       </div>
-      <div class="row align-self-end">
+      <div v-if="withButton || false" class="row align-self-end">
         <div class="col">
           <button class="btn btn-danger">Konfirmasi Sewa</button>
         </div>
@@ -30,6 +30,7 @@
 <script>
 export default {
   name: 'FormCheckout',
+  props: ['withButton'],
   data () {
     return {
       departureTime: new Date().toISOString().split(':')[0] + ':' + new Date().toISOString().split(':')[1],
