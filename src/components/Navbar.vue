@@ -1,12 +1,12 @@
 <template>
   <div class="navbarParent">
     <router-link to="/" class="navLogo"><h1>CARRENT</h1></router-link>
-    <div class="navSearch"><input type="text" placeholder="Search"></div>
-    <div class="navAdditional">
-      <div class="trolly">
-        <img src="../assets/img/trolly.png" alt="trolly">
+    <div class="navSearch">
+      <img src="../assets/img/search.svg" alt="search" width="20px" height="20px">
+      <input type="text" placeholder="Search">
       </div>
-      <router-link to="login" class="btn-login"><p>Login</p></router-link>
+    <div class="navAdditional">
+      <a @click="$emit('login-click')" class="btn-login"><p>Login</p></a>
       <div class="btn-register"><p>Register</p></div>
     </div>
   </div>
@@ -28,8 +28,8 @@ export default {
   position: fixed;
   top: 0;
   max-width: 100%;
-  z-index: 5;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  z-index: 15;
   .navLogo{
     width: 180px;
     margin-left: 50px;
@@ -48,13 +48,18 @@ export default {
     width: 400px;
     display: flex;
     align-items: center;
+    position: relative;
     input{
       width: 400px;
       height: 50%;
       border-radius: 3px;
       outline: none;
       border: none;
-      padding-left: 80px;
+      padding-left: 50px;
+    }
+    img{
+      position: absolute;
+      margin-left: 15px;
     }
   }
   .navAdditional{

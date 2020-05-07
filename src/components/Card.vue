@@ -48,6 +48,8 @@ export default {
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
     text-decoration: none;
     color: #000000;
+    border-radius: 3px;
+    overflow: hidden;
     .lksmkl{
       position: relative;
       width: 100%;

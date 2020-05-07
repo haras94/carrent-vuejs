@@ -15,19 +15,28 @@
               height="70px"
             />
           </div>
-          <div class="downside"></div>
+          <div class="downside">
+            <header>Easy to Rent</header>
+            <footer>Our service makes easy to rent a car with simple privacy & policy</footer>
+          </div>
         </div>
         <div class="card">
           <div class="upside">
             <img src="../assets/img/icons8-globe-52.png" alt="easy-to-find" />
           </div>
-          <div class="downside"></div>
+          <div class="downside">
+            <header>Easy to Find</header>
+            <footer>Our partner available on every city in Indonesia</footer>
+          </div>
         </div>
         <div class="card">
           <div class="upside">
             <img src="../assets/img/stopwatch.png" width="70px" height="70px" alt="fast-response" />
           </div>
-          <div class="downside"></div>
+          <div class="downside">
+            <header>Fast Response</header>
+            <footer>Our partner also gives best service and</footer>
+          </div>
         </div>
       </div>
     </div>
@@ -68,14 +77,23 @@
       <header class="text-light">
         <h1>ORDER NOW!</h1>
       </header>
-      <Card />
+      <div class="cardList">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
       <footer class="foot"></footer>
     </div>
     <div class="bestProfile">
       <div class="upProfile">
         <h1>Best Rent Profile</h1>
       </div>
-      <div class="downProfile"></div>
+      <div class="downProfile">
+        <cardRentail />
+        <cardRentail />
+        <cardRentail />
+      </div>
     </div>
   </div>
 </template>
@@ -83,12 +101,14 @@
 <script>
 import Card from '../components/Card.vue'
 import Carousel from '../components/base_/Caroucel.vue'
+import cardRentail from '../components/base_/cardRentail.vue'
 
 export default {
   name: 'LandingPage',
   components: {
     Card,
-    Carousel
+    Carousel,
+    cardRentail
   }
 }
 </script>
@@ -197,6 +217,16 @@ export default {
         margin: 60px 20px;
         border-radius: 3px;
         overflow: hidden;
+        header{
+          font-size: 20px;
+          text-align: center;
+          font-weight: 600;
+          line-height: 70px;
+        }
+        footer{
+          font-weight: 500;
+          text-align: center;
+        }
         &:hover {
           transform: scale(1.1);
           transition: ease 0.5s;
@@ -220,50 +250,17 @@ export default {
     flex-direction: column;
     align-items: center;
     .cardList {
-      background-color: white;
-      width: 300px;
-      height: 250px;
-      border-radius: 3px;
-      overflow: hidden;
-      &:active {
-        background-color: rgba(128, 128, 128, 0.24);
-      }
-      .upside {
-        background-color: rgba(128, 128, 128, 0.233);
-        width: 100%;
-        height: 60%;
-        img {
-          object-fit: cover;
-          width: 100%;
-          height: 100%;
-        }
-      }
-      .downside {
-        width: 100%;
-        height: 40%;
-        .headCard {
-          width: 100%;
-          height: 30px;
-          p {
-            font-size: 20px;
-            font-weight: 500;
-          }
-        }
-        .bodyCard {
-          width: 10%;
-          height: 20px;
-          display: flex;
-          img {
-            object-fit: contain;
-            width: 100%;
-            height: 100%;
-          }
-        }
-      }
+      // background-color: white;
+      display: flex;
+      justify-content: center;
+      // width: 100%;
+      height: 400px;
+      column-count: 4;
+      column-fill: auto;
     }
   }
   .bestProfile {
-    background-color: #000000;
+    background-color: #c82022;
     margin-top: 80px;
     width: 100%;
     height: 500px;
@@ -280,10 +277,15 @@ export default {
       }
     }
     .downProfile {
-      background-color: beige;
+      // background-color: rgb(255, 255, 255);
       margin-top: 40px;
       width: 100%;
-      height: 300px;
+      height: 350px;
+      column-count: 4;
+      column-fill: auto;
+      display: flex;
+      justify-content: center;
+      column-gap: 10px;
     }
   }
 }
