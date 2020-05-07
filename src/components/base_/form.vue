@@ -2,44 +2,41 @@
   <div>
     <form>
       <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label mr-2">Nama</label>
+        <label for="staticNama" class="col-sm-2 col-form-label mr-2">Nama</label>
         <div class="col-sm-9">
           <input
             type="text"
-            readonly
             class="form-control-plaintext"
-            id="staticEmail"
-            value="Isyana Sarasvati"
+            id="staticNama"
+            v-model="userLogin.fullname"
           />
         </div>
       </div>
       <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label mr-2">Gender</label>
+        <label for="staticGender" class="col-sm-2 col-form-label mr-2">Gender</label>
         <div class="col-sm-9">
           <input
             type="text"
-            readonly
             class="form-control-plaintext"
-            id="staticEmail"
-            value="perempuan"
+            id="staticGender"
+            v-model="gender"
           />
         </div>
       </div>
       <div v-if="withButton || false" class="form-group row">
-        <label  for="staticEmail" class="col-sm-2 col-form-label mr-2">Alamat</label>
+        <label  for="staticAdress" class="col-sm-2 col-form-label mr-2">Alamat</label>
         <div class="col-sm-9">
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <textarea class="form-control-plaintext" id="staticAdress" rows="3" v-model="userLogin.address"></textarea>
         </div>
       </div>
       <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label mr-2">Phone</label>
+        <label for="staticPhone" class="col-sm-2 col-form-label mr-2">Phone</label>
         <div class="col-sm-9">
           <input
             type="text"
-            readonly
             class="form-control-plaintext"
-            id="staticEmail"
-            value="081280908977"
+            id="staticPhone"
+            v-model="userLogin.phone"
           />
         </div>
       </div>
@@ -48,17 +45,16 @@
         <div class="col-sm-9">
           <input
             type="text"
-            readonly
             class="form-control-plaintext"
             id="staticEmail"
-            value="Isyana@mail.com"
+            v-model="userLogin.email"
           />
         </div>
       </div>
       <div v-if="withButton || false" class="form-group row">
         <label for="inputPassword" class="col-sm-2 col-form-label mr-2">Password</label>
         <div class="col-sm-9">
-          <input type="password" class="form-control" id="inputPassword" />
+          <input type="password" class="form-control-plaintext" id="inputPassword" v-model="userLogin.password"/>
         </div>
       </div>
     </form>
@@ -69,11 +65,23 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Swal from 'sweetalert2'
 
 export default {
-  name: 'form',
+  name: 'Form',
   props: ['withButton'],
+  data () {
+    return {
+      gender: this.cek
+
+    }
+  },
+  computed: {
+    ...mapState([
+      'userLogin'
+    ])
+  },
   methods: {
     save () {
       Swal.fire({
