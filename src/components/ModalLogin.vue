@@ -7,14 +7,14 @@
         </div>
         <h1 class="labelemail">EMAIL</h1>
         <div class="formemail">
-          <input v-model="$v.email.$model" type="text" class="inputemail put">
+          <input @keydown.enter="login" v-model="$v.email.$model" type="text" class="inputemail put">
         </div>
         <div class="alert-password">
           <p v-if="!$v.email.email">Format Email Salah! Contoh: name@email.com</p>
         </div>
         <h1 class="labelemail">Kata Sandi</h1>
         <div class="formemail">
-          <input v-model="$v.password.$model" type="password" class="inputemail">
+          <input @keydown.enter="login" v-model="$v.password.$model" type="password" class="inputemail">
         </div>
         <div class="alert-password">
           <p v-if="!$v.password.minLength">Kata Sandi Minimal 6 karakter!</p>
@@ -27,11 +27,11 @@
         <div class="login">
           <button
           id="button-success"
-          @click.enter="login"
-          v-if="$v.email.email && $v.email.required && $v.password.minLength && $v.password.required">Daftar</button>
+          @click="login"
+          v-if="$v.email.email && $v.email.required && $v.password.minLength && $v.password.required">Masuk</button>
           <button
           v-if="!$v.email.email || !$v.email.required || !$v.password.required || !$v.password.minLength"
-          class="default">Daftar</button>
+          class="default">Masuk</button>
           <button id="google"><img src="@/assets/img/Google.svg"> Masuk Dengan Google</button>
         </div>
     <div class="regis">
@@ -79,8 +79,9 @@ export default {
       }
       if (res.data.data.status === 0) {
         localStorage.id = res.data.data.id
-        this.$router.replace('/')
+        this.$store.commit('MODAL_LOGIN_OFF')
         this.code = 0
+        this.$router.go()
       }
     }
   },
