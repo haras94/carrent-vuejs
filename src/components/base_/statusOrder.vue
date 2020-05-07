@@ -1,16 +1,17 @@
 <template>
   <div class="container-fluid">
     <section class="up">
-      <article class="name-rentaler">
-        <h6 class="text-success">rentalnya isyana</h6>
-      </article>
       <article class="estimation">
+        <div class="tgl">20-02-2020</div>
+        <h6 class="text-success m-2">rentalnya isyana</h6>
+      </article>
+      <article class="total">
         <h6 class="text-success">Estimation</h6>
-        <p>7 hours</p>
+        <h6>7 hours</h6>
       </article>
       <article class="total">
         <h6 class="text-success">Rental Price</h6>
-        <p>Rp. 200.000 /day</p>
+        <h6>Rp. 200.000 /day</h6>
       </article>
       <article class="status">
         <h6 class="text-success">Status :</h6>
@@ -82,7 +83,14 @@ export default {
       width: 25%;
       height: 60px;
       border-right: rgba(0, 0, 0, 0.12) 1px solid;
-      padding-top: 15px;
+      padding-right: 5px;
+        .tgl {
+          width: 100%;
+          border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
+          font-size: 12px;
+          font-weight: 600;
+          margin-top: -10px;
+        }
     }
     .total {
       display: flex;

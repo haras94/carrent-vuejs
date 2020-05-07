@@ -29,6 +29,7 @@ export default {
   top: 0;
   max-width: 100%;
   z-index: 5;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   .navLogo{
     width: 180px;
     margin-left: 50px;

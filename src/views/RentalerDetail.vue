@@ -75,7 +75,7 @@ export default {
       document.querySelector('.more-info').style.display = 'none'
     },
     info () {
-      this.tablist = 'Info Rental'
+      this.tablist = 'Request'
       document.querySelector('.more-info').style.display = 'flex'
       document.querySelector('.enable-car').style.display = 'none'
       document.querySelector('.list-car').style.display = 'none'

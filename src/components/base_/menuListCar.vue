@@ -12,7 +12,7 @@
             <card v-for="car in 3" :key="car.id" />
         </div>
         <div class="more-info">
-            hayang ngewe euy
+            <Request/>
         </div>
     </div>
   </div>
@@ -20,11 +20,14 @@
 
 <script>
 import card from '../Card.vue'
+import Request from '../base_/request.vue'
+// import Swal from 'sweetalert2'
 
 export default {
   name: 'menuListCar',
   components: {
-    card
+    card,
+    Request
   },
   props: ['tablist']
 }
@@ -73,6 +76,7 @@ export default {
         }
         .more-info {
             display: none;
+            width: 100%;
         }
   }
 }
