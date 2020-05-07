@@ -83,7 +83,7 @@ export default {
   a{
     margin-bottom: 10px;
     text-decoration: none;
-    color: #454545;
+    color: #ffffff;
   }
   .pwo3qs{
     position: relative;
