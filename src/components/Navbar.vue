@@ -10,6 +10,7 @@
       <router-link to="/register" class="btn-register"><p>Register</p></router-link>
     </div>
     <div v-else class="navAdditional">
+    <btnprofile />
 
     </div>
   </div>
@@ -17,9 +18,13 @@
 
 <script>
 import { mapState } from 'vuex'
+import btnprofile from '../components/base_/btnProfile'
 
 export default {
   name: 'Navbar',
+  components: {
+    btnprofile
+  },
   computed: {
     ...mapState([
       'userLogin'
@@ -74,12 +79,12 @@ export default {
   }
   .navAdditional{
     // background-color: royalblue;
-    width: 500px;
+    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    cursor: pointer;
+    // cursor: pointer;
     .trolly{
       // background-color: #fff;
       width: 30px;
@@ -103,6 +108,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: ;
       p{
         color: white;
         margin: 0;
