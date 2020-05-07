@@ -12,7 +12,7 @@
             <img @click="selectImage($event)" id="image-2" src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80">
             <img @click="selectImage($event)" id="image-3" src="https://images.unsplash.com/photo-1517994112540-009c47ea476b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80">
             <img @click="selectImage($event)" id="image-4" src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80">
-            <img @click="selectImage($event)" id="image-5" src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80">
+            <img @click="selectImage($event)" id="image-5" src="../assets/img/isyana-sarasvati.jpg">
           </div>
         </div>
         <div class="features-wrapper">

@@ -2,7 +2,8 @@
   <div class="container-fluid">
     <section class="up">
       <article class="name-rentaler">
-        <h6 class="text-success">rentalnya isyana</h6>
+        <div class="tgl">20-02-2020</div>
+        <h6 class="text-success m-2">rentalnya isyana</h6>
       </article>
       <article class="estimation">
         <h6 class="text-success">Estimation</h6>
@@ -39,6 +40,7 @@
         <section>
           <h5 class="text-danger">Rp. 140.000.-</h5>
         </section>
+        <footer class="foot">Feedback</footer>
       </article>
     </section>
   </div>
@@ -68,11 +70,20 @@ export default {
     padding: 5px;
     .name-rentaler {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 25%;
       height: 60px;
       border-right: rgba(0, 0, 0, 0.12) 1px solid;
+      padding-right: 10px;
+        .tgl {
+          width: 100%;
+          border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
+          font-size: 12px;
+          font-weight: 600;
+          margin-top: -10px;
+        }
     }
     .estimation {
       display: flex;
@@ -130,6 +141,12 @@ export default {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+        .foot {
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          border-top: 1px solid rgba(0, 0, 0, 0.12);
+        }
     }
   }
 }
