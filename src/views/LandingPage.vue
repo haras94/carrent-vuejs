@@ -202,7 +202,10 @@ export default {
       }
     }
     .ourServiceCard {
-      // background-color: rgb(235, 165, 35);
+      // background-image: url('../assets/img/2018-bugatti-chiron-sport-2.jpg');
+      // background-size: cover;
+      // background-position: center;
+      // background-repeat: no-repeat;
       width: 100%;
       height: 400px;
       display: flex;
@@ -232,7 +235,7 @@ export default {
         .upside {
           width: 100%;
           height: 50%;
-          background-color: rgba(128, 128, 128, 0.123);
+          background-color: rgba(0, 0, 0, 0.123);
           display: flex;
           justify-content: center;
           align-items: center;

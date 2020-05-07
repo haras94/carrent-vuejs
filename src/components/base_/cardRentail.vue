@@ -2,6 +2,7 @@
   <div class="cardRentailWrap">
     <div class="downside">
       <header>PT. Minjem mobil boleh</header>
+      <footer>Boleh nya minjem mobil nya aja</footer>
       <div class="qsxc">
         <i
           v-for="star in 5" :key="star.id"
@@ -31,6 +32,12 @@ export default {
   opacity: .9;
   position: relative;
   overflow: hidden;
+  transition: ease 1.5s;
+  cursor: pointer;
+  &:hover{
+    border-radius: 3px;
+    transition: ease .6s;
+  }
   .downside{
     background-color: rgba(0, 0, 0, 0.212);
     width: 100%;
@@ -43,6 +50,13 @@ export default {
       font-weight: 600;
       opacity: .9;
       margin-top: 10px;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+    }
+    footer{
+      color: white;
+      line-height: 90px;
+      text-align: center;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
     }
     .qsxc{
       position: absolute;
