@@ -105,6 +105,14 @@ const routes = [
     meta: {
       title: 'Halaman Tidak Ditemukan | Carrent'
     }
+  },
+  {
+    path: '/add-shop',
+    name: 'AddShop',
+    component: () => import('@/views/auth/RegisterRental.vue'),
+    meta: {
+      title: 'Tambah Toko | Carrent'
+    }
   }
 ]
 
