@@ -29,6 +29,27 @@
     />
     <link rel="stylesheet" href="sweetalert2.min.css">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      ::-webkit-scrollbar {
+      width: 13px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        /* -webkit-border-radius: 10px; */
+        border-radius: 10px;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background: #c82022;
+      }
+      ::-webkit-scrollbar-thumb:window-inactive {
+      background: #CFE9E5; 
+      }
+    </style>
+
   </head>
   <body>
     <noscript>
