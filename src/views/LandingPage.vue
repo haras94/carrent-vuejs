@@ -47,7 +47,7 @@
       <div class="partnerLogo">
         <div class="logoWrap">
           <div class="firstLine">
-            <h5>Buggati</h5>
+            <img src="../assets/img/logo-buggati.jpg" alt="buggati" width="120px" height="70px">
             <h5>Ferrari</h5>
             <h5>Bmw</h5>
             <h5>Ford</h5>
@@ -89,9 +89,7 @@
       <div class="upProfile">
         <h1>Best Rent Profile</h1>
       </div>
-      <div class="downProfile">
-        <cardRentail />
-        <cardRentail />
+      <div v-for="cardRentail in 1" :key="cardRentail" class="downProfile">
         <cardRentail />
       </div>
     </div>
@@ -255,8 +253,8 @@ export default {
       justify-content: center;
       // width: 100%;
       height: 400px;
-      column-count: 4;
-      column-fill: auto;
+      // column-count: 4;
+      // column-fill: auto;
     }
   }
   .bestProfile {
@@ -264,9 +262,9 @@ export default {
     margin-top: 80px;
     width: 100%;
     height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
     .upProfile {
       width: 100%;
       height: 50px;
@@ -276,16 +274,13 @@ export default {
         color: white;
       }
     }
-    .downProfile {
-      // background-color: rgb(255, 255, 255);
-      margin-top: 40px;
-      width: 100%;
-      height: 350px;
-      column-count: 4;
-      column-fill: auto;
-      display: flex;
-      justify-content: center;
-      column-gap: 10px;
+    .downProfile{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     }
   }
 }
