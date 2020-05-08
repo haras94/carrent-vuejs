@@ -106,7 +106,6 @@ export default {
   &.pop-down {
     animation-name: pop-down;
     animation-duration: .3s;
-    animation-fill-mode: forwards;
     animation-timing-function: ease-in;
   }
   .head {
