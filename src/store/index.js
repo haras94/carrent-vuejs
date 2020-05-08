@@ -39,7 +39,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         Axios.post(`${process.env.VUE_APP_API + proto.url}`, proto.data)
           .then(res => {
-            resolve(res.data.data)
+            resolve(res.data)
           })
           .catch(err => {
             reject(new Error(err))
@@ -48,9 +48,9 @@ export default new Vuex.Store({
     },
     patchApi ({ commit }, proto) {
       return new Promise((resolve, reject) => {
-        Axios.patch(`${process.env.VUE_APP_API + proto.url}`)
+        Axios.patch(`${process.env.VUE_APP_API + proto.url}`, proto.data)
           .then(res => {
-            resolve(res.data.data)
+            resolve(res.data)
           })
           .catch(err => {
             reject(new Error(err))
