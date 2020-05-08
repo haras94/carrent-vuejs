@@ -1,5 +1,5 @@
 <template>
-  <div class="cardRequestWrap">
+  <div class="cardRentWrap">
     <div class="requestCard">
       <div class="upSide">
         <div class="owner">
@@ -15,23 +15,18 @@
           <footer>jl. dimana?</footer>
         </div>
       </div>
-      <div class="downSide">
-        <button class="acc">Accept</button>
-        <button class="dec">Decline</button>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CardRequest'
-
+  name: 'CardRent'
 }
 </script>
 
 <style lang="scss" scoped>
-.cardRequestWrap{
+.cardRentWrap{
   background-color: rgba(0, 0, 0, 0);
   width: 100%;
   // height: 600px;
@@ -42,7 +37,7 @@ export default {
   padding-top: 30px;
   visibility: hidden;
   opacity: 0;
-  &.cardRequestActive{
+  &.cardRentActive{
     opacity: 1;
     visibility: visible;
     transition: ease .3s;
@@ -55,7 +50,7 @@ export default {
     border-radius: 5px;
     .upSide{
       width: 100%;
-      height: 50%;
+      height: 30%;
       background-color: rgba(255, 255, 255, 0.568);
       border-bottom: 1px solid rgba(116, 116, 116, 0.315);
       display: flex;

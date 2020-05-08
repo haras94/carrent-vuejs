@@ -1,27 +1,44 @@
 <template>
   <div class="adminPageWrap">
     <div class="adminPage">
-      <div class="request">
+      <div @click="modulRequest" class="request">
         <h5>Request</h5>
       </div>
-      <div class="rentaler">
+      <div @click="modulRent" class="rentaler">
         <h5>Rentaler</h5>
       </div>
-      <div class="allUser">
+      <div @click="modulAlluser" class="allUser">
         <h5>All User</h5>
       </div>
     </div>
     <CardRequest />
+    <CardRent />
+    <Alluser />
   </div>
 </template>
 
 <script>
 import CardRequest from '../components/base_/CardRequest.vue'
+import CardRent from '../components/base_/CardRent.vue'
+import Alluser from '../components/base_/Alluser.vue'
 
 export default {
   name: 'AdminPage',
   components: {
-    CardRequest
+    CardRequest,
+    CardRent,
+    Alluser
+  },
+  methods: {
+    modulRequest () {
+      document.querySelector('.cardRequestWrap').classList.add('cardRequestActive')
+    },
+    modulRent () {
+      document.querySelector('.cardRentWrap').classList.add('cardRentActive')
+    },
+    modulAlluser () {
+      document.querySelector('.allUserWrap').classList.add('allUserActive')
+    }
   }
 }
 </script>
