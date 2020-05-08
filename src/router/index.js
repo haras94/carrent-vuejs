@@ -47,6 +47,14 @@ const routes = [
     }
   },
   {
+    path: '/admin-page',
+    name: 'Admin',
+    component: () => import('@/views/AdminPage.vue'),
+    meta: {
+      title: 'Admin Page | Carrent'
+    }
+  },
+  {
     path: '/user/:idUser',
     name: 'User Detail',
     component: () => import('@/views/UserDetail.vue'),
