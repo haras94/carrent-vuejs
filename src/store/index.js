@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     userLogin: {},
     adminLogin: {},
+    rentallerDetail: {},
     modalLogin: false
   },
   getters: {
@@ -16,6 +17,9 @@ export default new Vuex.Store({
   mutations: {
     SET_USER_LOGIN (state, data) {
       state.userLogin = data
+    },
+    SET_RENTALLER_DETAIL (state, data) {
+      state.rentallerDetail = data
     },
     MODAL_LOGIN_ON (state) {
       state.modalLogin = true
@@ -37,9 +41,9 @@ export default new Vuex.Store({
     },
     postApi ({ commit }, proto) {
       return new Promise((resolve, reject) => {
-        Axios.post(`${process.env.VUE_APP_API + proto.url}`)
+        Axios.post(`${process.env.VUE_APP_API + proto.url}`, proto.data)
           .then(res => {
-            resolve(res.data.data)
+            resolve(res.data)
           })
           .catch(err => {
             reject(new Error(err))
@@ -48,9 +52,9 @@ export default new Vuex.Store({
     },
     patchApi ({ commit }, proto) {
       return new Promise((resolve, reject) => {
-        Axios.patch(`${process.env.VUE_APP_API + proto.url}`)
+        Axios.patch(`${process.env.VUE_APP_API + proto.url}`, proto.data)
           .then(res => {
-            resolve(res.data.data)
+            resolve(res.data)
           })
           .catch(err => {
             reject(new Error(err))
