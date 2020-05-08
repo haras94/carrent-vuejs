@@ -1,13 +1,19 @@
 <template>
 <div class="klemsa1">
-  <div>
-
-  </div>
   <div class="ksmen2">
     <div class="mmsan32">
       <h2>List Car</h2>
     </div>
     <div class="eersa23">
+      <h2>Pilih Kota</h2>
+      <select name="kota" id="kota">
+        <option selected="selected" value="">Semua Kota</option>
+        <option value="depok">Depok</option>
+        <option value="jakarta">Jakarta</option>
+        <option value="bogor">Bogor</option>
+        <option value="bekasi">Bekasi</option>
+        <option value="tanggerang">Tanggerang</option>
+      </select>
       <h2>Urutkan</h2>
       <select name="sortby" id="product-sorty">
         <option selected="selected" value="">Relevansi</option>
@@ -18,12 +24,19 @@
     </div>
   </div>
   <div class="lkaskm">
-    <!-- <div class="meksl1"> -->
-      <div v-for="item in 20" :key="item.id" class="klsme3">
-        <Card/>
-      </div>
+    <div v-for="item in 20" :key="item.id" class="klsme3">
+      <Card/>
     </div>
-  <!-- </div> -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+  </div>
 </div>
 </template>
 
@@ -66,6 +79,9 @@ export default {
       align-items: center;
       justify-content: center;
       margin-right: 45px;
+      #kota{
+        margin-right: 20px;
+      }
       select{
         height: 40px;
       }
@@ -94,9 +110,7 @@ export default {
   flex-wrap: wrap;
 }
 .klsme3{
-  // margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
-  width: 270px;
 }
 </style>

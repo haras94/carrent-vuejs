@@ -43,6 +43,14 @@ const routes = [
     }
   },
   {
+    path: '/add-shop',
+    name: 'AddShop',
+    component: () => import('@/views/auth/RegisterRental.vue'),
+    meta: {
+      title: 'Tambah Toko | Carrent'
+    }
+  },
+  {
     path: '/user/:idUser',
     name: 'User Detail',
     component: () => import('@/views/UserDetail.vue'),
@@ -104,14 +112,6 @@ const routes = [
     component: () => import('@/views/PageNotFound.vue'),
     meta: {
       title: 'Halaman Tidak Ditemukan | Carrent'
-    }
-  },
-  {
-    path: '/add-shop',
-    name: 'AddShop',
-    component: () => import('@/views/auth/RegisterRental.vue'),
-    meta: {
-      title: 'Tambah Toko | Carrent'
     }
   }
 ]

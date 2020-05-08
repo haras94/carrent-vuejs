@@ -2,45 +2,51 @@
 <div class="slzkm3">
   <div class="axvbwe">
     <div class="form" >
-      <h1 class="header">Daftar Akun</h1>
+      <h1 class="header">Daftar Toko Rental</h1>
       <div v-if="code === 1" class="alertdiv color-green">
         <p class="alert">{{error}}</p>
       </div>
       <div v-if="code === 2" class="alertdiv color-red">
         <p class="alert"><i class="fas fa-exclamation-triangle" style="color:#c72e3f"></i> {{error}} <router-link to="/login">Masuk</router-link> </p>
       </div>
-      <h1 class="labelemail">NAMA LENGKAP</h1>
+      <h1 class="labelemail">Email</h1>
       <div class="formemail">
-        <input v-model="$v.fullname.$model" type="text" class="inputemail">
-        <div class="alert-password"></div>
-      </div>
-      <h1 class="labelemail">EMAIL</h1>
-      <div class="formemail">
-        <input v-model="$v.email.$model" type="text" class="inputemail">
+        <input v-model="$v.email.$model" type="email" class="inputemail">
         <div class="alert-password">
-          <p v-if="!$v.email.email">Format Email Salah! Contoh: name@email.com</p>
+          <p v-if="!$v.email.email">Format Email Anda Salah!</p>
         </div>
       </div>
-      <h1 class="labelemail">KATA SANDI</h1>
+      <h1 class="labelemail">Password</h1>
       <div class="formemail">
         <input v-model="$v.password.$model" type="password" class="inputemail">
         <div class="alert-password">
           <p v-if="!$v.password.minLength">Password Minimal 6 Karakter!</p>
         </div>
       </div>
+      <!-- <h1 class="labelemail">Nama Rental</h1>
+      <div class="formemail">
+        <input v-model="$v.name.$model" type="text" class="inputemail">
+      </div>
+      <h1 class="labelemail">Nama Pemilik</h1>
+      <div class="formemail">
+        <input v-model="$v.yourname.$model" type="text" class="inputemail">
+      </div>
+      <h1 class="labelemail">Alamat</h1>
+      <div class="formemail">
+        <input v-model="$v.alamat.$model" type="text" class="inputemail">
+      </div>
+      <h1 class="labelemail">No. Handphone</h1>
+      <div class="formemail">
+        <input v-model="$v.nohp.$model" type="number" class="inputemail">
+      </div> -->
       <div class="login">
         <button
         id="button-success"
-        @click.enter="daftar"
-        v-if="$v.email.email && $v.email.required && $v.password.minLength && $v.password.required && $v.fullname.required">Daftar</button>
+        @click="selanjutnya"
+        v-if="$v.email.email && $v.email.required && $v.password.minLength && $v.password.required">Selanjutnya</button>
         <button
-        v-if="!$v.email.email || !$v.email.required || !$v.fullname.required || !$v.password.required || !$v.password.minLength"
-        class="default">Daftar</button>
-        <button id="google"><img src="@/assets/img/Google.svg"> Daftar Dengan Google</button>
-      </div>
-      <div class="regis">
-        <h1>Sudah Punya Akun?</h1>
-        <router-link to="/login">Masuk</router-link>
+        v-if="!$v.email.email || !$v.email.required || !$v.password.required || !$v.password.minLength"
+        class="default">Selanjutnya</button>
       </div>
     </div>
   </div>
@@ -48,8 +54,48 @@
 </template>
 
 <script>
-export default {
+import { required, email, minLength } from 'vuelidate/lib/validators'
+import Axios from 'axios'
 
+export default {
+  name: 'RegisterRental',
+  data () {
+    return {
+      email: '',
+      password: '',
+      name: '',
+      yourname: '',
+      alamat: '',
+      nohp: null
+    }
+  },
+  methods: {
+    selanjutnya () {
+      Axios.post('')
+    }
+  },
+  validations: {
+    name: {
+      required
+    },
+    alamat: {
+      required
+    },
+    yourname: {
+      required
+    },
+    nohp: {
+      required
+    },
+    email: {
+      required,
+      email
+    },
+    password: {
+      required,
+      minLength: minLength(6)
+    }
+  }
 }
 </script>
 
@@ -173,12 +219,6 @@ export default {
 .login{
   position: relative;
   margin-top: 15px;
-}
-#google{
-  background: white;
-  color: black;
-  border: 1px solid #333333;
-  cursor: pointer;
 }
 .regis{
   width: 185px;

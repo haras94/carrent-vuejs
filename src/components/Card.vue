@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="lokols"> -->
     <router-link to="/1/1" class="lmskal">
       <div class="lksmkl">
         <img src="@/assets/img/toyota-agya.png">
@@ -14,6 +13,14 @@
           class="fas fa-star"
           style="color:#FFC107"></i>
         </div>
+        <div class="location">
+        </div>
+        <div class="hjams3">
+          <div class="lokasi">
+            <h2>Depok</h2>
+          </div>
+          <p>Toko Udin</p>
+        </div>
         <div class="tyghsw">
           <div class="rtbnhf">
             <i class="far fa-user"></i>
@@ -25,12 +32,16 @@
         </div>
       </div>
     </router-link>
-  <!-- </div> -->
 </template>
 
 <script>
 export default {
-
+  name: 'Card Car',
+  computed: {
+    getCar () {
+      return this.$store.state.getCar
+    }
+  }
 }
 </script>
 
@@ -68,7 +79,6 @@ export default {
     background: #ffffff;
     .aslesk{
       position: relative;
-      // margin-top: 5px;
       h2{
         font-weight: 600;
         font-size: 22px;
@@ -76,7 +86,6 @@ export default {
     }
     .qsasxz{
       position: relative;
-      margin-bottom: 20px;
     }
     .tyghsw{
       position: relative;
@@ -91,6 +100,28 @@ export default {
         i{
           margin-right: 3px;
         }
+      }
+      .bhnjfd{
+        position: relative;
+        height: 24px;
+      }
+    }
+    .hjams3{
+      position: relative;
+      width: 100%;
+      .lokasi{
+        position: absolute;
+        right: 0;
+        h2{
+          font-weight: normal;
+          font-size: 17px;
+          color: #5E5E5E;
+        }
+      }
+      p{
+        height: 24px;
+        margin: 0;
+        color: #5E5E5E;
       }
     }
   }

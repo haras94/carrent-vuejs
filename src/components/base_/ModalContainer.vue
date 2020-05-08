@@ -1,8 +1,14 @@
 <template>
-  <div id="modal" :class="{ 'modal-on': modalActive }">
-    <div @click="$emit('bg-click')" class="bg-modal" :class="{ 'bg-on': modalActive }"></div>
-    <div class="modal-wrapper" :style="`width: ${width || 'auto'}`" :class="modalActive ? 'pop-up' : 'pop-down'">
-      <slot></slot>
+  <div id="modal" :class="{ 'modal-on': modalToggle }">
+    <div @click="$emit('bg-click')" class="bg-modal" :class="{ 'bg-on': modalToggle }"></div>
+    <div class="modal-wrapper" :style="`width: ${width || 'auto'}`" :class="{ 'pop-up' : modalToggle, 'pop-down': !modalToggle}">
+      <div v-if="headTitle" class="head">
+        <h3 class="m-0">{{ headTitle }}</h3>
+        <i @click="$emit('close-click')" class="fas fa-times text-danger"></i>
+      </div>
+      <div class="body" :class="modalWrap && true ? 'wrap-on' : ''">
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -12,7 +18,9 @@ export default {
   name: 'ModalContainer',
   props: {
     width: String,
-    modalActive: Boolean
+    headTitle: String,
+    modalToggle: Boolean,
+    modalWrap: Boolean
   }
 }
 </script>
@@ -85,14 +93,10 @@ export default {
   background-color: white;
   position: fixed;
   border-radius: 5px;
-  transform: translateY(-50%);
   visibility: hidden;
   opacity: 0;
   z-index: 60;
   max-height: 95vh;
-  &.wrap-on {
-    padding: 20px 30px;
-  }
   &.pop-up {
     animation-name: pop-up;
     animation-duration: .3s;
@@ -105,5 +109,23 @@ export default {
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
   }
+  .head {
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10vh;
+    i {
+      cursor: pointer;
+      font-size: 20px;
+    }
+  }
+  .body {
+    overflow-y: auto;
+    max-height: 85vh;
+  }
+}
+.wrap-on {
+  padding: 20px 30px;
 }
 </style>
