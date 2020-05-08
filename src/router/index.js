@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '@/store'
 import LandingPage from '@/views/LandingPage.vue'
+import MobilDetail from '@/views/MobilDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -97,7 +98,7 @@ const routes = [
   {
     path: '/:idRentaler/:idMobil',
     name: 'Mobil Detail',
-    component: () => import('@/views/MobilDetail.vue'),
+    component: MobilDetail,
     meta: {
       title: 'Mobil Detail | Carrent'
     }

@@ -37,7 +37,7 @@ export default new Vuex.Store({
     },
     postApi ({ commit }, proto) {
       return new Promise((resolve, reject) => {
-        Axios.post(`${process.env.VUE_APP_API + proto.url}`)
+        Axios.post(`${process.env.VUE_APP_API + proto.url}`, proto.data)
           .then(res => {
             resolve(res.data.data)
           })
