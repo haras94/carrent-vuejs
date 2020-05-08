@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     userLogin: {},
     adminLogin: {},
-    modalLogin: false
+    modalLogin: false,
+    getCar: []
   },
   getters: {
     isLogin: (state) => localStorage.id !== undefined
@@ -22,13 +23,16 @@ export default new Vuex.Store({
     },
     MODAL_LOGIN_OFF (state) {
       state.modalLogin = false
+    },
+    getCar (state, data) {
+      state.getCar = data
     }
   },
   actions: {
     getApi ({ commit }, proto) {
       Axios.get(`${process.env.VUE_APP_API + proto.url}`)
         .then(res => {
-          const dataLogin = res.data.data
+          const dataLogin = res.data
           commit(proto.mutation, dataLogin)
         })
         .catch(err => {
@@ -37,9 +41,9 @@ export default new Vuex.Store({
     },
     postApi ({ commit }, proto) {
       return new Promise((resolve, reject) => {
-        Axios.post(`${process.env.VUE_APP_API + proto.url}`)
+        Axios.post(`${process.env.VUE_APP_API + proto.url}`, proto.data)
           .then(res => {
-            resolve(res.data.data)
+            resolve(res.data)
           })
           .catch(err => {
             reject(new Error(err))

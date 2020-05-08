@@ -47,7 +47,7 @@
 
 <script>
 import { required, email, minLength } from 'vuelidate/lib/validators'
-import Axios from 'axios'
+// import Axios from 'axios'
 
 export default {
   name: 'ModalRegister',
@@ -62,19 +62,23 @@ export default {
   },
   methods: {
     daftar () {
-      Axios.post(process.env.VUE_APP_API + 'user/register', {
-        fullname: this.fullname,
-        email: this.email,
-        password: this.password
+      this.$store.dispatch('postApi', {
+        url: 'user/register',
+        data: {
+          fullname: this.fullname,
+          email: this.email,
+          password: this.password
+        }
       })
-        .then((result) => {
+        .then((res) => {
           this.code = 1
           this.error = 'Daftar Berhasil, Silahkan Cek Email Anda untuk Aktivasi'
+          // console.log(res)
         })
-        .catch((err) => {
+        .catch(() => {
           this.code = 2
           this.error = 'Email Sudah Terdaftar, Silahkan '
-          console.log(err)
+          // console.log(err)
         })
     }
   },

@@ -41,6 +41,26 @@ export default {
     getCar () {
       return this.$store.state.getCar
     }
+  },
+  // methods: {
+  //   getCars () {
+  //     this.$store.dispatch('getApi', {
+  //       url: '',
+  //       mutations: ''
+  //     })
+  //   }
+  // },
+  created () {
+    this.$store.dispatch('getApi', {
+      url: 'product',
+      mutations: 'getCar'
+    })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 }
 </script>

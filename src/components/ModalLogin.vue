@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Axios from 'axios'
+// import Axios from 'axios'
 import { required, email, minLength } from 'vuelidate/lib/validators'
 
 export default {
@@ -58,31 +58,34 @@ export default {
   },
   methods: {
     login () {
-      Axios.post(process.env.VUE_APP_API + 'user/login', {
-        email: this.email, password: this.password
+      this.$store.dispatch('postApi', {
+        url: 'user/login',
+        data: {
+          email: this.email,
+          password: this.password
+        }
       })
         .then((res) => {
-          this.loginSucces(res)
+          console.log(res)
+          if (res.status === 203) {
+            this.code = 1
+            this.error = res.messages
+          }
+          // if (res.data.status === 0) {
+          //   this.code = 1
+          //   this.error = 'Email Belum Di Aktivasi'
+          // }
+          if (res.data.status === 0) {
+            this.code = 0
+            localStorage.id = res.data.id
+            this.$store.commit('MODAL_LOGIN_OFF')
+            this.code = 0
+            this.$router.go('/')
+          }
         })
         .catch((err) => {
           console.log(err)
         })
-    },
-    loginSucces (res) {
-      if (res.data.status === 203) {
-        this.code = 1
-        this.error = res.data.messages
-      }
-      if (res.data.data.status === 1) {
-        this.code = 1
-        this.error = 'Email Belum di Aktivasi'
-      }
-      if (res.data.data.status === 0) {
-        localStorage.id = res.data.data.id
-        this.$store.commit('MODAL_LOGIN_OFF')
-        this.code = 0
-        this.$router.go()
-      }
     }
   },
   validations: {

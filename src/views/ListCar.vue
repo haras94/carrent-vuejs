@@ -24,7 +24,7 @@
     </div>
   </div>
   <div class="lkaskm">
-    <div v-for="item in 20" :key="item.id" class="klsme3">
+    <div class="klsme3">
       <Card/>
     </div>
     <nav aria-label="Page navigation example">

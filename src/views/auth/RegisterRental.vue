@@ -3,50 +3,72 @@
   <div class="axvbwe">
     <div class="form" >
       <h1 class="header">Daftar Toko Rental</h1>
-      <div v-if="code === 1" class="alertdiv color-green">
+      <div v-if="alert === 1" class="alertdiv color-green">
         <p class="alert">{{error}}</p>
       </div>
-      <div v-if="code === 2" class="alertdiv color-red">
-        <p class="alert"><i class="fas fa-exclamation-triangle" style="color:#c72e3f"></i> {{error}} <router-link to="/login">Masuk</router-link> </p>
+      <div v-if="alert === 2" class="alertdiv color-red">
+        <p class="alert"><i class="fas fa-exclamation-triangle" style="color:#c72e3f"></i> {{error}}</p>
       </div>
-      <h1 class="labelemail">Email</h1>
-      <div class="formemail">
-        <input v-model="$v.email.$model" type="email" class="inputemail">
-        <div class="alert-password">
-          <p v-if="!$v.email.email">Format Email Anda Salah!</p>
+      <div v-if="code === 0">
+        <h1 class="labelemail">Email</h1>
+        <div class="formemail">
+          <input v-model="$v.email.$model" type="email" class="inputemail">
+          <div class="alert-password">
+            <p v-if="!$v.email.email">Format Email Anda Salah!</p>
+          </div>
+        </div>
+        <h1 class="labelemail">Password</h1>
+        <div class="formemail">
+          <input v-model="$v.password.$model" type="password" class="inputemail">
+          <div class="alert-password">
+            <p v-if="!$v.password.minLength">Password Minimal 6 Karakter!</p>
+          </div>
+        </div>
+        <div class="login">
+          <button
+          id="button-success"
+          @click="selanjutnya"
+          v-if="
+          $v.email.email && $v.email.required && $v.password.minLength && $v.password.required">Selanjutnya</button>
+          <button
+          v-if="
+          !$v.email.email || !$v.email.required || !$v.password.required || !$v.password.minLength"
+          class="default">Selanjutnya</button>
         </div>
       </div>
-      <h1 class="labelemail">Password</h1>
-      <div class="formemail">
-        <input v-model="$v.password.$model" type="password" class="inputemail">
-        <div class="alert-password">
-          <p v-if="!$v.password.minLength">Password Minimal 6 Karakter!</p>
+      <div v-if="code === 1">
+        <label class="labelemail" id="emailku"> {{email}} </label> <button @click="change" class="changemail">Ubah</button>
+        <h1 class="labelemail code2">Nama Rental</h1>
+        <div class="formemail">
+          <input v-model="$v.name.$model" type="text" class="inputemail">
+        </div>
+        <h1 class="labelemail code2">Nama Pemilik</h1>
+        <div class="formemail">
+          <input v-model="$v.yourname.$model" type="text" class="inputemail">
+        </div>
+        <h1 class="labelemail code2">Alamat</h1>
+        <div class="formemail">
+          <input v-model="$v.alamat.$model" type="text" class="inputemail">
+        </div>
+        <h1 class="labelemail code2">No. Handphone</h1>
+        <div class="formemail">
+          <input v-model="$v.nohp.$model" type="number" class="inputemail">
+        </div>
+        <div class="login">
+          <button
+          id="button-success"
+          @click="daftar"
+          v-if="
+          $v.yourname.required && $v.name.required && $v.nohp.required && $v.alamat.required">Daftar</button>
+          <button
+          v-if="
+          !$v.yourname.required || !$v.name.required || !$v.nohp.required || !$v.alamat.required"
+          class="default">Daftar</button>
         </div>
       </div>
-      <!-- <h1 class="labelemail">Nama Rental</h1>
-      <div class="formemail">
-        <input v-model="$v.name.$model" type="text" class="inputemail">
-      </div>
-      <h1 class="labelemail">Nama Pemilik</h1>
-      <div class="formemail">
-        <input v-model="$v.yourname.$model" type="text" class="inputemail">
-      </div>
-      <h1 class="labelemail">Alamat</h1>
-      <div class="formemail">
-        <input v-model="$v.alamat.$model" type="text" class="inputemail">
-      </div>
-      <h1 class="labelemail">No. Handphone</h1>
-      <div class="formemail">
-        <input v-model="$v.nohp.$model" type="number" class="inputemail">
-      </div> -->
-      <div class="login">
-        <button
-        id="button-success"
-        @click="selanjutnya"
-        v-if="$v.email.email && $v.email.required && $v.password.minLength && $v.password.required">Selanjutnya</button>
-        <button
-        v-if="!$v.email.email || !$v.email.required || !$v.password.required || !$v.password.minLength"
-        class="default">Selanjutnya</button>
+      <div class="regis">
+        <h1>Sudah Punya Toko?</h1>
+        <router-link to="/masuk-shop">Masuk</router-link>
       </div>
     </div>
   </div>
@@ -55,7 +77,7 @@
 
 <script>
 import { required, email, minLength } from 'vuelidate/lib/validators'
-import Axios from 'axios'
+// import Axios from 'axios'
 
 export default {
   name: 'RegisterRental',
@@ -66,12 +88,41 @@ export default {
       name: '',
       yourname: '',
       alamat: '',
-      nohp: null
+      nohp: null,
+      code: 0,
+      alert: null
     }
   },
   methods: {
+    change () {
+      this.code = 0
+    },
     selanjutnya () {
-      Axios.post('')
+      this.code = 1
+    },
+    daftar () {
+      this.$store.dispatch('postApi', {
+        url: 'rentaller/register',
+        data: {
+          email: this.email,
+          password: this.password,
+          rental_name: this.name,
+          fullname: this.yourname,
+          address: this.alamat,
+          phone_number: this.nohp
+        }
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            this.alert = 1
+            this.error = 'Toko Berhasil dibuat Silahkan Verifikasi Email Anda'
+          }
+          // console.log(res)
+        })
+        .catch(() => {
+          this.alert = 2
+          this.error = 'Email Sudah Terdaftar Silahkan Ganti Emailnya!'
+        })
     }
   },
   validations: {
@@ -100,6 +151,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.changemail{
+  background: none;
+  border: none;
+  color: #c82022;
+  outline: none;
+  margin-left: 10px;
+}
+#emailku{
+  font-size: 20px;
+}
 .slzkm3{
   position: relative;
   width: 100%;
@@ -163,6 +224,9 @@ export default {
   color: #555555;
   font-weight: bold;
   margin-bottom: 10px;
+}
+.code2{
+  margin-top: 10px;
 }
 .formemail{
   width: 100%;
