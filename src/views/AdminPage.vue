@@ -2,10 +2,20 @@
   <div class="adminPageWrap">
     <div class="adminPage">
       <div class="request">
-        <h3>Request</h3>
+        <h5>Request</h5>
+        <div class="requestPage" :class="{ 'dropdown': dropdown }">
+          <ul>
+            <li>Setting</li>
+            <li @click="logout" >Logout</li>
+          </ul>
+        </div>
       </div>
-      <div class="rentaler"><h3>Rentaler</h3></div>
-      <div class="allUser"><h3>All User</h3></div>
+      <div class="rentaler">
+        <h5>Rentaler</h5>
+      </div>
+      <div class="allUser">
+        <h5>All User</h5>
+      </div>
     </div>
   </div>
 </template>
@@ -13,16 +23,47 @@
 <script>
 
 export default {
-  name: 'AdminPage'
+  name: 'AdminPage',
+  data () {
+    return {
+      dropdown: false
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+a {
+  text-decoration: none;
+}
+.requestPage {
+  width: 170px;
+  height: 0px;
+  background-color: white;
+  position: absolute;
+  z-index: 21;
+  top: 100%;
+  right: 45px;
+  overflow: hidden;
+  transition: .2s;
+  border-radius: 3px;
+  li {
+    padding: 10px 20px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.061);
+    }
+  }
+  &.dropdown {
+    height: 100px;
+  }
+}
 .adminPageWrap{
-  // background-color: rosybrown;
+  background-color: rgba(0, 0, 0, 0.055);
   width: 100%;
   height: 1000px;
   display: flex;
+
   .adminPage{
     width: 100%;
     height: 50px;
