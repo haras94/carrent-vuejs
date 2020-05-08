@@ -2,25 +2,33 @@
   <div class="checkout">
     <h2>Form Pemesanan</h2>
     <div class="up">
+      <div class="woz d-flex">
       <Card />
-      <div class="info">
+      <div class="infoker">
           <FormCheckout/>
       </div>
+      </div>
+      <div class="wozasky">
       <div class="info">
         <h5 class="dtl-pmsn mb-2 pb-2">Detail Pemesan</h5>
         <Form/>
         <p class="foot m-0 text-success">memesan untuk orang lain?</p>
       </div>
-      <div class="info">
+      <div class="info-foot">
         <div class="space">
           <section class="addsome d-flex">
             <p class="mr-3 m-0">Buat Permintaan Khusus</p>
             <i class="fas fa-pen"></i>
           </section>
+          <section>
+            <h5>Grand Total :</h5>
+            <h4 class="text-success">IDR. 120.000</h4>
+          </section>
           <button class="for-btn">Lanjut Ke Pembayaran</button>
         </div>
       </div>
     </div>
+      </div>
   </div>
 </template>
 
@@ -45,17 +53,51 @@ export default {
   flex-direction: column;
   width: 100%;
   margin-top: 70px;
-  padding: 16px;
+  padding: 0 100px;
   .up {
     display: flex;
     align-items: center;
-    width: 100%;
+    flex-direction: column;
+    // width: 800px;
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    .info {
+      .woz{
+        width: 100%;
+        background: #fafbfc;
+      }
+      .wozasky{
+        display: flex;
+        width: 100%;
+        background: #fafbfc;
+      }
+      .infoker{
+        display: flex;
+      flex-direction: column;
       border: 1px solid rgba(0, 0, 0, 0.12);
       padding: 10px;
       margin: 10px 10px 10px 20px;
+      width: 100%;
+      height: 100%;
+      background: #fafbfc;
+      }
+    .info{
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 10px;
+      margin: 10px 10px 10px 20px;
+      width: 740px;
+      height: 100%;
+      background: #fafbfc;
+    }
+    .info-foot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 10px;
+      margin: 10px 10px 10px 20px;
+      width: 500px;
       height: 100%;
       background: #fafbfc;
         .dtl-pmsn{
@@ -72,6 +114,7 @@ export default {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          align-items: center;
           width: 300px;
           height: 273px;
             .addsome {
