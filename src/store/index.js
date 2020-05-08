@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     userLogin: {},
     adminLogin: {},
+    rentallerDetail: {},
     modalLogin: false
   },
   getters: {
@@ -16,6 +17,9 @@ export default new Vuex.Store({
   mutations: {
     SET_USER_LOGIN (state, data) {
       state.userLogin = data
+    },
+    SET_RENTALLER_DETAIL (state, data) {
+      state.rentallerDetail = data
     },
     MODAL_LOGIN_ON (state) {
       state.modalLogin = true

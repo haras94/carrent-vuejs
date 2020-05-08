@@ -1,68 +1,82 @@
 <template>
   <div class="container-fluid our-wrapper">
-    <div class="info-user row">
-      <section class="image-user col-md-4">
-        <img src="../assets/img/isyangif.gif" alt="foto" class="img-user" />
-      </section>
-      <section class="flash-info col-md-6">
-        <article class="name-user">
-          <h1>Isyana Sarasvati</h1>
-        </article>
-        <article class="adress">
-          <i class="fas fa-map-pin mr-4"></i>
-          <p>Jl. Pesona Depok Estate Blok B No.2 , Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431</p>
-        </article>
-        <article class="adress">
-          <i class="far fa-envelope mr-4"></i>
-          <p>isyana@gmail.com</p>
-        </article>
-        <article class="adress">
-          <i class="fas fa-phone-alt mr-4"></i>
-          081290892277
-        </article>
-        <article class="adress">
-          <i class="fas fa-car mr-4"></i>
-          <p>10 armada</p>
-        </article>
-        <article class="adress">
-          <i class="fas fa-star text-warning mr-1" v-for="star in 5" :key="star.id"></i>
-        </article>
-      </section>
+    <div class="pembungkus-aja" v-if="rentallerDetail.id !== undefined">
+      <div class="info-user row">
+        <section class="image-user col-md-4">
+          <img src="../assets/img/isyangif.gif" alt="foto" class="img-user" />
+        </section>
+        <section class="flash-info col-md-6">
+          <article class="name-user">
+            <h1>{{ rentallerDetail.fullname }}</h1>
+          </article>
+          <article class="adress">
+            <i class="fas fa-map-pin mr-4"></i>
+            <p>{{ rentallerDetail.address }}</p>
+          </article>
+          <article class="adress">
+            <i class="far fa-envelope mr-4"></i>
+            <p>{{ rentallerDetail.email }}</p>
+          </article>
+          <article class="adress">
+            <i class="fas fa-phone-alt mr-4"></i>
+            {{ rentallerDetail.phone_number || '-' }}
+          </article>
+          <article class="adress">
+            <i class="fas fa-car mr-4"></i>
+            <p>10 armada</p>
+          </article>
+          <article class="adress">
+            <i class="fas fa-star text-warning mr-1" v-for="star in 5" :key="star.id"></i>
+          </article>
+        </section>
+      </div>
+      <div class="sub-menu">
+        <section class="tablist">
+          <div class="tab">
+            <section class="menu" @click="listCar">
+              <p>List Car</p>
+            </section>
+            <section class="menu" @click="enableCar">
+              <p>Enable Car</p>
+            </section>
+            <section class="menu" @click="info">
+              <p>Request</p>
+            </section>
+            <section class="menu">
+              <p>Add Car</p>
+            </section>
+          </div>
+        </section>
+        <menuListCar v-bind:tablist="tablist" />
+      </div>
     </div>
-    <div class="sub-menu">
-      <section class="tablist">
-        <div class="tab">
-          <section class="menu" @click="listCar">
-            <p>List Car</p>
-          </section>
-          <section class="menu" @click="enableCar">
-            <p>Enable Car</p>
-          </section>
-          <section class="menu" @click="info">
-            <p>Request</p>
-          </section>
-          <section class="menu">
-            <p>Add Car</p>
-          </section>
-        </div>
-      </section>
-      <menuListCar v-bind:tablist="tablist" />
-    </div>
+    <PageNotFound v-else
+      code="403"
+      msg="Mohon maaf rentaler yang anda cari tidak ditemukan"
+    />
   </div>
 </template>
 
 <script>
 import menuListCar from '../components/base_/menuListCar.vue'
+import PageNotFound from '../views/PageNotFound.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'RentalerDetail',
   components: {
-    menuListCar
+    menuListCar,
+    PageNotFound
   },
   data () {
     return {
       tablist: 'List Car'
     }
+  },
+  computed: {
+    ...mapState([
+      'rentallerDetail'
+    ])
   },
   methods: {
     listCar () {
@@ -83,6 +97,13 @@ export default {
       document.querySelector('.enable-car').style.display = 'none'
       document.querySelector('.list-car').style.display = 'none'
     }
+  },
+  created () {
+    const idRentaler = this.$route.params.idRentaler
+    this.$store.dispatch('getApi', {
+      url: `rentaller/${idRentaler}`,
+      mutation: 'SET_RENTALLER_DETAIL'
+    })
   }
 }
 </script>
