@@ -15,7 +15,7 @@
     <div class="d-flex flex-column">
       <div class="row">
         <div class="col mt-5">
-          <h5 class="font-weight-bold text-success">Total Harga Rp. 120000</h5>
+          <h5 v-if="withButton || false" class="font-weight-bold text-success">Total Harga Rp. 120000</h5>
         </div>
       </div>
       <div v-if="withButton || false" class="row align-self-end">
