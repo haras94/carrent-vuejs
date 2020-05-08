@@ -72,5 +72,9 @@ export default {
 .our-wrapper {
   margin-top: 70px;
 }
+.gap {
+  width: 1200px;
+  margin: 0 auto;
+}
 
 </style>

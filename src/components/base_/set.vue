@@ -6,13 +6,12 @@
     </aside>
     <div class="line">
       <h4>Biodata</h4>
-      <Form/>
+      <Form :withButton="true"  />
     </div>
   </div>
 </template>
 
 <script>
-import Swal from 'sweetalert2'
 import pickFile from '../module_/pickFile.vue'
 import Form from '../base_/form.vue'
 
@@ -21,15 +20,6 @@ export default {
   components: {
     pickFile,
     Form
-  },
-  methods: {
-    sweet () {
-      Swal.fire(
-        'Succes!',
-        'data anda terlah terupdate !',
-        'success'
-      )
-    }
   }
 }
 </script>
@@ -51,6 +41,7 @@ export default {
         img {
           width: 250px;
           height: 250px;
+          object-fit: cover;
         }
     }
     .line {

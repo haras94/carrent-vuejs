@@ -5,25 +5,55 @@
       <div class="detail-car">
         <div class="images">
           <div class="image-primary">
-            <img :src="selectedImage">
+            <img :src="selectedImage" />
           </div>
           <div class="image-secondary">
-            <img @click="selectImage($event)" id="image-1" src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80">
-            <img @click="selectImage($event)" id="image-2" src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80">
-            <img @click="selectImage($event)" id="image-3" src="https://images.unsplash.com/photo-1517994112540-009c47ea476b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80">
-            <img @click="selectImage($event)" id="image-4" src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80">
-            <img @click="selectImage($event)" id="image-5" src="../assets/img/isyana-sarasvati.jpg">
+            <img
+              @click="selectImage($event)"
+              id="image-1"
+              src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+            />
+            <img
+              @click="selectImage($event)"
+              id="image-2"
+              src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+            />
+            <img
+              @click="selectImage($event)"
+              id="image-3"
+              src="https://images.unsplash.com/photo-1517994112540-009c47ea476b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+            />
+            <img
+              @click="selectImage($event)"
+              id="image-4"
+              src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+            />
+            <img @click="selectImage($event)" id="image-5" src="../assets/img/isyana-sarasvati.jpg" />
           </div>
         </div>
         <div class="features-wrapper">
+          <section class="info-rental mb-5">
+            <h1 class="text-danger">agya rental</h1>
+            <p>
+              <i class="fas fa-map-pin mr-2 text-danger"></i> Jl.Cendana, Jalan Cendana 10, Menteng, Jakarta Pusat 10350
+            </p>
+          </section>
           <div class="price-wrapper">
             <h3 class="price">Rp. 120000 / hari</h3>
           </div>
           <ul class="features">
-            <li class="p-2"><i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk</li>
-            <li class="p-2"><i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk</li>
-            <li class="p-2"><i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk</li>
-            <li class="p-2"><i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk</li>
+            <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk
+            </li>
+            <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk
+            </li>
+            <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk
+            </li>
+            <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk
+            </li>
           </ul>
           <button @click="modalCheckout = true" class="btn btn-danger mt-auto py-3">SEWA SEKARANG</button>
         </div>
@@ -38,7 +68,9 @@
         <div class="row">
           <div class="col">
             <ul class="features column">
-              <li v-for="feature in 8" :key="feature" class="p-2"><i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk</li>
+              <li v-for="feature in 8" :key="feature" class="p-2">
+                <i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk
+              </li>
             </ul>
           </div>
         </div>
@@ -52,7 +84,7 @@
       @bg-click="modalCheckout = false"
       @close-click="modalCheckout = false"
     >
-      <FormCheckout/>
+      <FormCheckout :withButton="true" />
     </ModalContainer>
   </div>
 </template>
@@ -69,7 +101,8 @@ export default {
   },
   data () {
     return {
-      selectedImage: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=350&q=80',
+      selectedImage:
+        'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=350&q=80',
       modalCheckout: false
     }
   },
@@ -79,7 +112,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -88,10 +120,6 @@ li {
 }
 .mobil-detail {
   padding: 30px 0 40px;
-}
-.gap {
-  width: 1200px;
-  margin: 0 auto;
 }
 .detail-car {
   display: flex;

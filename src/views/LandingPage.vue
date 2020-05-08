@@ -83,7 +83,10 @@
         <Card />
         <Card />
       </div>
-      <footer class="foot"></footer>
+      <div class="seeMore">
+        <header>See more</header>
+        <i class="fas fa-chevron-right"></i>
+      </div>
     </div>
     <div class="bestProfile">
       <div class="upProfile">
@@ -246,18 +249,43 @@ export default {
   .listCar {
     background-color: #c82022;
     width: 100%;
-    height: 400px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 50px;
+    position: relative;
     .cardList {
-      // background-color: white;
       display: flex;
       justify-content: center;
-      // width: 100%;
       height: 400px;
-      // column-count: 4;
-      // column-fill: auto;
+    }
+    .seeMore{
+      width: 400px;
+      height: 50px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      cursor: pointer;
+      &:hover i{
+        transform: translateX(5px);
+      }
+      header{
+        color: white;
+        font-weight: 700;
+        font-size: 20px;
+        padding-bottom: 10px;
+      }
+      i{
+        color: white;
+        font-size: 19px;
+        padding-left: 15px;
+        padding-bottom: 15px;
+        transition: ease .2s;
+      }
     }
   }
   .bestProfile {
@@ -265,9 +293,6 @@ export default {
     margin-top: 80px;
     width: 100%;
     height: 500px;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
     .upProfile {
       width: 100%;
       height: 50px;

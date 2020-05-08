@@ -9,35 +9,88 @@
       <a @click="$emit('login-click')" class="btn-login"><p>Login</p></a>
       <router-link to="/register" class="btn-register"><p>Register</p></router-link>
     </div>
-    <div v-else class="navAdditional">
-
+    <div
+      v-else class="navAdditional"
+      @mouseenter="dropdown = true"
+      @mouseleave="dropdown = false"
+    >
+      <router-link :to="`/user/${userLogin.id}`">
+        <btnprofile />
+      </router-link>
+      <div class="user-login__detail" :class="{ 'dropdown': dropdown }">
+        <ul>
+          <li>Setting</li>
+          <li @click="logout" >Logout</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import btnprofile from '../components/base_/btnProfile'
 
 export default {
   name: 'Navbar',
+  data () {
+    return {
+      dropdown: false
+    }
+  },
+  components: {
+    btnprofile
+  },
   computed: {
     ...mapState([
       'userLogin'
     ])
+  },
+  methods: {
+    logout () {
+      delete localStorage.id
+      this.$router.go()
+      this.$router.push('/login')
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+a {
+  text-decoration: none;
+}
+.user-login__detail {
+  width: 170px;
+  height: 0px;
+  background-color: white;
+  position: absolute;
+  z-index: 21;
+  top: 100%;
+  right: 45px;
+  overflow: hidden;
+  transition: .2s;
+  border-radius: 3px;
+  li {
+    padding: 10px 20px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.061);
+    }
+  }
+  &.dropdown {
+    height: 100px;
+  }
+}
 .navbarParent{
   background-color: #c82022;
-  width: 100vw;
   height: 70px;
   display: flex;
   justify-content: space-between;
   position: fixed;
   top: 0;
-  max-width: 100%;
+  left: 0;
+  right: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   z-index: 20;
   .navLogo{
@@ -55,12 +108,12 @@ export default {
   }
   .navSearch{
     // background-color: sandybrown;
-    width: 400px;
+    width: 600px;
     display: flex;
     align-items: center;
     position: relative;
     input{
-      width: 400px;
+      width: 100%;
       height: 50%;
       border-radius: 3px;
       outline: none;
@@ -73,15 +126,13 @@ export default {
     }
   }
   .navAdditional{
-    // background-color: royalblue;
-    width: 500px;
+    position: relative;
+    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    cursor: pointer;
     .trolly{
-      // background-color: #fff;
       width: 30px;
       height: 30px;
       position: absolute;
@@ -93,7 +144,6 @@ export default {
       }
     }
     .btn-login{
-      // background-color: yellowgreen;
       border: 3px solid white;
       border-radius: 3px;
       width: 120px;
@@ -103,6 +153,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
       p{
         color: white;
         margin: 0;

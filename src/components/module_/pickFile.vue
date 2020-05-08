@@ -7,7 +7,11 @@
 <script>
 
 export default {
-  name: 'pickFile'
+  name: 'pickFile',
+  methods: {
+    upload () {
+    }
+  }
 }
 </script>
 

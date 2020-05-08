@@ -41,6 +41,9 @@
           <section class="menu" @click="info">
             <p>Request</p>
           </section>
+          <section class="menu">
+            <p>Add Car</p>
+          </section>
         </div>
       </section>
       <menuListCar v-bind:tablist="tablist" />
@@ -144,7 +147,7 @@ export default {
         display: flex;
         flex-direction: column;
         width: 200px;
-        height: 150px;
+        height: 190px;
         background: #ffffff;
         box-shadow: rgba(0, 0, 0, 0.164) 0px 2px 10px 0px;
         margin: 20px 0 0 50px;
@@ -152,9 +155,8 @@ export default {
         .menu {
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-content: center;
           font-size: 16px;
+          font-weight: 600;
           width: 100%;
           text-align: left;
           cursor: pointer;
