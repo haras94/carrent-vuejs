@@ -69,7 +69,8 @@ const routes = [
     name: 'Admin',
     component: () => import('@/views/AdminPage.vue'),
     meta: {
-      title: 'Admin Page | Carrent'
+      title: 'Admin Page | Carrent',
+      requiresAuth: true
     }
   },
   {
