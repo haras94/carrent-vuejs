@@ -30,13 +30,16 @@ export default new Vuex.Store({
     },
     MODAL_LOGIN_OFF (state) {
       state.modalLogin = false
+    },
+    getCars (state, data) {
+      state.getCar = data
     }
   },
   actions: {
     getApi ({ commit }, proto) {
       Axios.get(`${process.env.VUE_APP_API + proto.url}`)
         .then(res => {
-          const dataLogin = res.data.data
+          const dataLogin = res.data
           commit(proto.mutation, dataLogin)
         })
         .catch(err => {
@@ -64,6 +67,16 @@ export default new Vuex.Store({
             reject(new Error(err))
           })
       })
+    },
+    getCar (context) {
+      Axios.get(`${process.env.VUE_APP_API}product`)
+        .then((result) => {
+          console.log(result.data.data)
+          context.commit('getCars', result.data.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   },
   modules: {

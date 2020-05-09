@@ -34,6 +34,14 @@ const routes = [
     }
   },
   {
+    path: '/login-shop',
+    name: 'Login Toko Rental',
+    component: () => import('@/views/auth/LoginRental.vue'),
+    meta: {
+      title: 'Login Toko Rental | Carrent'
+    }
+  },
+  {
     path: '/logout',
     name: 'Logout',
     component: () => import('@/views/auth/Logout.vue')
@@ -47,11 +55,27 @@ const routes = [
     }
   },
   {
+    path: '/add-shop',
+    name: 'AddShop',
+    component: () => import('@/views/auth/RegisterRental.vue'),
+    meta: {
+      title: 'Tambah Toko | Carrent'
+    }
+  },
+  {
     path: '/admin-page',
     name: 'Admin',
     component: () => import('@/views/AdminPage.vue'),
     meta: {
       title: 'Admin Page | Carrent'
+    }
+  },
+  {
+    path: '/user/:idUser',
+    name: 'User Detail',
+    component: () => import('@/views/UserDetail.vue'),
+    meta: {
+      title: 'User Detail | Carrent'
     }
   },
   {
