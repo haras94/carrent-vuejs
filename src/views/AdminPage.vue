@@ -31,12 +31,18 @@ export default {
   },
   methods: {
     modulRequest () {
+      document.querySelector('.cardRentWrap').classList.remove('cardRentActive')
+      document.querySelector('.allUserWrap').classList.remove('allUserActive')
       document.querySelector('.cardRequestWrap').classList.add('cardRequestActive')
     },
     modulRent () {
+      document.querySelector('.allUserWrap').classList.remove('allUserActive')
+      document.querySelector('.cardRequestWrap').classList.remove('cardRequestActive')
       document.querySelector('.cardRentWrap').classList.add('cardRentActive')
     },
     modulAlluser () {
+      document.querySelector('.cardRequestWrap').classList.remove('cardRequestActive')
+      document.querySelector('.cardRentWrap').classList.remove('cardRentActive')
       document.querySelector('.allUserWrap').classList.add('allUserActive')
     }
   }

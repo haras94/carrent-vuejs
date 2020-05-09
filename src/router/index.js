@@ -100,7 +100,8 @@ const routes = [
     name: 'Tambah Mobil',
     component: () => import('@/views/AddCar.vue'),
     meta: {
-      title: 'Tambah Mobil | Carrent'
+      title: 'Tambah Mobil | Carrent',
+      requiresAuth: true
     }
   },
   {
