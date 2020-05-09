@@ -25,7 +25,7 @@
   </div>
   <div class="lkaskm">
     <!-- <div class="klsme3"> -->
-      <Card v-for="car in cars" :key="car.id" :car="car"/>
+      <Card v-for="car in cars.data" :key="car.id" :car="car"/>
     <!-- </div> -->
   </div>
   <div>
