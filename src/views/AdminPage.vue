@@ -33,16 +33,25 @@ export default {
     modulRequest () {
       document.querySelector('.cardRentWrap').classList.remove('cardRentActive')
       document.querySelector('.allUserWrap').classList.remove('allUserActive')
+      document.querySelector('.allUser').classList.remove('on')
+      document.querySelector('.rentaler').classList.remove('on')
+      document.querySelector('.request').classList.add('on')
       document.querySelector('.cardRequestWrap').classList.add('cardRequestActive')
     },
     modulRent () {
       document.querySelector('.allUserWrap').classList.remove('allUserActive')
       document.querySelector('.cardRequestWrap').classList.remove('cardRequestActive')
+      document.querySelector('.request').classList.remove('on')
+      document.querySelector('.allUser').classList.remove('on')
+      document.querySelector('.rentaler').classList.add('on')
       document.querySelector('.cardRentWrap').classList.add('cardRentActive')
     },
     modulAlluser () {
       document.querySelector('.cardRequestWrap').classList.remove('cardRequestActive')
       document.querySelector('.cardRentWrap').classList.remove('cardRentActive')
+      document.querySelector('.request').classList.remove('on')
+      document.querySelector('.rentaler').classList.remove('on')
+      document.querySelector('.allUser').classList.add('on')
       document.querySelector('.allUserWrap').classList.add('allUserActive')
     }
   }
@@ -50,6 +59,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.on {
+  background-color: rgba(0, 0, 0, 0.055);
+}
 .adminPageWrap{
   background-color: rgba(0, 0, 0, 0.055);
   width: 100%;
