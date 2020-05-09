@@ -35,8 +35,8 @@ export default new Vuex.Store({
     MODAL_LOGIN_OFF (state) {
       state.modalLogin = false
     },
-    getCars (state, data) {
-      state.getCar = data
+    SET_PAGE (state, data) {
+      state.cars = data
     }
   },
   actions: {
