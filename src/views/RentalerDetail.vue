@@ -41,12 +41,12 @@
             </section>
             <section class="menu"
               @click="info"
-              v-if="adminLogin.id !== undefined"
+              v-if="userLogin.id === parseInt($route.params.idRentaler)"
             >
               <p  class="m-0 p-2">Request</p>
             </section>
             <section class="menu"
-              v-if="adminLogin.id !== undefined"
+              v-if="userLogin.id === parseInt($route.params.idRentaler)"
             >
               <router-link :to="'/' + $route.params.idRentaler + '/add-car'"><p  class="m-0 p-2">Add Car</p></router-link>
             </section>
@@ -87,7 +87,7 @@ export default {
     },
     ...mapState([
       'rentallerDetail',
-      'adminLogin',
+      'userLogin',
       'cars'
     ])
   },
