@@ -80,10 +80,12 @@
       <div class="cardList">
         <Card v-for="car in cars.data" :key="car.id" :car="car" />
       </div>
-      <div class="seeMore">
-        <header>See more</header>
-        <i class="fas fa-chevron-right"></i>
-      </div>
+      <router-link to="/list-car">
+        <div class="seeMore">
+          <header>See more</header>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </router-link>
     </div>
     <div class="bestProfile">
       <div class="upProfile">
@@ -214,10 +216,6 @@ export default {
       }
     }
     .ourServiceCard {
-      // background-image: url('../assets/img/2018-bugatti-chiron-sport-2.jpg');
-      // background-size: cover;
-      // background-position: center;
-      // background-repeat: no-repeat;
       width: 100%;
       height: 400px;
       display: flex;
