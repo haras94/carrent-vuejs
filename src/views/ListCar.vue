@@ -25,7 +25,7 @@
   </div>
   <div class="lkaskm">
     <!-- <div class="klsme3"> -->
-      <Card/>
+      <Card v-for="car in cars" :key="car.id" :car="car"/>
     <!-- </div> -->
     <nav aria-label="Page navigation example">
       <ul class="pagination">
@@ -42,11 +42,17 @@
 
 <script>
 import Card from '@/components/Card.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'ListCar',
   components: {
     Card
+  },
+  computed: {
+    ...mapState([
+      'cars'
+    ])
   }
 }
 
