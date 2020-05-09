@@ -76,6 +76,7 @@ export default {
           //   this.error = 'Email Belum Di Aktivasi'
           // }
           if (res.data.status === 0) {
+            console.log(res.data)
             this.code = 0
             localStorage.id = res.data.id
             localStorage.role_id = res.data.role_id
