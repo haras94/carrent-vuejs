@@ -113,6 +113,9 @@ export default {
     ...mapState([
       'cars'
     ])
+  },
+  created () {
+    if (localStorage.role_id === '1') this.$router.push('/admin-page')
   }
 }
 </script>

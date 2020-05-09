@@ -78,6 +78,7 @@ export default {
           if (res.data.status === 0) {
             this.code = 0
             localStorage.id = res.data.id
+            localStorage.role_id = res.data.role_id
             this.$store.commit('MODAL_LOGIN_OFF')
             this.code = 0
             this.$router.go('/')
