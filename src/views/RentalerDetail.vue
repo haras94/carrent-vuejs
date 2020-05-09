@@ -80,9 +80,13 @@ export default {
   },
   computed: {
     carsOnRentallerDetail () {
+      let data = {}
+      if (this.cars.data === undefined) {
+        return data
+      }
       const idRentaler = this.$route.params.idRentaler
       const array = this.$store.state.cars.data.filter(item => item.rentaller_id === parseInt(idRentaler))
-      const data = { data: array }
+      data = { data: array }
       return data
     },
     ...mapState([
