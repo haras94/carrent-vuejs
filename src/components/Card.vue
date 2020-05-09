@@ -2,7 +2,7 @@
 <div>
   <router-link to="1/1" class="lapozzs">
     <div class="lmskal" >
-      <div v-for="items in getCar" :key="items.id">
+      <div v-for="items in getCar.data" :key="items.id">
         <div class="lksmkl" >
           <img :src="items.images[0]">
         </div>

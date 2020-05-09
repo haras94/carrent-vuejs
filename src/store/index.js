@@ -68,8 +68,8 @@ export default new Vuex.Store({
     getCar (context) {
       Axios.get(`${process.env.VUE_APP_API}product`)
         .then((result) => {
-          console.log(result.data.data)
-          context.commit('getCars', result.data.data)
+          console.log(result.data)
+          context.commit('getCars', result.data)
         })
         .catch((err) => {
           console.log(err)

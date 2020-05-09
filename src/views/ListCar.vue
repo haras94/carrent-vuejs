@@ -24,19 +24,22 @@
     </div>
   </div>
   <div class="lkaskm">
-    <!-- <div class="klsme3"> -->
-      <Card/>
-    <!-- </div> -->
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul>
-    </nav>
+    <Card/>
   </div>
+  <div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+          <a class="page-link" style="cursor:pointer" @click="prevPages">Previous</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" style="cursor:pointer" ></a></li>
+          <li class="page-item next">
+          <a class="page-link" style="cursor:pointer" @click="nextPages">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
 </div>
 </template>
 
@@ -47,6 +50,19 @@ export default {
   name: 'ListCar',
   components: {
     Card
+  },
+  computed: {
+    getCars () {
+      return this.$store.state.getCar
+    }
+  },
+  methods: {
+    nextPages () {
+      console.log()
+    },
+    prevPages () {
+      console.log()
+    }
   }
 }
 
