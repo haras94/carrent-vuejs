@@ -2,17 +2,17 @@
 <div>
   <router-link to="1/1" class="lapozzs">
     <div class="lmskal" >
-      <div v-for="items in getCar" :key="items.id">
+      <div>
         <div class="lksmkl" >
-          <img :src="items.images[0]">
+          <img :src="car.images[0].image">
         </div>
         <div class="maskls">
           <div class="aslesk">
-            <h2>{{items.car_title}}</h2>
+            <h2>{{car.car_title}}</h2>
           </div>
           <div class="qsasxz">
             <i
-            v-for="star in items.rating" :key="star.id"
+            v-for="star in car.rating" :key="star.id"
             class="fas fa-star"
             style="color:#FFC107"></i>
           </div>
@@ -27,10 +27,10 @@
           <div class="tyghsw">
             <div class="rtbnhf">
               <i class="far fa-user"></i>
-              <p>{{items.person_capacity}}</p>
+              <p>{{car.person_capacity}}</p>
             </div>
             <div class="bhnjfd">
-              <p>Rp. {{items.price_per_day}} / day</p>
+              <p>Rp. {{car.price_per_day}} / day</p>
             </div>
           </div>
         </div>
