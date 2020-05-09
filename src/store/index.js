@@ -17,7 +17,7 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_USER_LOGIN (state, data) {
-      state.userLogin = data
+      state.userLogin = data.data
     },
     SET_RENTALLER_DETAIL (state, data) {
       state.rentallerDetail = data
