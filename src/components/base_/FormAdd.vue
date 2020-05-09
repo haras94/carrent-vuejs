@@ -23,8 +23,7 @@
         <label for="staticSewa" class="col-sm-2 col-form-label mr-2">Harga Sewa</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" id="staticSewa" />
-        </div>
-        / Hari
+        </div>/ Hari
       </div>
       <div class="form-group row">
         <label for="staticTransmit" class="col-sm-2 col-form-label mr-2">transmisi</label>
@@ -37,31 +36,41 @@
       <div class="form-group row">
         <label for="staticBagasi" class="col-sm-2 col-form-label mr-2">kapasitas bagasi</label>
         <div class="col-sm-9">
-          <input type="number" class="form-control" id="staticBagasi" />
+          <select class="custom-select" id="staticTransmit">
+            <option value="1">kapasitas bagasi</option>
+          </select>
         </div>
       </div>
       <div class="form-group row">
         <label for="staticEngine" class="col-sm-2 col-form-label mr-2">Tipe Engine</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="staticEngine" />
+          <select class="custom-select" id="staticTransmit">
+            <option value="1">tipe Engine</option>
+          </select>
         </div>
       </div>
       <div class="form-group row">
         <label for="staticapacity" class="col-sm-2 col-form-label mr-2">Kapasitas Engine</label>
         <div class="col-sm-9">
-          <input type="number" class="form-control" id="staticapacity" />
+          <select class="custom-select" id="staticTransmit">
+            <option value="1">kapasitas Engine</option>
+          </select>
         </div>
       </div>
       <div class="form-group row">
         <label for="inputPeople" class="col-sm-2 col-form-label mr-2">Kapasitas Orang</label>
         <div class="col-sm-9">
-          <input type="number" class="form-control" id="inputPeople" />
+          <select class="custom-select" id="staticTransmit">
+            <option value="1">kapasitas Orang</option>
+          </select>
         </div>
       </div>
       <div class="form-group row">
         <label for="staticdoor" class="col-sm-2 col-form-label mr-2">Pintu</label>
         <div class="col-sm-9">
-          <input type="number" class="form-control" id="staticdoor" />
+          <select class="custom-select" id="staticTransmit">
+            <option value="1">Pintu</option>
+          </select>
         </div>
       </div>
       <div class="form-group row">
@@ -73,7 +82,9 @@
       <div class="form-group row">
         <label for="staticFuel" class="col-sm-2 col-form-label mr-2">avg Fuel Consumption</label>
         <div class="col-sm-9">
-          <input type="number" class="form-control" id="staticFuel" />
+      <select class="custom-select" id="staticTransmit">
+            <option value="1">avg Fuel Consumption</option>
+          </select>
         </div>
       </div>
       <div class="form-group row">
