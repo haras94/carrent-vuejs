@@ -64,6 +64,8 @@ export default {
     },
     prevPages () {
     }
+  },
+  mounted () {
   }
 }
 </script>
