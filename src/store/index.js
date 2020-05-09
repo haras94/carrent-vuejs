@@ -20,7 +20,7 @@ export default new Vuex.Store({
       state.userLogin = data.data
     },
     SET_RENTALLER_DETAIL (state, data) {
-      state.rentallerDetail = data
+      state.rentallerDetail = data.data
     },
     SET_CARS (state, data) {
       state.cars = data
