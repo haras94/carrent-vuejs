@@ -78,7 +78,7 @@
         <h1>ORDER NOW!</h1>
       </header>
       <div class="cardList">
-        <Card v-for="car in cars" :key="car.id" :car="car" />
+        <Card v-for="car in cars.data" :key="car.id" :car="car" />
       </div>
       <div class="seeMore">
         <header>See more</header>

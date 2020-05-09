@@ -1,32 +1,32 @@
 <template>
   <div class="container-fluid our-wrapper">
-    <div class="pembungkus-aja" v-if="rentallerDetail.id !== undefined">
+    <div class="pembungkus-aja" v-if="rentallerDetail.data.id !== undefined">
       <div class="info-user row">
         <section class="image-user col-md-4">
           <img src="../assets/img/isyangif.gif" alt="foto" class="img-user" />
         </section>
         <section class="flash-info col-md-6">
           <article class="name-user">
-            <h1>{{ rentallerDetail.rental_name }}</h1>
+            <h1>{{ rentallerDetail.data.rental_name }}</h1>
           </article>
           <article class="adress">
             <i class="fas fa-map-pin mr-4"></i>
-            <p>{{ rentallerDetail.address }}</p>
+            <p>{{ rentallerDetail.data.address }}</p>
           </article>
           <article class="adress">
             <i class="far fa-envelope mr-4"></i>
-            <p>{{ rentallerDetail.email }}</p>
+            <p>{{ rentallerDetail.data.email }}</p>
           </article>
           <article class="adress">
             <i class="fas fa-phone-alt mr-4"></i>
-            {{ rentallerDetail.phone_number || '-' }}
+            {{ rentallerDetail.data.phone_number || '-' }}
           </article>
           <article class="adress">
             <i class="fas fa-car mr-4"></i>
             <p>10 armada</p>
           </article>
           <article class="adress">
-            <i class="fas fa-star text-warning mr-1" v-for="star in 5" :key="star.id"></i>
+            <i class="fas fa-star text-warning mr-1" v-for="star in 5" :key="star"></i>
           </article>
         </section>
       </div>
@@ -81,7 +81,7 @@ export default {
   computed: {
     carsOnRentallerDetail () {
       const idRentaler = this.$route.params.idRentaler
-      const array = this.$store.state.cars.filter(item => item.rentaller_id === parseInt(idRentaler))
+      const array = this.$store.state.cars.data.filter(item => item.rentaller_id === parseInt(idRentaler))
       return array
     },
     ...mapState([

@@ -23,7 +23,7 @@ export default new Vuex.Store({
       state.rentallerDetail = data
     },
     SET_CARS (state, data) {
-      state.cars = data.data
+      state.cars = data
     },
     MODAL_LOGIN_ON (state) {
       state.modalLogin = true
