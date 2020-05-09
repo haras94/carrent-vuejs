@@ -1,99 +1,142 @@
 <template>
-  <!-- <div class="lokols"> -->
-    <router-link to="/1/1" class="lmskal">
-      <div class="lksmkl">
-        <img src="@/assets/img/toyota-agya.png">
-      </div>
-      <div class="maskls">
-        <div class="aslesk">
-          <h2>Toyota Agya</h2>
+<div>
+  <router-link to="1/1" class="lapozzs">
+    <div class="lmskal" >
+      <div v-for="items in getCar" :key="items.id">
+        <div class="lksmkl" >
+          <img :src="items.images[0]">
         </div>
-        <div class="qsasxz">
-          <i
-          v-for="star in 5" :key="star.id"
-          class="fas fa-star"
-          style="color:#FFC107"></i>
-        </div>
-        <div class="tyghsw">
-          <div class="rtbnhf">
-            <i class="far fa-user"></i>
-            <p>4</p>
+        <div class="maskls">
+          <div class="aslesk">
+            <h2>{{items.car_title}}</h2>
           </div>
-          <div class="bhnjfd">
-            <p>Rp. 120.000 / day</p>
+          <div class="qsasxz">
+            <i
+            v-for="star in items.rating" :key="star.id"
+            class="fas fa-star"
+            style="color:#FFC107"></i>
+          </div>
+          <div class="location">
+          </div>
+          <div class="hjams3">
+            <div class="lokasi">
+              <h2>Depok</h2>
+            </div>
+            <p>Toko Udin</p>
+          </div>
+          <div class="tyghsw">
+            <div class="rtbnhf">
+              <i class="far fa-user"></i>
+              <p>{{items.person_capacity}}</p>
+            </div>
+            <div class="bhnjfd">
+              <p>Rp. {{items.price_per_day}} / day</p>
+            </div>
           </div>
         </div>
       </div>
-    </router-link>
-  <!-- </div> -->
+    </div>
+  </router-link>
+</div>
 </template>
 
 <script>
 export default {
-
+  name: 'CardCar',
+  computed: {
+    getCar () {
+      return this.$store.state.getCar
+    }
+  },
+  mounted () {
+    this.$store.dispatch('getCar')
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+.lapozzs{
+  text-decoration: none;
+}
 .lokols{
   position: relative;
   display: flex;
   margin-left: 15px;
 }
-  .lmskal{
+.lmskal{
+  position: relative;
+  width: 270px;
+  border: none;
+  margin: 20px;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+  color: #000000;
+  border-radius: 3px;
+  overflow: hidden;
+  .lksmkl{
     position: relative;
-    width: 270px;
-    border: none;
-    margin: 10px;
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
-    text-decoration: none;
-    color: #000000;
-    border-radius: 3px;
-    overflow: hidden;
-    .lksmkl{
-      position: relative;
+    width: 100%;
+    height: 60%;
+    img{
       width: 100%;
-      height: 60%;
-      img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .maskls{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px 10px 0 10px;
+    background: #ffffff;
+    .aslesk{
+      position: relative;
+      h2{
+        font-weight: 600;
+        font-size: 22px;
       }
     }
-    .maskls{
+    .qsasxz{
+      position: relative;
+    }
+    .tyghsw{
+      position: relative;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 5px 10px 0 10px;
-      background: #ffffff;
-      .aslesk{
-        position: relative;
-        // margin-top: 5px;
-        h2{
-          font-weight: 600;
-          font-size: 22px;
-        }
-      }
-      .qsasxz{
-        position: relative;
-        margin-bottom: 20px;
-      }
-      .tyghsw{
-        position: relative;
+      width: 100%;
+      height: 100%;
+      color: #5E5E5E;
+      .rtbnhf{
         display: flex;
-        width: 100%;
-        height: 100%;
-        color: #5E5E5E;
-        .rtbnhf{
-          display: flex;
-          position: absolute;
-          right: 0px;
-          i{
-            margin-right: 3px;
-          }
+        position: absolute;
+        right: 0px;
+        i{
+          margin-right: 3px;
         }
+      }
+      .bhnjfd{
+        position: relative;
+        height: 24px;
+      }
+    }
+    .hjams3{
+      position: relative;
+      width: 100%;
+      .lokasi{
+        position: absolute;
+        right: 0;
+        h2{
+          font-weight: normal;
+          font-size: 17px;
+          color: #5E5E5E;
+        }
+      }
+      p{
+        height: 24px;
+        margin: 0;
+        color: #5E5E5E;
       }
     }
   }
+}
 
 </style>

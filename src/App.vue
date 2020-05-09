@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar v-if="$route.name !== 'Login' && $route.name !== 'Register'"
+    <Navbar v-if="$route.name !== 'Login' && $route.name !== 'Register' && $route.name !== 'AddShop' && $route.name !== 'Login Toko Rental'"
       @login-click="$store.commit('MODAL_LOGIN_ON')"
     />
     <router-view/>
