@@ -24,7 +24,9 @@
     </div>
   </div>
   <div class="lkaskm">
-    <Card/>
+    <!-- <div class="klsme3"> -->
+      <Card v-for="car in cars" :key="car.id" :car="car"/>
+    <!-- </div> -->
   </div>
   <div>
     <nav aria-label="Page navigation example">
@@ -56,6 +58,12 @@ export default {
     ...mapState([
       'cars'
     ])
+  },
+  methods: {
+    nextPages () {
+    },
+    prevPages () {
+    }
   }
 }
 </script>
