@@ -27,24 +27,25 @@
     <Card/>
   </div>
   <div>
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          <li class="page-item">
-          <a class="page-link" style="cursor:pointer" @click="prevPages">Previous</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" style="cursor:pointer" ></a></li>
-          <li class="page-item next">
-          <a class="page-link" style="cursor:pointer" @click="nextPages">Next</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+        <a class="page-link" style="cursor:pointer" @click="prevPages">Previous</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" style="cursor:pointer" ></a></li>
+        <li class="page-item next">
+        <a class="page-link" style="cursor:pointer" @click="nextPages">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>
 </template>
 
 <script>
 import Card from '@/components/Card.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'ListCar',
@@ -52,20 +53,11 @@ export default {
     Card
   },
   computed: {
-    getCars () {
-      return this.$store.state.getCar
-    }
-  },
-  methods: {
-    nextPages () {
-      console.log()
-    },
-    prevPages () {
-      console.log()
-    }
+    ...mapState([
+      'cars'
+    ])
   }
 }
-
 </script>
 
 <style lang="scss" scoped>

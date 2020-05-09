@@ -71,14 +71,6 @@ const routes = [
     }
   },
   {
-    path: '/user/:idUser',
-    name: 'User Detail',
-    component: () => import('@/views/UserDetail.vue'),
-    meta: {
-      title: 'User Detail | Carrent'
-    }
-  },
-  {
     path: '/user',
     name: 'User Detail',
     component: () => import('@/views/UserDetail.vue'),

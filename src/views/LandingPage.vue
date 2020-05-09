@@ -78,10 +78,7 @@
         <h1>ORDER NOW!</h1>
       </header>
       <div class="cardList">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card v-for="car in cars" :key="car.id" :car="car" />
       </div>
       <div class="seeMore">
         <header>See more</header>
@@ -103,6 +100,7 @@
 import Card from '../components/Card.vue'
 import Carousel from '../components/base_/Caroucel.vue'
 import cardRentail from '../components/base_/cardRentail.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'LandingPage',
@@ -110,6 +108,11 @@ export default {
     Card,
     Carousel,
     cardRentail
+  },
+  computed: {
+    ...mapState([
+      'cars'
+    ])
   }
 }
 </script>
