@@ -4,25 +4,27 @@
       <div class="form-group row">
         <label for="staticNama" class="col-sm-2 col-form-label mr-2">Nama Mobil</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="staticNama" />
+          <input type="text" class="form-control" id="staticNama" v-model="car_title" />
         </div>
       </div>
       <div class="form-group row">
         <label for="staticMerek" class="col-sm-2 col-form-label mr-2">Merek Mobil</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="staticMerek" />
+          <select class="custom-select" id="staticTransmit" @change="car_brand = $event.target.value">
+            <option v-for="brand in carbrands" :key="brand.id" :value="brand.id">{{brand.name}}</option>
+          </select>
         </div>
       </div>
       <div class="form-group row">
         <label for="staticDesc" class="col-sm-2 col-form-label mr-2">Deskripsi mobil</label>
         <div class="col-sm-9">
-          <textarea class="form-control" id="staticDesc" rows="3"></textarea>
+          <textarea v-model="description" class="form-control" id="staticDesc" rows="3"></textarea>
         </div>
       </div>
       <div class="form-group row">
         <label for="staticSewa" class="col-sm-2 col-form-label mr-2">Harga Sewa</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="staticSewa" />
+          <input v-model="price_per_day" type="number" class="form-control" id="staticSewa" />
         </div>/ Hari
       </div>
       <div class="form-group row">
@@ -90,7 +92,7 @@
       <div class="form-group row">
         <label for="staticEngine" class="col-sm-2 col-form-label mr-2">Additional Driver</label>
         <div class="col-sm-9">
-          <Slider />
+          <input type="checkbox" @change="$event.target.checked ? additional_driver = 1 : additional_driver = 2">
         </div>
       </div>
       <div class="form-group row">
@@ -112,39 +114,71 @@
 <script>
 // import { mapState } from 'vuex'
 import Swal from 'sweetalert2'
-import Slider from '../module_/Slider'
+import Axios from 'axios'
 
 export default {
   name: 'Form',
-  components: {
-    Slider
-  },
-  props: ['withButton'],
   data () {
     return {
-      gender: this.cek
+      rentaller_id: this.$route.params.idRentaler,
+      car_title: '',
+      description: '',
+      car_brand: 0,
+      price_per_day: 0,
+      transmission_id: 0,
+      baggage_capacity: 0,
+      engine_capacity: 0,
+      additional_driver: 2,
+      person_capacity: 0,
+      doors: 0,
+      Manufacturing_year: 0,
+      fuel_type: 0,
+      avg_fuel_consumption: 0,
+      srs_airbag: 0,
+      rating: 0,
+      carbrands: []
     }
   },
-  computed: {
-    // cek () {
-    //   let kntl = this.userLogin.gender
-    //   if (this.userLogin.gender == null) {
-    //     kntl = 'kontol'
-    //     return kntl
-    //   }
-    //   return kntl
-    // },
-    // ...mapState(['userLogin'])
-  },
+  props: ['withButton'],
   methods: {
+    ok (e) {
+      console.log(e)
+    },
     save () {
-      Swal.fire({
-        title: 'Makar Succes!',
-        icon: 'success',
-        showConfirmButton: false,
-        timer: 1200
+      this.$store.dispatch('postApi', {
+        url: 'product',
+        data: {
+          rentaller_id: this.rentaller_id,
+          car_title: this.car_title,
+          description: this.description,
+          car_brand: this.car_brand,
+          price_per_day: this.price_per_day,
+          transmission_id: this.transmission_id,
+          baggage_capacity: this.baggage_capacity,
+          engine_capacity: this.engine_capacity,
+          additional_driver: this.additional_driver,
+          person_capacity: this.person_capacity,
+          doors: this.doors,
+          Manufacturing_year: this.Manufacturing_year,
+          fuel_type: this.fuel_type,
+          avg_fuel_consumption: this.avg_fuel_consumption,
+          srs_airbag: this.srs_airbag,
+          rating: this.rating
+        }
+      }).then(res => {
+        Swal.fire({
+          title: 'Makar Succes!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1200
+        })
       })
     }
+  },
+  created () {
+    Axios.get(`${process.env.VUE_APP_API}carbrand`).then(res => {
+      this.carbrands = res.data.data
+    })
   }
 }
 </script>
