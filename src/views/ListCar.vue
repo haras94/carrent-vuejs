@@ -28,7 +28,7 @@
       <Card v-for="car in cars.data" :key="car.id" :car="car"/>
     <!-- </div> -->
   </div>
-  <div>
+  <div class="mmask2">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li @click="prevPages" class="page-item"><a class="page-link" >Previous</a></li>
@@ -60,15 +60,20 @@ export default {
     ...mapState([
       'cars'
     ])
+  },
+  methods: {
+    prevPages () {
+      console.log(this.cars.data[0].rentaller.rental_name)
+    }
   }
-  // methods: {
-  //   prevPages () {
-  //   }
-  // }
 }
 </script>
 
 <style lang="scss" scoped>
+.mmask2{
+  display: flex;
+  justify-content: center;
+}
 .klemsa1{
   width: 100%;
   height: auto;

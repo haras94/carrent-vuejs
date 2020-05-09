@@ -22,12 +22,12 @@
             <div class="lokasi">
               <h2>Depok</h2>
             </div>
-            <p>Toko Udin</p>
+            <p>{{car.rentaller.rental_name}}</p>
           </div>
           <div class="tyghsw">
             <div class="rtbnhf">
               <i class="far fa-user"></i>
-              <p>{{car.person_capacity}}</p>
+              <p>{{car.personCapacity.name}}</p>
             </div>
             <div class="bhnjfd">
               <p>Rp. {{car.price_per_day}} / day</p>
@@ -105,6 +105,9 @@ export default {
         right: 0px;
         i{
           margin-right: 3px;
+        }
+        p{
+          margin-top: -3px;
         }
       }
       .bhnjfd{
