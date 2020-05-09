@@ -42,15 +42,8 @@
 
 <script>
 export default {
-  name: 'CardCar',
-  computed: {
-    getCar () {
-      return this.$store.state.getCar
-    }
-  },
-  mounted () {
-    this.$store.dispatch('getCar')
-  }
+  name: 'Card',
+  props: ['car']
 }
 </script>
 

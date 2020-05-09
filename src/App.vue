@@ -56,6 +56,10 @@ export default {
         })
       }
     }
+    this.$store.dispatch('getApi', {
+      url: 'product',
+      mutation: 'SET_CARS'
+    })
   }
 }
 </script>
