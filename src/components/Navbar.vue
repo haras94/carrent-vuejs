@@ -55,7 +55,7 @@ export default {
     logout () {
       delete localStorage.id
       delete localStorage.role_id
-      this.$router.push('/login')
+      this.$router.go()
     }
   }
 }
