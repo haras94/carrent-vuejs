@@ -9,7 +9,8 @@ export default new Vuex.Store({
     userLogin: {},
     adminLogin: {},
     modalLogin: false,
-    getCar: []
+    getCar: [],
+    rentallerDetail: {}
   },
   getters: {
     isLogin: (state) => localStorage.id !== undefined
@@ -18,13 +19,16 @@ export default new Vuex.Store({
     SET_USER_LOGIN (state, data) {
       state.userLogin = data
     },
+    SET_RENTALLER_DETAIL (state, data) {
+      state.rentallerDetail = data
+    },
     MODAL_LOGIN_ON (state) {
       state.modalLogin = true
     },
     MODAL_LOGIN_OFF (state) {
       state.modalLogin = false
     },
-    getCar (state, data) {
+    getCars (state, data) {
       state.getCar = data
     }
   },
@@ -52,14 +56,24 @@ export default new Vuex.Store({
     },
     patchApi ({ commit }, proto) {
       return new Promise((resolve, reject) => {
-        Axios.patch(`${process.env.VUE_APP_API + proto.url}`)
+        Axios.patch(`${process.env.VUE_APP_API + proto.url}`, proto.data)
           .then(res => {
-            resolve(res.data.data)
+            resolve(res.data)
           })
           .catch(err => {
             reject(new Error(err))
           })
       })
+    },
+    getCar (context) {
+      Axios.get(`${process.env.VUE_APP_API}product`)
+        .then((result) => {
+          console.log(result.data.data)
+          context.commit('getCars', result.data.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   },
   modules: {

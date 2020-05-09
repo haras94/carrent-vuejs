@@ -1,71 +1,63 @@
 <template>
-    <router-link to="/1/1" class="lmskal">
-      <div class="lksmkl">
-        <img src="@/assets/img/toyota-agya.png">
+<div>
+  <router-link to="1/1" class="lapozzs">
+    <div class="lmskal" >
+      <div v-for="items in getCar" :key="items.id">
+        <div class="lksmkl" >
+          <img :src="items.images[0]">
+        </div>
+        <div class="maskls">
+          <div class="aslesk">
+            <h2>{{items.car_title}}</h2>
+          </div>
+          <div class="qsasxz">
+            <i
+            v-for="star in items.rating" :key="star.id"
+            class="fas fa-star"
+            style="color:#FFC107"></i>
+          </div>
+          <div class="location">
+          </div>
+          <div class="hjams3">
+            <div class="lokasi">
+              <h2>Depok</h2>
+            </div>
+            <p>Toko Udin</p>
+          </div>
+          <div class="tyghsw">
+            <div class="rtbnhf">
+              <i class="far fa-user"></i>
+              <p>{{items.person_capacity}}</p>
+            </div>
+            <div class="bhnjfd">
+              <p>Rp. {{items.price_per_day}} / day</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="maskls">
-        <div class="aslesk">
-          <h2>Toyota Agya</h2>
-        </div>
-        <div class="qsasxz">
-          <i
-          v-for="star in 5" :key="star.id"
-          class="fas fa-star"
-          style="color:#FFC107"></i>
-        </div>
-        <div class="location">
-        </div>
-        <div class="hjams3">
-          <div class="lokasi">
-            <h2>Depok</h2>
-          </div>
-          <p>Toko Udin</p>
-        </div>
-        <div class="tyghsw">
-          <div class="rtbnhf">
-            <i class="far fa-user"></i>
-            <p>4</p>
-          </div>
-          <div class="bhnjfd">
-            <p>Rp. 120.000 / day</p>
-          </div>
-        </div>
-      </div>
-    </router-link>
+    </div>
+  </router-link>
+</div>
 </template>
 
 <script>
 export default {
-  name: 'Card Car',
+  name: 'CardCar',
   computed: {
     getCar () {
       return this.$store.state.getCar
     }
   },
-  // methods: {
-  //   getCars () {
-  //     this.$store.dispatch('getApi', {
-  //       url: '',
-  //       mutations: ''
-  //     })
-  //   }
-  // },
-  created () {
-    this.$store.dispatch('getApi', {
-      url: 'product',
-      mutations: 'getCar'
-    })
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+  mounted () {
+    this.$store.dispatch('getCar')
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.lapozzs{
+  text-decoration: none;
+}
 .lokols{
   position: relative;
   display: flex;

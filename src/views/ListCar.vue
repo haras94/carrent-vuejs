@@ -24,9 +24,9 @@
     </div>
   </div>
   <div class="lkaskm">
-    <div class="klsme3">
+    <!-- <div class="klsme3"> -->
       <Card/>
-    </div>
+    <!-- </div> -->
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item"><a class="page-link" href="#">Previous</a></li>

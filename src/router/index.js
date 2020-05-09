@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '@/store'
 import LandingPage from '@/views/LandingPage.vue'
+import MobilDetail from '@/views/MobilDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,14 @@ const routes = [
     }
   },
   {
+    path: '/login-shop',
+    name: 'Login Toko Rental',
+    component: () => import('@/views/auth/LoginRental.vue'),
+    meta: {
+      title: 'Login Toko Rental | Carrent'
+    }
+  },
+  {
     path: '/logout',
     name: 'Logout',
     component: () => import('@/views/auth/Logout.vue')
@@ -51,6 +60,14 @@ const routes = [
     component: () => import('@/views/auth/RegisterRental.vue'),
     meta: {
       title: 'Tambah Toko | Carrent'
+    }
+  },
+  {
+    path: '/admin-page',
+    name: 'Admin',
+    component: () => import('@/views/AdminPage.vue'),
+    meta: {
+      title: 'Admin Page | Carrent'
     }
   },
   {
@@ -105,7 +122,7 @@ const routes = [
   {
     path: '/:idRentaler/:idMobil',
     name: 'Mobil Detail',
-    component: () => import('@/views/MobilDetail.vue'),
+    component: MobilDetail,
     meta: {
       title: 'Mobil Detail | Carrent'
     }
