@@ -69,10 +69,10 @@ export default {
   .lksmkl{
     position: relative;
     width: 100%;
-    height: 60%;
+    height: 200px;
+    overflow: hidden;
     img{
       width: 100%;
-      height: 100%;
       object-fit: cover;
     }
   }
@@ -82,6 +82,7 @@ export default {
     align-items: flex-start;
     padding: 5px 10px 0 10px;
     background: #ffffff;
+    height: 40%;
     .aslesk{
       position: relative;
       h2{

@@ -4,6 +4,7 @@ export default {
   created () {
     delete localStorage.id
     delete localStorage.rentalName
+    delete localStorage.role_id
     this.$router.replace('/login')
   }
 }

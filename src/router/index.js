@@ -38,7 +38,8 @@ const routes = [
     name: 'Login Toko Rental',
     component: () => import('@/views/auth/LoginRental.vue'),
     meta: {
-      title: 'Login Toko Rental | Carrent'
+      title: 'Login Toko Rental | Carrent',
+      requiresVisitor: true
     }
   },
   {
@@ -59,7 +60,8 @@ const routes = [
     name: 'AddShop',
     component: () => import('@/views/auth/RegisterRental.vue'),
     meta: {
-      title: 'Tambah Toko | Carrent'
+      title: 'Tambah Toko | Carrent',
+      requiresVisitor: true
     }
   },
   {

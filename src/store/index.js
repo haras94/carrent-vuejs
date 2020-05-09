@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     userLogin: {},
     adminLogin: {},
+    rentallerLogin: {},
     rentallerDetail: {},
     cars: [],
     modalLogin: false
@@ -18,6 +19,9 @@ export default new Vuex.Store({
   mutations: {
     SET_USER_LOGIN (state, data) {
       state.userLogin = data.data
+    },
+    SET_RENTALLER_LOGIN (state, data) {
+      state.rentallerLogin = data.data
     },
     SET_RENTALLER_DETAIL (state, data) {
       state.rentallerDetail = data.data
@@ -39,8 +43,7 @@ export default new Vuex.Store({
     getApi ({ commit }, proto) {
       Axios.get(`${process.env.VUE_APP_API + proto.url}`)
         .then(res => {
-          const dataLogin = res.data
-          commit(proto.mutation, dataLogin)
+          commit(proto.mutation, res.data)
         })
         .catch(err => {
           console.log(err)
