@@ -8,36 +8,39 @@ export default new Vuex.Store({
   state: {
     userLogin: {},
     adminLogin: {},
+    rentallerLogin: {},
     rentallerDetail: {},
-    modalLogin: false,
-    allCar: {}
+    cars: [],
+    modalLogin: false
   },
   getters: {
     isLogin: (state) => localStorage.id !== undefined
   },
   mutations: {
     SET_USER_LOGIN (state, data) {
-      state.userLogin = data
+      state.userLogin = data.data
+    },
+    SET_RENTALLER_LOGIN (state, data) {
+      state.rentallerLogin = data.data
     },
     SET_RENTALLER_DETAIL (state, data) {
-      state.rentallerDetail = data
+      state.rentallerDetail = data.data
+    },
+    SET_CARS (state, data) {
+      state.cars = data
     },
     MODAL_LOGIN_ON (state) {
       state.modalLogin = true
     },
     MODAL_LOGIN_OFF (state) {
       state.modalLogin = false
-    },
-    GET_CAR (state, data) {
-      state.allCar = data
     }
   },
   actions: {
     getApi ({ commit }, proto) {
       Axios.get(`${process.env.VUE_APP_API + proto.url}`)
         .then(res => {
-          const dataLogin = res.data.data
-          commit(proto.mutation, dataLogin)
+          commit(proto.mutation, res.data)
         })
         .catch(err => {
           console.log(err)
@@ -65,6 +68,16 @@ export default new Vuex.Store({
             reject(new Error(err))
           })
       })
+    },
+    getCar (context) {
+      Axios.get(`${process.env.VUE_APP_API}product`)
+        .then((result) => {
+          console.log(result.data.data)
+          context.commit('getCars', result.data.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   },
   modules: {

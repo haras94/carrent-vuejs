@@ -40,6 +40,7 @@ export default {
   methods: {
     submit () {
       console.log(this.departureTime)
+      this.$router.push('/user/checkout')
     }
   }
 }

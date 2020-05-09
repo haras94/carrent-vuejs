@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar v-if="$route.name !== 'Login' && $route.name !== 'Register'"
+    <Navbar v-if="$route.name !== 'Login' && $route.name !== 'Register' && $route.name !== 'AddShop' && $route.name !== 'Login Toko Rental'"
       @login-click="$store.commit('MODAL_LOGIN_ON')"
     />
     <router-view/>
@@ -48,13 +48,22 @@ export default {
     }
   },
   created () {
+    this.$store.dispatch('getApi', {
+      url: 'product',
+      mutation: 'SET_CARS'
+    })
     if (localStorage.id) {
-      if (localStorage.id.length !== 0) {
+      if (localStorage.role_id) {
         this.$store.dispatch('getApi', {
           url: 'user/' + localStorage.id,
           mutation: 'SET_USER_LOGIN'
         })
+        return
       }
+      this.$store.dispatch('getApi', {
+        url: 'rentaller/' + localStorage.id,
+        mutation: 'SET_USER_LOGIN'
+      })
     }
   }
 }

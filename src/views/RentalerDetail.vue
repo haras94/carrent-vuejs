@@ -7,7 +7,7 @@
         </section>
         <section class="flash-info col-md-6">
           <article class="name-user">
-            <h1>{{ rentallerDetail.fullname }}</h1>
+            <h1>{{ rentallerDetail.rental_name }}</h1>
           </article>
           <article class="adress">
             <i class="fas fa-map-pin mr-4"></i>
@@ -26,7 +26,7 @@
             <p>10 armada</p>
           </article>
           <article class="adress">
-            <i class="fas fa-star text-warning mr-1" v-for="star in 5" :key="star.id"></i>
+            <i class="fas fa-star text-warning mr-1" v-for="star in 5" :key="star"></i>
           </article>
         </section>
       </div>
@@ -34,20 +34,25 @@
         <section class="tablist">
           <div class="tab">
             <section class="menu" @click="listCar">
-              <p>List Car</p>
+              <p  class="m-0 p-2">List Car</p>
             </section>
             <section class="menu" @click="enableCar">
-              <p>Enable Car</p>
+              <p  class="m-0 p-2">Enable Car</p>
             </section>
-            <section class="menu" @click="info">
-              <p>Request</p>
+            <section class="menu"
+              @click="info"
+              v-if="adminLogin.id !== undefined"
+            >
+              <p  class="m-0 p-2">Request</p>
             </section>
-            <section class="menu">
-              <p>Add Car</p>
+            <section class="menu"
+              v-if="adminLogin.id !== undefined"
+            >
+              <router-link :to="'/' + $route.params.idRentaler + '/add-car'"><p  class="m-0 p-2">Add Car</p></router-link>
             </section>
           </div>
         </section>
-        <menuListCar v-bind:tablist="tablist" />
+        <menuListCar v-bind:tablist="tablist" v-bind:cars="carsOnRentallerDetail" />
       </div>
     </div>
     <PageNotFound v-else
@@ -74,8 +79,16 @@ export default {
     }
   },
   computed: {
+    carsOnRentallerDetail () {
+      const idRentaler = this.$route.params.idRentaler
+      const array = this.$store.state.cars.data.filter(item => item.rentaller_id === parseInt(idRentaler))
+      const data = { data: array }
+      return data
+    },
     ...mapState([
-      'rentallerDetail'
+      'rentallerDetail',
+      'adminLogin',
+      'cars'
     ])
   },
   methods: {
@@ -162,13 +175,9 @@ export default {
     display: flex;
     padding: 16px;
     .tablist {
-      display: flex;
       width: 20%;
       .tab {
-        display: flex;
-        flex-direction: column;
         width: 200px;
-        height: 190px;
         background: #ffffff;
         box-shadow: rgba(0, 0, 0, 0.164) 0px 2px 10px 0px;
         margin: 20px 0 0 50px;
