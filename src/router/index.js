@@ -55,31 +55,16 @@ const routes = [
     }
   },
   {
-    path: '/user/:idUser',
+    path: '/user',
     name: 'User Detail',
     component: () => import('@/views/UserDetail.vue'),
     meta: {
-      title: 'User Detail | Carrent'
+      title: 'User Detail | Carrent',
+      requiresAuth: true
     }
   },
   {
-    path: '/user/:idUser/order-status',
-    name: 'Order Status',
-    component: () => import('@/views/OrderStatus.vue'),
-    meta: {
-      title: 'Order Status | Carrent'
-    }
-  },
-  {
-    path: '/user/:idUser/history',
-    name: 'History',
-    component: () => import('@/views/History.vue'),
-    meta: {
-      title: 'History | Carrent'
-    }
-  },
-  {
-    path: '/user/:idUser/checkout',
+    path: '/user/checkout',
     name: 'Checkout',
     component: () => import('@/views/Checkout.vue'),
     meta: {
