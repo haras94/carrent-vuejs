@@ -107,7 +107,6 @@ a {
     }
   }
   .navSearch{
-    // background-color: sandybrown;
     width: 600px;
     display: flex;
     align-items: center;
