@@ -77,6 +77,12 @@
         </div>
       </div>
       <div class="form-group row">
+        <label for="staticEngine" class="col-sm-2 col-form-label mr-2">Additional Driver</label>
+        <div class="col-sm-9">
+          <Slider />
+        </div>
+      </div>
+      <div class="form-group row">
         <label for="staticAribag" class="col-sm-2 col-form-label mr-2">srs Airbag</label>
         <div class="col-sm-9">
           <select class="custom-select" id="staticAirbag">
@@ -95,9 +101,13 @@
 <script>
 // import { mapState } from 'vuex'
 import Swal from 'sweetalert2'
+import Slider from '../module_/Slider'
 
 export default {
   name: 'Form',
+  components: {
+    Slider
+  },
   props: ['withButton'],
   data () {
     return {

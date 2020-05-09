@@ -14,7 +14,7 @@
       @mouseenter="dropdown = true"
       @mouseleave="dropdown = false"
     >
-      <router-link :to="`/user/${userLogin.id}`">
+      <router-link to="/user">
         <btnprofile />
       </router-link>
       <div class="user-login__detail" :class="{ 'dropdown': dropdown }">

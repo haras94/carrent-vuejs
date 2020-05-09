@@ -13,20 +13,31 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="staticGender" class="col-sm-2 col-form-label mr-2">Gender</label>
+        <label for="staticNama" class="col-sm-2 col-form-label mr-2">KTP</label>
         <div class="col-sm-9">
           <input
             type="text"
             class="form-control-plaintext"
-            id="staticGender"
-            v-model="gender"
+            id="staticNama"
+            v-model="userLogin.fullname"
           />
         </div>
       </div>
       <div v-if="withButton || false" class="form-group row">
-        <label  for="staticAdress" class="col-sm-2 col-form-label mr-2">Alamat</label>
+        <label  for="staticGender" class="col-sm-2 col-form-label mr-2">Gender</label>
         <div class="col-sm-9">
-          <textarea class="form-control-plaintext" id="staticAdress" rows="3" v-model="userLogin.address"></textarea>
+          <input type="text" class="form-control-plaintext" id="staticGender" v-model="gender" />
+        </div>
+      </div>
+      <div v-if="withButton || false" class="form-group row">
+        <label for="staticAdress" class="col-sm-2 col-form-label mr-2">Alamat</label>
+        <div class="col-sm-9">
+          <textarea
+            class="form-control-plaintext"
+            id="staticAdress"
+            rows="3"
+            v-model="userLogin.address"
+          ></textarea>
         </div>
       </div>
       <div class="form-group row">
@@ -54,7 +65,12 @@
       <div v-if="withButton || false" class="form-group row">
         <label for="inputPassword" class="col-sm-2 col-form-label mr-2">Password</label>
         <div class="col-sm-9">
-          <input type="password" class="form-control-plaintext" id="inputPassword" v-model="userLogin.password"/>
+          <input
+            type="password"
+            class="form-control-plaintext"
+            id="inputPassword"
+            v-model="userLogin.password"
+          />
         </div>
       </div>
     </form>
@@ -73,14 +89,11 @@ export default {
   props: ['withButton'],
   data () {
     return {
-      gender: this.cek
-
+      gender: ''
     }
   },
   computed: {
-    ...mapState([
-      'userLogin'
-    ])
+    ...mapState(['userLogin'])
   },
   methods: {
     save () {
@@ -90,6 +103,19 @@ export default {
         showConfirmButton: false,
         timer: 1200
       })
+    }
+  },
+  created () {
+    if (localStorage.id) {
+      if (localStorage.id.length !== 0) {
+        this.$store
+          .dispatch('patchApi', {
+            url: 'user/' + localStorage.id
+          })
+          .then(res => {
+            console.log(res)
+          })
+      }
     }
   }
 }

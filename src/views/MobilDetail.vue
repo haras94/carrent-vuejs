@@ -55,7 +55,7 @@
               <i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk
             </li>
           </ul>
-          <button @click="modalCheckout = true" class="btn btn-danger mt-auto py-3">SEWA SEKARANG</button>
+          <button @click="showModalCheckout" class="btn btn-danger mt-auto py-3">SEWA SEKARANG</button>
         </div>
       </div>
       <div class="description pt-5 mb-5">
@@ -109,6 +109,11 @@ export default {
   methods: {
     selectImage (e) {
       this.selectedImage = e.target.src
+    },
+    showModalCheckout () {
+      if (!localStorage.id) {
+        this.$store.commit('MODAL_LOGIN_ON')
+      } else this.modalCheckout = true
     }
   }
 }
