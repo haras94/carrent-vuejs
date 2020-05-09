@@ -2,7 +2,7 @@
   <div class="container-fluid our-wrapper">
     <div class="info-user row">
       <section class="image-user col-md-4">
-        <img src="../assets/img/isyana-sarasvati.jpg" alt="foto" class="img-user" />
+        <img :src="userLogin.image" alt="foto" class="img-user" />
       </section>
       <section class="flash-info col-md-6">
         <article class="name-user">
@@ -36,7 +36,7 @@
           </section>
         </div>
       </section>
-      <menuSetprofile v-bind:tablist="tablist" />
+      <menuSetprofile v-bind:tablist="tablist" v-bind:sendImage="sendImage" />
     </div>
   </div>
 </template>

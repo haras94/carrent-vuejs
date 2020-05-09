@@ -4,7 +4,7 @@
       <h6 class="mb-0 mr-3">{{ name }}</h6>
     </div>
     <div class="photoProfile">
-      <img src="../../assets/img/isyana-sarasvati.jpg" alt="user-photo">
+      <img :src="userLogin.image">
     </div>
   </div>
 </template>
