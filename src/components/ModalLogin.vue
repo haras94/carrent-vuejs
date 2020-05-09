@@ -71,14 +71,15 @@ export default {
             this.code = 1
             this.error = res.messages
           }
-          // if (res.data.status === 0) {
-          //   this.code = 1
-          //   this.error = 'Email Belum Di Aktivasi'
-          // }
           if (res.data.status === 0) {
+            this.code = 1
+            this.error = 'Email Belum Di Aktivasi'
+          }
+          if (res.data.status === 1) {
             console.log(res.data)
             this.code = 0
             localStorage.id = res.data.id
+            localStorage.role_id = res.data.role_id
             this.$store.commit('MODAL_LOGIN_OFF')
             this.code = 0
             this.$router.go('/')

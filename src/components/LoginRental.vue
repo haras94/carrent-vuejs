@@ -83,7 +83,7 @@ export default {
           }
           if (res.status === 200) {
             localStorage.id = res.data.id
-            this.$router.replace('/admin-page')
+            this.$router.go()
           }
         })
         .catch((err) => {

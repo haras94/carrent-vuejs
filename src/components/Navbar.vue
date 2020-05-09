@@ -14,7 +14,10 @@
       @mouseenter="dropdown = true"
       @mouseleave="dropdown = false"
     >
-      <router-link to="/user">
+      <router-link v-if="role_id" to="/user">
+        <btnprofile />
+      </router-link>
+      <router-link v-else :to="`/${id}`">
         <btnprofile />
       </router-link>
       <div class="user-login__detail" :class="{ 'dropdown': dropdown }">
@@ -35,7 +38,9 @@ export default {
   name: 'Navbar',
   data () {
     return {
-      dropdown: false
+      dropdown: false,
+      id: localStorage.id,
+      role_id: localStorage.role_id || null
     }
   },
   components: {
@@ -49,8 +54,8 @@ export default {
   methods: {
     logout () {
       delete localStorage.id
+      delete localStorage.role_id
       this.$router.go()
-      this.$router.push('/login')
     }
   }
 }
@@ -107,7 +112,6 @@ a {
     }
   }
   .navSearch{
-    // background-color: sandybrown;
     width: 600px;
     display: flex;
     align-items: center;

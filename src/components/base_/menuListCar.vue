@@ -9,7 +9,7 @@
             <card v-for="car in cars.data" :key="car.id" :car="car" />
         </div>
         <div class="enable-car">
-            <card v-for="car in cars.data" :key="car.id" />
+            <card v-for="car in cars.data" :key="car.id" :car="car" />
         </div>
         <div class="more-info">
             <Request/>

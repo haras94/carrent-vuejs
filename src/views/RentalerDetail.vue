@@ -1,25 +1,25 @@
 <template>
   <div class="container-fluid our-wrapper">
-    <div class="pembungkus-aja" v-if="rentallerDetail.data.id !== undefined">
+    <div class="pembungkus-aja" v-if="rentallerDetail.id !== undefined">
       <div class="info-user row">
         <section class="image-user col-md-4">
           <img src="../assets/img/isyangif.gif" alt="foto" class="img-user" />
         </section>
         <section class="flash-info col-md-6">
           <article class="name-user">
-            <h1>{{ rentallerDetail.data.rental_name }}</h1>
+            <h1>{{ rentallerDetail.rental_name }}</h1>
           </article>
           <article class="adress">
             <i class="fas fa-map-pin mr-4"></i>
-            <p>{{ rentallerDetail.data.address }}</p>
+            <p>{{ rentallerDetail.address }}</p>
           </article>
           <article class="adress">
             <i class="far fa-envelope mr-4"></i>
-            <p>{{ rentallerDetail.data.email }}</p>
+            <p>{{ rentallerDetail.email }}</p>
           </article>
           <article class="adress">
             <i class="fas fa-phone-alt mr-4"></i>
-            {{ rentallerDetail.data.phone_number || '-' }}
+            {{ rentallerDetail.phone_number || '-' }}
           </article>
           <article class="adress">
             <i class="fas fa-car mr-4"></i>
@@ -41,12 +41,12 @@
             </section>
             <section class="menu"
               @click="info"
-              v-if="adminLogin.id !== undefined"
+              v-if="userLogin.id === parseInt($route.params.idRentaler)"
             >
               <p  class="m-0 p-2">Request</p>
             </section>
             <section class="menu"
-              v-if="adminLogin.id !== undefined"
+              v-if="userLogin.id === parseInt($route.params.idRentaler)"
             >
               <router-link :to="'/' + $route.params.idRentaler + '/add-car'"><p  class="m-0 p-2">Add Car</p></router-link>
             </section>
@@ -82,11 +82,12 @@ export default {
     carsOnRentallerDetail () {
       const idRentaler = this.$route.params.idRentaler
       const array = this.$store.state.cars.data.filter(item => item.rentaller_id === parseInt(idRentaler))
-      return array
+      const data = { data: array }
+      return data
     },
     ...mapState([
       'rentallerDetail',
-      'adminLogin',
+      'userLogin',
       'cars'
     ])
   },

@@ -48,18 +48,23 @@ export default {
     }
   },
   created () {
-    if (localStorage.id) {
-      if (localStorage.id.length !== 0) {
-        this.$store.dispatch('getApi', {
-          url: 'user/' + localStorage.id,
-          mutation: 'SET_USER_LOGIN'
-        })
-      }
-    }
     this.$store.dispatch('getApi', {
       url: 'product',
       mutation: 'SET_CARS'
     })
+    if (localStorage.id) {
+      if (localStorage.role_id) {
+        this.$store.dispatch('getApi', {
+          url: 'user/' + localStorage.id,
+          mutation: 'SET_USER_LOGIN'
+        })
+        return
+      }
+      this.$store.dispatch('getApi', {
+        url: 'rentaller/' + localStorage.id,
+        mutation: 'SET_USER_LOGIN'
+      })
+    }
   }
 }
 </script>

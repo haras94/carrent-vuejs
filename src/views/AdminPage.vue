@@ -54,6 +54,9 @@ export default {
       document.querySelector('.allUser').classList.add('on')
       document.querySelector('.allUserWrap').classList.add('allUserActive')
     }
+  },
+  created () {
+    if (localStorage.role_id === '0') this.$router.push('/')
   }
 }
 </script>

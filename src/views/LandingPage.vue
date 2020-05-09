@@ -80,10 +80,12 @@
       <div class="cardList">
         <Card v-for="car in cars.data" :key="car.id" :car="car" />
       </div>
-      <div class="seeMore">
-        <header>See more</header>
-        <i class="fas fa-chevron-right"></i>
-      </div>
+      <router-link to="/list-car">
+        <div class="seeMore">
+          <header>See more</header>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </router-link>
     </div>
     <div class="bestProfile">
       <div class="upProfile">
@@ -92,6 +94,12 @@
       <div v-for="cardRentail in 1" :key="cardRentail" class="downProfile">
         <cardRentail />
       </div>
+      <router-link to="/add-shop">
+        <div class="btn-forRentaler">
+          <p>Ingin jadi rentaler?</p>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -113,6 +121,9 @@ export default {
     ...mapState([
       'cars'
     ])
+  },
+  created () {
+    if (localStorage.role_id === '1') this.$router.push('/admin-page')
   }
 }
 </script>
@@ -208,10 +219,6 @@ export default {
       }
     }
     .ourServiceCard {
-      // background-image: url('../assets/img/2018-bugatti-chiron-sport-2.jpg');
-      // background-size: cover;
-      // background-position: center;
-      // background-repeat: no-repeat;
       width: 100%;
       height: 400px;
       display: flex;
@@ -296,6 +303,7 @@ export default {
     margin-top: 80px;
     width: 100%;
     height: 500px;
+    position: relative;
     .upProfile {
       width: 100%;
       height: 50px;
@@ -312,6 +320,30 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    }
+    .btn-forRentaler{
+      position: absolute;
+      width: 200px;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &:hover i{
+        transform: translateX(5px);
+      }
+      p{
+        font-weight: 500;
+        color: white;
+        font-size: 18px;
+      }
+      i{
+        color: white;
+        font-size: 19px;
+        padding-left: 15px;
+        padding-bottom: 15px;
+        transition: ease .2s;
+      }
     }
   }
 }
