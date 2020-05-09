@@ -79,14 +79,6 @@ const routes = [
     }
   },
   {
-    path: '/user/:idUser/order-status',
-    name: 'Order Status',
-    component: () => import('@/views/OrderStatus.vue'),
-    meta: {
-      title: 'Admin Page | Carrent'
-    }
-  },
-  {
     path: '/user',
     name: 'User Detail',
     component: () => import('@/views/UserDetail.vue'),

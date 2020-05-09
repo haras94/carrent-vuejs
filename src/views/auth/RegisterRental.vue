@@ -68,7 +68,7 @@
       </div>
       <div class="regis">
         <h1>Sudah Punya Toko?</h1>
-        <router-link to="/masuk-shop">Masuk</router-link>
+        <router-link to="/login-shop">Masuk</router-link>
       </div>
     </div>
   </div>

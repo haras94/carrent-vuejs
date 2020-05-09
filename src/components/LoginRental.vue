@@ -81,6 +81,11 @@ export default {
             this.code = 0
             this.$router.go('/')
           }
+          if (res.status === 200) {
+            localStorage.id = res.data.id
+            localStorage.rentalName = res.data.rental_name
+            this.$router.replace('/admin-page')
+          }
         })
         .catch((err) => {
           console.log(err)
