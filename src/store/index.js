@@ -9,7 +9,8 @@ export default new Vuex.Store({
     userLogin: {},
     adminLogin: {},
     rentallerDetail: {},
-    modalLogin: false
+    modalLogin: false,
+    allCar: {}
   },
   getters: {
     isLogin: (state) => localStorage.id !== undefined
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     },
     MODAL_LOGIN_OFF (state) {
       state.modalLogin = false
+    },
+    GET_CAR (state, data) {
+      state.allCar = data
     }
   },
   actions: {
@@ -52,6 +56,7 @@ export default new Vuex.Store({
     },
     patchApi ({ commit }, proto) {
       return new Promise((resolve, reject) => {
+        console.log(proto.data)
         Axios.patch(`${process.env.VUE_APP_API + proto.url}`, proto.data)
           .then(res => {
             resolve(res.data)
