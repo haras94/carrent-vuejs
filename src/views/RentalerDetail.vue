@@ -5,7 +5,7 @@
         <section class="image-user col-md-4">
           <div class="img-tempt">
             <!-- <img :src="rentallerDetail.image" alt=""> -->
-          <img :src="this.image" alt="foto" class="img-user" />
+          <img :src="userLogin.image || image" alt="foto" class="img-user" />
           <div class="forHover">
             <i class="fas fa-camera camera"></i>
             <input type="file" ref="file" class="pick" @change="editImage($event)">
