@@ -80,6 +80,7 @@
           </div>
         </div>
       </div>
+      <button class="del">Hapus Mobil</button>
     </div>
     <ModalContainer
       :modalToggle="modalCheckout"
@@ -200,4 +201,11 @@ li {
     margin-right: 20px;
   }
 }
+  .del {
+    padding: 20px 40px;
+    background: #c82022;
+    border: none;
+    color: #ffffff;
+    font-weight: 700;
+  }
 </style>

@@ -36,7 +36,7 @@ export default {
 .main-menu {
   display: flex;
   flex-direction: column;
-  width: 73%;
+  width: 77%;
   padding: 10px;
   margin-bottom: 20px;
   .nav-menu {
