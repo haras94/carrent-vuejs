@@ -55,18 +55,16 @@
           <input v-model="$v.nohp.$model" type="number" class="inputemail">
         </div>
         <div class="mkasls">
-          <input type="checkbox" id="checkbox">
+          <input type="checkbox" id="checkbox" @change="syarat($event)">
           <label for="checkbox">Saya Menyetujui Syarat Dan Ketentuan Yang Berlaku</label>
         </div>
         <div class="login">
           <button
           id="button-success"
           @click="daftar"
-          v-if="
-           $v.checkbox.required && $v.yourname.required && $v.name.required && $v.nohp.required && $v.alamat.required">Daftar</button>
+          v-if="checkboxSyarat && $v.yourname.required && $v.name.required && $v.nohp.required && $v.alamat.required">Daftar</button>
           <button
-          v-if="
-           !$v.checkbox.required || !$v.yourname.required || !$v.name.required || !$v.nohp.required || !$v.alamat.required"
+          v-if="!checkboxSyarat || !$v.yourname.required || !$v.name.required || !$v.nohp.required || !$v.alamat.required"
           class="default">Daftar</button>
         </div>
       </div>
@@ -94,12 +92,16 @@ export default {
       alamat: '',
       nohp: null,
       code: 0,
-      alert: null
+      alert: null,
+      checkboxSyarat: false
     }
   },
   methods: {
     change () {
       this.code = 0
+    },
+    syarat (e) {
+      this.checkboxSyarat = e.target.checked
     },
     selanjutnya () {
       this.code = 1
