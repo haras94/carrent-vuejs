@@ -2,33 +2,37 @@
   <div class="checkout">
     <h2>Form Pemesanan</h2>
     <div class="up">
-      <div class="woz d-flex">
-      <Card v-for="car in [carInCheckout]" :key="car.id" :car="car" />
-      <div class="infoker">
+      <NotFound v-if="checkout.driver === undefined"
+        code="."
+        msg="Oops, pesan dulu yuk"
+      />
+      <div v-else class="woz d-flex">
+        <Card v-for="car in [carInCheckout]" :key="car.id" :car="car" />
+        <div class="infoker">
           <FormCheckout :checkout="checkout"/>
-      </div>
+        </div>
       </div>
       <div class="wozasky">
-      <div class="info">
-        <h5 class="dtl-pmsn mb-2 pb-2">Detail Pemesan</h5>
-        <Form/>
-        <p class="foot m-0 text-success">memesan untuk orang lain?</p>
-      </div>
-      <div class="info-foot">
-        <div class="space">
-          <section class="addsome d-flex">
-            <p class="mr-3 m-0">Buat Permintaan Khusus</p>
-            <i class="fas fa-pen"></i>
-          </section>
-          <section>
-            <h5>Grand Total :</h5>
-            <h4 class="text-success">IDR. {{ checkout.grand_total === undefined ? '0' : checkout.grand_total }}</h4>
-          </section>
-          <button class="for-btn">Lanjut Ke Pembayaran</button>
+        <div class="info">
+          <h5 class="dtl-pmsn mb-2 pb-2">Detail Pemesan</h5>
+          <Form/>
+          <p class="foot m-0 text-success">memesan untuk orang lain?</p>
+        </div>
+        <div class="info-foot">
+          <div class="space">
+            <section class="addsome d-flex">
+              <p class="mr-3 m-0">Buat Permintaan Khusus</p>
+              <i class="fas fa-pen"></i>
+            </section>
+            <section>
+              <h5>Grand Total :</h5>
+              <h4 class="text-success">IDR. {{ checkout.grand_total === undefined ? '0' : checkout.grand_total }}</h4>
+            </section>
+            <button class="for-btn">Lanjut Ke Pembayaran</button>
+          </div>
         </div>
       </div>
     </div>
-      </div>
   </div>
 </template>
 
@@ -36,6 +40,7 @@
 import Card from '../components/Card'
 import FormCheckout from '../components/base_/FormCheckout'
 import Form from '../components/base_/form'
+import NotFound from '../views/PageNotFound.vue'
 import { mapState } from 'vuex'
 
 export default {
@@ -43,7 +48,8 @@ export default {
   components: {
     Card,
     FormCheckout,
-    Form
+    Form,
+    NotFound
   },
   computed: {
     ...mapState([
