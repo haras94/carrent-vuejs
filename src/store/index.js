@@ -65,13 +65,16 @@ export default new Vuex.Store({
   },
   actions: {
     getApi ({ commit }, proto) {
-      Axios.get(`${process.env.VUE_APP_API + proto.url}`)
-        .then(res => {
-          commit(proto.mutation, res.data)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      return new Promise((resolve, reject) => {
+        Axios.get(`${process.env.VUE_APP_API + proto.url}`)
+          .then(res => {
+            commit(proto.mutation, res.data)
+            resolve(res.data)
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      })
     },
     postApi ({ commit }, proto) {
       return new Promise((resolve, reject) => {

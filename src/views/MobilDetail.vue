@@ -3,35 +3,20 @@
     <div class="detail-wrapper gap">
       <h1 class="my-4">{{carDetail.car_title}}</h1>
       <div class="detail-car">
-        <div class="images">
+        <div class="images col-7">
           <div class="image-primary">
-            <img :src="selectedImage" />
+            <img :src="!selectedImage ? carDetail.images[0].image : selectedImage" />
           </div>
           <div class="image-secondary">
             <img
+              v-for="image in carDetail.images" :key="image"
               @click="selectImage($event)"
               id="image-1"
-              src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+              :src="image.image"
             />
-            <img
-              @click="selectImage($event)"
-              id="image-2"
-              src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-            />
-            <img
-              @click="selectImage($event)"
-              id="image-3"
-              src="https://images.unsplash.com/photo-1517994112540-009c47ea476b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-            />
-            <img
-              @click="selectImage($event)"
-              id="image-4"
-              src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-            />
-            <img @click="selectImage($event)" id="image-5" src="../assets/img/isyana-sarasvati.jpg" />
           </div>
         </div>
-        <div class="features-wrapper">
+        <div class="features-wrapper col-5">
           <section class="info-rental mb-5">
             <h1 class="text-danger">{{this.carDetail.rentaller === undefined ? '' : carDetail.rentaller.rental_name}}</h1>
             <p>
@@ -130,8 +115,7 @@ export default {
   },
   data () {
     return {
-      selectedImage:
-        'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=350&q=80',
+      selectedImage: false,
       modalCheckout: false
     }
   },
@@ -179,7 +163,7 @@ li {
   .image-secondary {
     display: flex;
     padding: 10px 0 0 0;
-    justify-content: space-between;
+    justify-content: flex-start;
     img {
       width: 130px;
       height: 100px;
