@@ -139,12 +139,14 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 0 100px 0 0;
       h3 {
         color: white;
       }
     }
     .partnerLogo {
-      background-color: rgba(151, 151, 151, 0.26);
+      background-color: #000000;
+      // border-radius: 0 0 0 100px;
       width: 100%;
       height: 300px;
       display: flex;
@@ -168,9 +170,12 @@ export default {
     }
   }
   .ourService {
-    background-color: #c82022;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/img/luis-paico-NNTGEoohoE4-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100%;
     height: 600px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
