@@ -85,14 +85,15 @@ export default {
         return data
       }
       const idRentaler = this.$route.params.idRentaler
-      const array = this.$store.state.cars.data.filter(item => item.rentaller_id === parseInt(idRentaler))
+      const array = this.$store.state.carsWithinLimit.filter(item => item.rentaller_id === parseInt(idRentaler))
       data = { data: array }
       return data
     },
     ...mapState([
       'rentallerDetail',
       'userLogin',
-      'cars'
+      'cars',
+      'carsWithinLimit'
     ])
   },
   methods: {
