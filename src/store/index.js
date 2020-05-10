@@ -12,7 +12,8 @@ export default new Vuex.Store({
     rentallerDetail: {},
     cars: [],
     modalLogin: false,
-    carDetail: {}
+    carDetail: {},
+    allMerek: []
   },
   getters: {
     isLogin: (state) => localStorage.id !== undefined
@@ -38,6 +39,9 @@ export default new Vuex.Store({
     },
     SET_CAR_DETAIL (state, data) {
       state.carDetail = data.data
+    },
+    SET_MEREK_MOBIL (state, data) {
+      state.allMerek = data.data
     }
   },
   actions: {
