@@ -46,6 +46,9 @@ export default new Vuex.Store({
     },
     SET_MEREK_MOBIL (state, data) {
       state.allMerek = data.data
+    },
+    SET_PAGE (state, data) {
+      state.cars = data
     }
   },
   actions: {

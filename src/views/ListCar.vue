@@ -5,17 +5,17 @@
       <h2>List Car</h2>
     </div>
     <div class="eersa23">
-      <h2>Pilih Kota</h2>
-      <select name="kota" id="kota" class="custom-select">
+      <!-- <h2>Pilih Kota</h2>
+      <select name="kota" id="kota" >
         <option selected="selected" value="">Semua Kota</option>
         <option value="depok">Depok</option>
         <option value="jakarta">Jakarta</option>
         <option value="bogor">Bogor</option>
         <option value="bekasi">Bekasi</option>
         <option value="tanggerang">Tanggerang</option>
-      </select>
+      </select> -->
       <h2>Urutkan</h2>
-      <select @change="priceasc($event)" name="sortby" id="product-sorty">
+      <select @change="priceasc($event)" class="custom-select">
         <option selected="selected" value="">Relevansi</option>
         <option value="1">Termurah</option>
         <option value="2">Termahal</option>
@@ -60,12 +60,12 @@ export default {
   methods: {
     priceasc (value) {
       console.log(value.target.value === '1')
-      if (value.target.value === '0') {
-        this.$store.dispatch('getApi', {
-          url: 'product',
-          mutation: 'SET_CARS'
-        })
-      }
+      // if (value.target.value === '0') {
+      //   this.$store.dispatch('getApi', {
+      //     url: 'product',
+      //     mutation: 'SET_CARS'
+      //   })
+      // }
       if (value.target.value === '1') {
         this.$store.dispatch('getApi', {
           url: 'product?sort=price_per_day',
@@ -125,6 +125,9 @@ export default {
   display: flex;
   justify-content: center;
 }
+.pagination{
+  cursor: pointer;
+}
 .klemsa1{
   width: 100%;
   height: auto;
@@ -151,7 +154,7 @@ export default {
       align-items: center;
       justify-content: center;
       // margin-right: 45px;
-      width: 500px;
+      width: 250px;
       #kota{
         margin-right: 20px;
       }
