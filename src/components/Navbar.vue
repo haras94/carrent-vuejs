@@ -10,8 +10,8 @@
     <div v-if="userLogin.id === undefined" class="navAdditional">
       <a @click="$emit('login-click')" class="btn-login"><p>Login</p></a>
       <router-link to="/register" class="btn-register"><p>Register</p></router-link>
-      <router-link to="/add-shop">
-        <p>Jadi rentaler</p>
+      <router-link to="/login-shop" class="ml-5">
+        <p class="ok">masuk sebagai rentaller</p>
       </router-link>
     </div>
     <div
@@ -139,7 +139,7 @@ a {
   .navAdditional{
     position: relative;
     width: 200px;
-    margin-left: 300px;
+    margin-left: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,6 +149,9 @@ a {
         margin-left: 50px;
         font-size: 15px;
         color: #ffffff;
+      }
+      .ok{
+        font-size: 12px;
       }
     .btn-login{
       border: 3px solid white;

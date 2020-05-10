@@ -9,7 +9,7 @@
              <statusOrder/>
         </div>
         <div class="history">
-            <history v-for="histo in 5" :key="histo.id"/>
+            <history v-for="histo in 2" :key="histo.id"/>
         </div>
         <div class="setting">
             <Set/>
