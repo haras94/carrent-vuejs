@@ -265,6 +265,7 @@ export default {
     align-items: center;
     padding-bottom: 50px;
     position: relative;
+    overflow: hidden;
     .cardList {
       display: flex;
       justify-content: center;

@@ -68,7 +68,7 @@ export default {
 .adminPageWrap{
   background-color: rgba(0, 0, 0, 0.055);
   width: 100%;
-  height: 1000px;
+  height: 3000px;
   display: flex;
 
   .adminPage{
