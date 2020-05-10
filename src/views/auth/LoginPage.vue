@@ -13,9 +13,15 @@ export default {
     ModalLogin
   },
   beforeCreate () {
-    this.$store.dispatch('patchApi', {
-      url: ''
+    this.$store.dispatch('getApi', {
+      url: `/user/auth?encrypt=${this.$route.query.key}`
     })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 }
 </script>

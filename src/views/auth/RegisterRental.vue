@@ -115,7 +115,7 @@ export default {
         .then((res) => {
           if (res.status === 200) {
             this.alert = 1
-            this.error = 'Toko Berhasil dibuat Silahkan Verifikasi Email Anda'
+            this.error = 'Toko Berhasil dibuat Silahkan Chat Admin untuk Aktivasi'
           }
           // console.log(res)
         })
