@@ -11,7 +11,8 @@ export default new Vuex.Store({
     rentallerLogin: {},
     rentallerDetail: {},
     cars: [],
-    modalLogin: false
+    modalLogin: false,
+    carDetail: {}
   },
   getters: {
     isLogin: (state) => localStorage.id !== undefined
@@ -35,8 +36,8 @@ export default new Vuex.Store({
     MODAL_LOGIN_OFF (state) {
       state.modalLogin = false
     },
-    getCars (state, data) {
-      state.getCar = data
+    SET_CAR_DETAIL (state, data) {
+      state.carDetail = data.data
     }
   },
   actions: {
