@@ -4,7 +4,7 @@
       <h1>Add Car</h1>
     </div>
     <div class="line">
-      <div class="upload d-flex justify-content-center p-3 mb-3">
+      <div class="upload d-flex flex-wrap justify-content-center p-3 mb-3">
         <section class="img-temp">
           <input type="file" ref="file" class="aezakmi" @change="upload($event)" />
           <img :src="image1" class="img-input" />
@@ -353,7 +353,7 @@ export default {
       position: relative;
       overflow: hidden;
       width: 180px;
-      height: 200px;
+      height: 180px;
       border: 1px green dashed;
       margin: 5px;
       .aezakmi {
@@ -368,6 +368,7 @@ export default {
         top: 0;
         left: 0;
         width: 100%;
+        height: 100%;
         object-fit: cover;
       }
     }
