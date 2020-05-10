@@ -80,7 +80,7 @@
           </div>
         </div>
       </div>
-      <button class="del">Hapus Mobil</button>
+      <button v-if="userLogin.id === parseInt($route.params.idRentaler)" @click="deleteMobil" class="del">Hapus Mobil</button>
     </div>
     <ModalContainer
       :modalToggle="modalCheckout"
@@ -99,6 +99,7 @@
 import { mapState } from 'vuex'
 import ModalContainer from '../components/base_/ModalContainer.vue'
 import FormCheckout from '../components/base_/FormCheckout.vue'
+import Swal from 'sweetalert2'
 
 export default {
   name: 'MobilDetail',
@@ -108,7 +109,8 @@ export default {
   },
   computed: {
     ...mapState([
-      'carDetail'
+      'carDetail',
+      'userLogin'
     ])
   },
   data () {
@@ -118,6 +120,40 @@ export default {
     }
   },
   methods: {
+    deleteMobil () {
+      Swal.fire({
+        title: 'Data Anda Telah terupdate!',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1200
+      })
+      Swal.fire({
+        title: 'Yakin mau hapus mobil ' + this.carDetail.car_title + '?',
+        text: 'Data akan dihapus secara permanen',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#c82022',
+        cancelButtonColor: '#bbb',
+        confirmButtonText: 'Iya hapus aja, gapapa'
+      }).then((result) => {
+        if (result.value) {
+          this.$store.dispatch('deleteApi', {
+            url: 'product/' + this.$route.params.idMobil
+          }).then(() => {
+            this.$store.dispatch('getApi', {
+              url: 'product?limit=999',
+              mutation: 'SET_CARS_WITHIN_LIMIT'
+            })
+            this.$router.push('/' + this.$route.params.idRentaler)
+          })
+          Swal.fire(
+            'Berhasil terhapus!',
+            'Mobil ' + this.carDetail.car_title + ' sudah dihapus.',
+            'success'
+          )
+        }
+      })
+    },
     selectImage (e) {
       this.selectedImage = e.target.src
     },
@@ -189,6 +225,7 @@ li {
     border-top: 1px solid rgb(214, 214, 214);
     border-bottom: 1px solid rgb(214, 214, 214);
     margin-top: -1px;
+    text-transform: capitalize;
   }
 }
 .features.column {
@@ -201,11 +238,11 @@ li {
     margin-right: 20px;
   }
 }
-  .del {
-    padding: 20px 40px;
-    background: #c82022;
-    border: none;
-    color: #ffffff;
-    font-weight: 700;
-  }
+.del {
+  padding: 20px 40px;
+  background: #c82022;
+  border: none;
+  color: #ffffff;
+  font-weight: 700;
+}
 </style>

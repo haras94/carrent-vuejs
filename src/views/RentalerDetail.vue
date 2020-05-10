@@ -4,9 +4,8 @@
       <div class="info-user row">
         <section class="image-user col-md-4">
           <div class="img-tempt">
-            <!-- <img :src="rentallerDetail.image" alt=""> -->
-          <img :src="userLogin.image || image" alt="foto" class="img-user" />
-          <div class="forHover">
+          <img :src="rentallerDetail.image || image" alt="foto" class="img-user" />
+          <div v-if="userLogin.id === parseInt($route.params.idRentaler)" class="forHover">
             <i class="fas fa-camera camera"></i>
             <input type="file" ref="file" class="pick" @change="editImage($event)">
           </div>
@@ -143,6 +142,11 @@ export default {
                 url: 'rentaller/' + localStorage.id,
                 mutation: 'SET_USER_LOGIN'
               })
+              const idRentaler = this.$route.params.idRentaler
+              this.$store.dispatch('getApi', {
+                url: `rentaller/${idRentaler}`,
+                mutation: 'SET_RENTALLER_DETAIL'
+              })
             })
         }
       }
@@ -157,6 +161,13 @@ export default {
     this.$store.dispatch('getApi', {
       url: 'product?limit=999',
       mutation: 'SET_CARS_WITHIN_LIMIT'
+    })
+  },
+  updated () {
+    const idRentaler = this.$route.params.idRentaler
+    this.$store.dispatch('getApi', {
+      url: `rentaller/${idRentaler}`,
+      mutation: 'SET_RENTALLER_DETAIL'
     })
   }
 }

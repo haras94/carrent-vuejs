@@ -48,6 +48,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h2, p {
+  text-transform: capitalize;
+}
 .lapozzs{
   text-decoration: none;
 }
@@ -73,6 +76,7 @@ export default {
     overflow: hidden;
     img{
       width: 100%;
+      height: 100%;
       object-fit: cover;
     }
   }
@@ -80,7 +84,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 5px 10px 0 10px;
+    padding: 20px 20px;
     background: #ffffff;
     height: 40%;
     .aslesk{
