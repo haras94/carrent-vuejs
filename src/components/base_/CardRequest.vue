@@ -24,9 +24,21 @@
 </template>
 
 <script>
-export default {
-  name: 'CardRequest'
+import { mapState } from 'vuex'
 
+export default {
+  name: 'CardRequest',
+  created () {
+    this.$store.dispatch('getApi', {
+      url: 'auth',
+      mutation: 'SET_REQUESTS'
+    })
+  },
+  computed: {
+    ...mapState([
+      'requests'
+    ])
+  }
 }
 </script>
 

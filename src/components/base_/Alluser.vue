@@ -1,35 +1,56 @@
 <template>
   <div class="allUserWrap">
-    <div class="allUser">
-      <div class="upside">
-        <div class="nameUser"><h5>nama nya</h5></div>
-        <div class="addressUser"><h5>alamat nya</h5></div>
-        <div class="tambah"><h5>tambahan??</h5></div>
+    <div v-for="user in users" :key="user" class="allUser">
+      <div class="leftSide">
+        <p>Nama</p>
+        <p>Gender</p>
+        <p>Alamat</p>
+        <p>Phone</p>
+        <p>Email</p>
       </div>
-      <div class="downside"></div>
+      <div class="rightSide">
+        <p>{{ user.fullname }}</p>
+        <p>{{ user.gender }}</p>
+        <p>{{ user.address }}</p>
+        <p>{{ user.phone_number }}</p>
+        <p>{{ user.email }}</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  name: 'Alluser'
+  name: 'Alluser',
+  created () {
+    this.$store.dispatch('getApi', {
+      url: 'user',
+      mutation: 'SET_USERS'
+    })
+  },
+  computed: {
+    ...mapState([
+      'users'
+    ])
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .allUserWrap{
-  // background-color: rgba(0, 0, 0, 0.575);
-  background-color: rgba(0, 0, 0, 0);
   width: 100%;
-  // height: 600px;
   position: absolute;
   top: 120px;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
   padding-top: 30px;
   visibility: hidden;
   opacity: 0;
+  box-sizing: border-box;
   &.allUserActive{
     opacity: 1;
     visibility: visible;
@@ -38,44 +59,31 @@ export default {
   .allUser{
     background-color: white;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.144);
-    width: 1100px;
+    width: 700px;
     height: 200px;
-    position: absolute;
-    left: 120px;
-    top: 10px;
     border-radius: 5px;
-    .upside{
-      border-bottom: 1px solid rgba(0, 0, 0, 0.144);
-      width: 100%;
-      height: 30%;
+    display: flex;
+    box-sizing: border-box;
+    margin: 30px 0;
+    .leftSide{
+      width: 15%;
+      height: 100%;
       display: flex;
-      .nameUser{
-        width: 33.33%;
-        height: 100%;
-        border-right: 1px solid rgba(0, 0, 0, 0.144);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .addressUser{
-        width: 33.33%;
-        height: 100%;
-        border-right: 1px solid rgba(0, 0, 0, 0.144);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .tambah{
-        width: 33.33%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid rgba(0, 0, 0, 0.144);
+      p{
+        padding:0 30px;
+        font-weight: 600;
       }
     }
-    .downside{
-      width: 100%;
-      height: 70%;
+    .rightSide{
+      width: 70%;
+      height: 100%;
+      p{
+        padding:0 30px;
+        font-weight: 600;
+      }
     }
   }
 }
