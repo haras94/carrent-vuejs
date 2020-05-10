@@ -109,7 +109,7 @@ export default {
                 fullname: this.dataUser.fullname,
                 id_card: this.dataUser.id_card,
                 gender: this.dataUser.gender,
-                adress: this.dataUser.address,
+                address: this.dataUser.address,
                 phone_number: this.dataUser.phone_number,
                 email: this.dataUser.email,
                 password: this.dataUser.password
