@@ -52,6 +52,10 @@ export default {
       url: 'product',
       mutation: 'SET_CARS'
     })
+    this.$store.dispatch('getApi', {
+      url: 'product?limit=999',
+      mutation: 'SET_CARS_WITHIN_LIMIT'
+    })
     if (localStorage.id) {
       if (localStorage.role_id) {
         this.$store.dispatch('getApi', {

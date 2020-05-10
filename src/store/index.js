@@ -11,6 +11,7 @@ export default new Vuex.Store({
     rentallerLogin: {},
     rentallerDetail: {},
     cars: [],
+    carsWithinLimit: [],
     modalLogin: false,
     carDetail: {}
   },
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     SET_CARS (state, data) {
       state.cars = data
+    },
+    SET_CARS_WITHIN_LIMIT (state, data) {
+      state.carsWithinLimit = data.data
     },
     MODAL_LOGIN_ON (state) {
       state.modalLogin = true
