@@ -71,6 +71,7 @@ a {
   width: 170px;
   height: 0px;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 10px 0px;
   position: absolute;
   z-index: 21;
   top: 100%;
@@ -93,7 +94,6 @@ a {
   background-color: #c82022;
   height: 70px;
   display: flex;
-  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
@@ -104,8 +104,7 @@ a {
     object-fit: cover;
   }
   .navLogo{
-    width: 180px;
-    margin-left: 50px;
+    width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -137,6 +136,7 @@ a {
   .navAdditional{
     position: relative;
     width: 200px;
+    margin-left: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
