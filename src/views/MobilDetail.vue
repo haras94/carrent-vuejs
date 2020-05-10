@@ -1,7 +1,7 @@
 <template>
   <div class="mobil-detail container-fluid our-wrapper">
     <div class="detail-wrapper gap">
-      <h1 class="my-4">Toyota Agya</h1>
+      <h1 class="my-4">{{carDetail.car_title}}</h1>
       <div class="detail-car">
         <div class="images">
           <div class="image-primary">
@@ -33,26 +33,26 @@
         </div>
         <div class="features-wrapper">
           <section class="info-rental mb-5">
-            <h1 class="text-danger">agya rental</h1>
+            <h1 class="text-danger">{{carDetail.rentaller.rental_name}}</h1>
             <p>
-              <i class="fas fa-map-pin mr-2 text-danger"></i> Jl.Cendana, Jalan Cendana 10, Menteng, Jakarta Pusat 10350
+              <i class="fas fa-map-pin mr-2 text-danger"></i> {{carDetail.rentaller.address}}
             </p>
           </section>
           <div class="price-wrapper">
-            <h3 class="price">Rp. 120000 / hari</h3>
+            <h3 class="price">{{carDetail.price_per_day}} / day</h3>
           </div>
           <ul class="features">
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk
+              <i class="fas fa-check-circle text-success mr-2"></i>tahun produksi : {{carDetail.manufacturingYear.name}}
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk
+              <i class="fas fa-check-circle text-success mr-2"></i>baggage capacity :  {{carDetail.baggageCapacity.name}}
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk
+              <i class="fas fa-check-circle text-success mr-2"></i>{{carDetail.person_capacity}}  tempat duduk
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk
+              <i class="fas fa-check-circle text-success mr-2"></i>{{carDetail.doors}} pintu
             </li>
           </ul>
           <button @click="showModalCheckout" class="btn btn-danger mt-auto py-3">SEWA SEKARANG</button>
@@ -60,17 +60,40 @@
       </div>
       <div class="description pt-5 mb-5">
         <h4>Deskripsi</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda facilis incidunt praesentium quam nobis, architecto aliquam. Eum quaerat numquam beatae ab autem at tempore esse expedita hic dicta! Odit facere deleniti adipisci suscipit officiis delectus nostrum illum repellendus beatae cupiditate asperiores sint autem aliquam, ea aperiam possimus. Sunt aliquid consequuntur neque nisi ducimus unde harum itaque explicabo sint eveniet nostrum quo rerum in, porro molestiae optio veritatis ea eos iusto. Atque, temporibus ipsam eaque laboriosam quod architecto vero qui! Nam repudiandae aliquam atque libero quia repellendus eius qui necessitatibus distinctio, delectus ex voluptatum. Nemo obcaecati illum ullam totam distinctio autem.</p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque odio repudiandae explicabo in nihil iusto animi molestiae possimus consequatur neque, numquam debitis, sequi minus sed quidem nostrum ad laborum? Incidunt iure inventore, facere voluptate, reiciendis ut asperiores, ipsa laudantium repudiandae numquam architecto fugit laboriosam! Accusantium quas laborum quod, quos cum eaque ut ullam labore numquam perferendis obcaecati enim ipsum expedita, omnis deleniti quo ab aperiam qui id minima? Fuga, quaerat.</p>
-      </div>
+        {{carDetail.description}}
+        </div>
       <div class="mb-5">
         <h4>Fitur</h4>
         <div class="row">
           <div class="col">
             <ul class="features column">
-              <li v-for="feature in 8" :key="feature" class="p-2">
-                <i class="fas fa-check-circle text-success mr-2"></i>4 Tempat Duduk
-              </li>
+              <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>tahun produksi : {{carDetail.manufacturingYear.name}}
+            </li>
+            <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>kapasitas bagasi : {{carDetail.baggageCapacity.name}}
+            </li>
+            <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>pintu : {{carDetail.doors}}
+            </li>
+            <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>tempat duduk : {{carDetail.person_capacity}}
+            </li>
+            <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>tipe bahan bakar : {{carDetail.fuelType.name}}
+            </li>
+            <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>air bag : {{carDetail.srsAirbag.name}}
+            </li>
+            <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>transmission : {{carDetail.transmissionType.name}}
+            </li>
+            <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>driver : {{carDetail.additionalDriver.name}}
+            </li>
+            <!-- <li class="p-2">
+              <i class="fas fa-check-circle text-success mr-2"></i>tahun produksi : {{carDetail.manufacturingYear.name}}
+            </li> -->
             </ul>
           </div>
         </div>
@@ -90,6 +113,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import ModalContainer from '../components/base_/ModalContainer.vue'
 import FormCheckout from '../components/base_/FormCheckout.vue'
 
@@ -98,6 +122,11 @@ export default {
   components: {
     ModalContainer,
     FormCheckout
+  },
+  computed: {
+    ...mapState([
+      'carDetail'
+    ])
   },
   data () {
     return {
@@ -115,6 +144,13 @@ export default {
         this.$store.commit('MODAL_LOGIN_ON')
       } else this.modalCheckout = true
     }
+  },
+  created () {
+    const idCar = this.$route.params.idMobil
+    this.$store.dispatch('getApi', {
+      url: `product/${idCar}`,
+      mutation: 'SET_CAR_DETAIL'
+    })
   }
 }
 </script>
