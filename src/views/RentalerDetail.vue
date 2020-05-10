@@ -122,6 +122,10 @@ export default {
       url: `rentaller/${idRentaler}`,
       mutation: 'SET_RENTALLER_DETAIL'
     })
+    this.$store.dispatch('getApi', {
+      url: 'product?limit=999',
+      mutation: 'SET_CARS_WITHIN_LIMIT'
+    })
   }
 }
 </script>

@@ -126,9 +126,9 @@
           <label for="staticManu" class="col-sm-2 col-form-label mr-2">Tahun Manufaktur</label>
           <div class="col-sm-9">
             <select class="custom-select"
-            @change="Manufacturing_year = $event.target.value">
+            @change="manufacturing_year = $event.target.value">
             <option selected>--- Pilih Tahun Pembuatan ---</option>
-            <option v-for="my in Manufacturingyears" :key="my.id" :value="my.id">{{my.name}}</option>
+            <option v-for="my in manufacturingyears" :key="my.id" :value="my.id">{{my.name}}</option>
             </select>
           </div>
         </div>
@@ -189,7 +189,7 @@ export default {
       additional_driver: 2,
       person_capacity: 0,
       doors: 0,
-      Manufacturing_year: 0,
+      manufacturing_year: 0,
       fuel_type: 0,
       avg_fuel_consumption: 0,
       srs_airbag: 0,
@@ -202,7 +202,7 @@ export default {
       additionaldrivers: [],
       personcapacities: [],
       doorss: [],
-      Manufacturingyears: [],
+      manufacturingyears: [],
       avgfuelconsumptions: [],
       srsairbags: [],
       image1: null,
@@ -263,8 +263,12 @@ export default {
       this.images.push(file)
     },
     save () {
+      const files = this.images
       const fd = new FormData()
       fd.append('rentaller_id', this.rentaller_id)
+      for (var i = 0; i < files.length; i++) {
+        fd.append('image', files[i])
+      }
       fd.append('car_title', this.car_title)
       fd.append('description', this.description)
       fd.append('car_brand', this.car_brand)
@@ -275,7 +279,7 @@ export default {
       fd.append('additional_driver', this.additional_driver)
       fd.append('person_capacity', this.person_capacity)
       fd.append('doors', this.doors)
-      fd.append('Manufacturing_year', this.Manufacturing_year)
+      fd.append('manufacturing_year', this.manufacturing_year)
       fd.append('fuel_type', this.fuel_type)
       fd.append('avg_fuel_consumption', this.avg_fuel_consumption)
       fd.append('srs_airbag', this.srs_airbag)
@@ -291,6 +295,12 @@ export default {
             icon: 'success',
             showConfirmButton: false,
             timer: 1200
+          })
+          this.$store.dispatch('getApi', {
+            url: 'product?limit=999',
+            mutation: 'SET_CARS_WITHIN_LIMIT'
+          }).then(res => {
+            this.$router.push('/' + localStorage.id)
           })
         })
     }
@@ -321,7 +331,7 @@ export default {
       this.doorss = res.data.data
     })
     Axios.get(`${process.env.VUE_APP_API}manufacturingyear`).then(res => {
-      this.Manufacturingyears = res.data.data
+      this.manufacturingyears = res.data.data
     })
     Axios.get(`${process.env.VUE_APP_API}avgfuelconsumption`).then(res => {
       this.avgfuelconsumptions = res.data.data
