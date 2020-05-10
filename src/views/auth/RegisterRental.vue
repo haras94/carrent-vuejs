@@ -25,7 +25,7 @@
         </div>
         <h1 class="labelemail">Password</h1>
         <div class="formemail">
-          <input v-model="$v.password.$model" type="password" class="inputemail" @keydown="selanjutnya">
+          <input v-model="$v.password.$model" type="password" class="inputemail" @keydown.enter="selanjutnya">
           <div class="alert-password">
             <p v-if="!$v.password.minLength">Password Minimal 6 Karakter!</p>
           </div>
