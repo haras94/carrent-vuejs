@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'ModalContainer',
   props: {
@@ -21,6 +23,11 @@ export default {
     headTitle: String,
     modalToggle: Boolean,
     modalWrap: Boolean
+  },
+  computed: {
+    ...mapState([
+      'carDetail'
+    ])
   }
 }
 </script>

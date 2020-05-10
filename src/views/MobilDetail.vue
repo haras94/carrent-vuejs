@@ -33,26 +33,26 @@
         </div>
         <div class="features-wrapper">
           <section class="info-rental mb-5">
-            <h1 class="text-danger">{{carDetail.rentaller.rental_name}}</h1>
+            <h1 class="text-danger">{{this.carDetail.rentaller === undefined ? '' : carDetail.rentaller.rental_name}}</h1>
             <p>
-              <i class="fas fa-map-pin mr-2 text-danger"></i> {{carDetail.rentaller.address}}
+              <i class="fas fa-map-pin mr-2 text-danger"></i> {{this.carDetail.rentaller === undefined ? '' : carDetail.rentaller.address}}
             </p>
           </section>
           <div class="price-wrapper">
-            <h3 class="price">{{carDetail.price_per_day}} / day</h3>
+            <h3 class="price">IDR. {{carDetail.price_per_day}} / day</h3>
           </div>
           <ul class="features">
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>tahun produksi : {{carDetail.manufacturingYear.name}}
+              <i class="fas fa-check-circle text-success mr-2"></i>tahun produksi : {{carDetail.manufacturingYear === undefined ? '' : carDetail.manufacturingYear.name }}
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>baggage capacity :  {{carDetail.baggageCapacity.name}}
+              <i class="fas fa-check-circle text-success mr-2"></i>baggage capacity :  {{carDetail.baggageCapacity  === undefined ? '' : carDetail.baggageCapacity.name}}
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>{{carDetail.person_capacity}}  tempat duduk
+              <i class="fas fa-check-circle text-success mr-2"></i>{{carDetail.manufacturingYear === undefined ? '' : carDetail.person_capacity}}  tempat duduk
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>{{carDetail.doors}} pintu
+              <i class="fas fa-check-circle text-success mr-2"></i>{{carDetail.manufacturingYear === undefined ? '' : carDetail.doors}} pintu
             </li>
           </ul>
           <button @click="showModalCheckout" class="btn btn-danger mt-auto py-3">SEWA SEKARANG</button>
@@ -68,28 +68,28 @@
           <div class="col">
             <ul class="features column">
               <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>tahun produksi : {{carDetail.manufacturingYear.name}}
+              <i class="fas fa-check-circle text-success mr-2"></i>tahun produksi : {{carDetail.manufacturingYear === undefined ? '' : carDetail.manufacturingYear.name}}
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>kapasitas bagasi : {{carDetail.baggageCapacity.name}}
+              <i class="fas fa-check-circle text-success mr-2"></i>kapasitas bagasi : {{carDetail.manufacturingYear === undefined ? '' : carDetail.baggageCapacity.name}}
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>pintu : {{carDetail.doors}}
+              <i class="fas fa-check-circle text-success mr-2"></i>pintu : {{carDetail.manufacturingYear === undefined ? '' : carDetail.doors}}
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>tempat duduk : {{carDetail.person_capacity}}
+              <i class="fas fa-check-circle text-success mr-2"></i>tempat duduk : {{carDetail.manufacturingYear === undefined ? '' : carDetail.person_capacity}}
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>tipe bahan bakar : {{carDetail.fuelType.name}}
+              <i class="fas fa-check-circle text-success mr-2"></i>tipe bahan bakar : {{carDetail.manufacturingYear === undefined ? '' : carDetail.fuelType.name}}
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>air bag : {{carDetail.srsAirbag.name}}
+              <i class="fas fa-check-circle text-success mr-2"></i>air bag : {{carDetail.manufacturingYear === undefined ? '' : carDetail.srsAirbag.name}}
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>transmission : {{carDetail.transmissionType.name}}
+              <i class="fas fa-check-circle text-success mr-2"></i>transmission : {{carDetail.manufacturingYear === undefined ? '' : carDetail.transmissionType.name}}
             </li>
             <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>driver : {{carDetail.additionalDriver.name}}
+              <i class="fas fa-check-circle text-success mr-2"></i>driver : {{carDetail.manufacturingYear === undefined ? '' : carDetail.additionalDriver.name}}
             </li>
             <!-- <li class="p-2">
               <i class="fas fa-check-circle text-success mr-2"></i>tahun produksi : {{carDetail.manufacturingYear.name}}
@@ -102,7 +102,7 @@
     <ModalContainer
       :modalToggle="modalCheckout"
       :modalWrap="true"
-      headTitle="Sewa Toyota Agya"
+      :headTitle="`Sewa ${carDetail.car_title}`"
       width="600px"
       @bg-click="modalCheckout = false"
       @close-click="modalCheckout = false"
