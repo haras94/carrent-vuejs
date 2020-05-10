@@ -43,7 +43,6 @@
 </template>
 
 <script>
-// import Axios from 'axios'
 import { required, email, minLength } from 'vuelidate/lib/validators'
 
 export default {
@@ -71,19 +70,15 @@ export default {
             this.code = 1
             this.error = res.messages
           }
-          // if (res.data.status === 0) {
-          //   this.code = 1
-          //   this.error = 'Email Belum Di Aktivasi'
-          // }
           if (res.data.status === 0) {
+            this.code = 1
+            this.error = 'Akun Belum diAktivasi Silahkan Hubungi Admin'
+          }
+          if (res.data.status === 1) {
             this.code = 0
             localStorage.id = res.data.id
             this.code = 0
             this.$router.go('/')
-          }
-          if (res.status === 200) {
-            localStorage.id = res.data.id
-            this.$router.go()
           }
         })
         .catch((err) => {
