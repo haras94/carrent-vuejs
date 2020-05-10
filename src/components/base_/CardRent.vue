@@ -1,117 +1,91 @@
 <template>
   <div class="cardRentWrap">
-    <div class="requestCard">
-      <div class="upSide">
-        <div class="owner">
-          <header>Nama Perusahaan Rental</header>
-          <footer>Perusahaan nya</footer>
-        </div>
-        <div class="name">
-          <header>Nama Pemilik</header>
-          <footer>Pemilik nya</footer>
-        </div>
-        <div class="address">
-          <header>Alamat Perusahaan</header>
-          <footer>jl. dimana?</footer>
-        </div>
+    <div v-for="rentaller in rentalers" :key="rentaller" class="cardRent">
+      <div class="leftSide">
+        <p>Alamat</p>
+        <p>Email</p>
+        <p>Nama</p>
+        <p>ID Card</p>
+        <p>Phone Number</p>
+        <p>Nama Toko</p>
+      </div>
+      <div class="rightSide">
+        <p>{{ rentaller.address }}</p>
+        <p>{{ rentaller.email }}</p>
+        <p>{{ rentaller.fullname }}</p>
+        <p>{{ rentaller.id_card }}</p>
+        <p>{{ rentaller.phone_number }}</p>
+        <p>{{ rentaller.rental_name }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  name: 'CardRent'
+  name: 'CardRent',
+  created () {
+    this.$store.dispatch('getApi', {
+      url: 'rentaller',
+      mutation: 'SET_RENTALERS'
+    })
+  },
+  computed: {
+    ...mapState([
+      'rentalers'
+    ])
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .cardRentWrap{
-  background-color: rgba(0, 0, 0, 0);
   width: 100%;
-  // height: 600px;
   position: absolute;
   top: 120px;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
   padding-top: 30px;
   visibility: hidden;
   opacity: 0;
+  box-sizing: border-box;
   &.cardRentActive{
     opacity: 1;
     visibility: visible;
     transition: ease .3s;
   }
-  .requestCard{
-    background-color: #fff;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.075);
-    width: 1100px;
+  .cardRent{
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.144);
+    width: 700px;
     height: 300px;
     border-radius: 5px;
-    .upSide{
-      width: 100%;
-      height: 30%;
-      background-color: rgba(255, 255, 255, 0.568);
-      border-bottom: 1px solid rgba(116, 116, 116, 0.315);
+    display: flex;
+    box-sizing: border-box;
+    margin: 30px 0;
+    .leftSide{
+      width: 30%;
+      height: 100%;
       display: flex;
-      header{
-        color: #51A846;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid rgba(0, 0, 0, 0.144);
+      p{
+        padding:0 30px;
         font-weight: 600;
       }
-      .owner{
-        width: 33.33%;
-        height: 100%;
-        border-right: 1px solid rgba(116, 116, 116, 0.315);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        line-height: 40px;
-      }
-      .name{
-        width: 33.33%;
-        height: 100%;
-        border-right: 1px solid rgba(116, 116, 116, 0.315);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        line-height: 40px;
-      }
-      .address{
-        width: 33.33%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        line-height: 40px;
-      }
     }
-    .downSide{
-      width: 100%;
-      height: 40%;
-      background-color: rgb(255, 255, 255);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-        .acc{
-          background-color: #3F8220;
-        }
-        .dec{
-          background-color: #c82022;
-        }
-        button{
-          width: 100px;
-          height: 40px;
-          border-radius: 3px;
-          outline: none;
-          border: none;
-          margin: 0 5px;
-          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.075);
-          color: white;
-          font-weight: 600;
-          cursor: pointer;
+    .rightSide{
+      width: 70%;
+      height: 100%;
+      p{
+        padding:0 30px;
+        margin-top: 20px;
+        font-weight: 600;
       }
     }
   }

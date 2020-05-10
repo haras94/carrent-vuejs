@@ -14,6 +14,9 @@ export default new Vuex.Store({
     carsWithinLimit: [],
     modalLogin: false,
     carDetail: {},
+    users: [],
+    requests: [],
+    rentalers: [],
     allMerek: []
   },
   getters: {
@@ -44,8 +47,20 @@ export default new Vuex.Store({
     SET_CAR_DETAIL (state, data) {
       state.carDetail = data.data
     },
+    SET_USERS (state, data) {
+      state.users = data.data
+    },
+    SET_REQUESTS (state, data) {
+      state.requests = data.data
+    },
+    SET_RENTALERS (state, data) {
+      state.rentalers = data.data
+    },
     SET_MEREK_MOBIL (state, data) {
       state.allMerek = data.data
+    },
+    SET_PAGE (state, data) {
+      state.cars = data
     }
   },
   actions: {
@@ -82,16 +97,6 @@ export default new Vuex.Store({
             reject(new Error(err))
           })
       })
-    },
-    getCar (context) {
-      Axios.get(`${process.env.VUE_APP_API}product`)
-        .then((result) => {
-          console.log(result.data)
-          context.commit('getCars', result.data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
     }
   },
   modules: {
