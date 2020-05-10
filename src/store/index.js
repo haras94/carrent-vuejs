@@ -80,7 +80,7 @@ export default new Vuex.Store({
             resolve(res.data)
           })
           .catch(err => {
-            console.log(err)
+            reject(new Error(err))
           })
       })
     },
@@ -97,8 +97,18 @@ export default new Vuex.Store({
     },
     patchApi ({ commit }, proto) {
       return new Promise((resolve, reject) => {
-        console.log(proto.data)
         Axios.patch(`${process.env.VUE_APP_API + proto.url}`, proto.data)
+          .then(res => {
+            resolve(res.data)
+          })
+          .catch(err => {
+            reject(new Error(err))
+          })
+      })
+    },
+    deleteApi ({ commit }, proto) {
+      return new Promise((resolve, reject) => {
+        Axios.delete(`${process.env.VUE_APP_API + proto.url}`, proto.data)
           .then(res => {
             resolve(res.data)
           })
