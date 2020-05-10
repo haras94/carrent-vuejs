@@ -28,7 +28,113 @@
               <h5>Grand Total :</h5>
               <h4 class="text-success">IDR. {{ checkout.grand_total === undefined ? '0' : checkout.grand_total }}</h4>
             </section>
-            <button class="for-btn">Lanjut Ke Pembayaran</button>
+            <button class="for-btn"  data-toggle="modal" data-target="#exampleModal">Lanjut Ke Pembayaran</button>
+
+<!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Select Payment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="main-debt">
+                      <section class="list-debt">
+                        <div class="img-debt">
+                          <img src="../assets/img/logo-bca.png" width="100px" height="100px" alt="">
+                        </div>
+                        <div class="name-debt">
+                          <h5>BCA</h5>
+                          <p>Bayar dengan ATM BCA atau bca m-banking</p>
+                        </div>
+                        <div class="nxt">
+                          <i class="fas fa-chevron-right"></i>
+                        </div>
+                      </section>
+                      <section class="list-debt">
+                        <div class="img-debt">
+                          <img src="../assets/img/BNI-logo.png" width="100px" height="100px" alt="">
+                        </div>
+                        <div class="name-debt">
+                          <h5>BNI</h5>
+                          <p>Bayar dengan ATM BNI atau BNI m-banking</p>
+                        </div>
+                        <div class="nxt">
+                          <i class="fas fa-chevron-right"></i>
+                        </div>
+                      </section>
+                      <section class="list-debt">
+                        <div class="img-debt">
+                          <img src="../assets/img//mandiri.jpg" width="100px" height="100px" alt="">
+                        </div>
+                        <div class="name-debt">
+                          <h5>Mandiri</h5>
+                          <p>Bayar dengan ATM mandiri atau mandiri m-banking</p>
+                        </div>
+                        <div class="nxt">
+                          <i class="fas fa-chevron-right"></i>
+                        </div>
+                      </section>
+                       <section class="list-debt">
+                        <div class="img-debt">
+                          <img src="../assets/img/permata.jpg" width="100px" height="100px" alt="">
+                        </div>
+                        <div class="name-debt">
+                          <h5>Permata</h5>
+                          <p>Bayar dengan ATM Permata atau Permata m-banking</p>
+                        </div>
+                        <div class="nxt">
+                          <i class="fas fa-chevron-right"></i>
+                        </div>
+                      </section>
+                       <section class="list-debt">
+                        <div class="img-debt">
+                          <img src="../assets/img/ovo.jpg" width="100px" height="100px" alt="">
+                        </div>
+                        <div class="name-debt">
+                          <h5>Permata</h5>
+                          <p>Bayar dengan aplikasi OVO</p>
+                        </div>
+                        <div class="nxt">
+                          <i class="fas fa-chevron-right"></i>
+                        </div>
+                      </section>
+                       <section class="list-debt">
+                        <div class="img-debt">
+                          <img src="../assets/img/Gopay-Sponsor-Persik-New.png" width="100px" height="100px" alt="">
+                        </div>
+                        <div class="name-debt">
+                          <h5>Gopay</h5>
+                          <p>Bayar dengan aplikasi Gopay</p>
+                        </div>
+                        <div class="nxt">
+                          <i class="fas fa-chevron-right"></i>
+                        </div>
+                      </section>
+                       <section class="list-debt">
+                        <div class="img-debt">
+                          <img src="../assets/img/dana.jpeg" width="100px" height="100px" alt="">
+                        </div>
+                        <div class="name-debt">
+                          <h5>Dana</h5>
+                          <p>Bayar dengan aplikasi Dana</p>
+                        </div>
+                        <div class="nxt">
+                          <i class="fas fa-chevron-right"></i>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Pay Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -151,6 +257,58 @@ export default {
               font-weight: 600;
             }
         }
+    }
+  }
+
+  .list-debt{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: 80px;
+    border: rgba(0, 0, 0, 0.12) 1px solid;
+    padding: 5px;
+    margin-bottom: 3px;
+      .img-debt{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20%;
+        height: 100%;
+        overflow: hidden;
+        margin-right: 20px;
+          img {
+          object-fit: contain;
+          width: 100%;
+          // height: 100%;
+        }
+      }
+    .name-debt {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 60%;
+      height: 100%;
+      border-left: 1px solid rgba(0, 0, 0, 0.12);
+      padding-left: 15px ;
+      h5 {
+        font-weight: 600;
+        padding: 0;
+        margin: 0;
+      }
+        p {
+          font-size: 12px;
+          padding: 0;
+          margin: 0;
+        }
+    }
+    .nxt {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 10%;
+      align-content: center;
+      font-size: 16px;
     }
   }
 }
