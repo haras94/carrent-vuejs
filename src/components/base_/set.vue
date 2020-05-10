@@ -52,6 +52,10 @@ export default {
                 this.image = f.target.result
               }
               fr.readAsDataURL(file)
+              this.$store.dispatch('getApi', {
+                url: 'user/' + localStorage.id,
+                mutation: 'SET_USER_LOGIN'
+              })
             })
         }
       }

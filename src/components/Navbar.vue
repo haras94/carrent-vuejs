@@ -5,7 +5,7 @@
     <h1 >ARRENT</h1></router-link>
     <div class="navSearch">
       <img src="../assets/img/search.svg" alt="search" width="20px" height="20px">
-      <input type="text" placeholder="Search">
+      <input type="text" @input="search" v-model="valueSearch" placeholder="Search">
       </div>
     <div v-if="userLogin.id === undefined" class="navAdditional">
       <a @click="$emit('login-click')" class="btn-login"><p>Login</p></a>
@@ -43,6 +43,7 @@ export default {
   name: 'Navbar',
   data () {
     return {
+      valueSearch: '',
       dropdown: false,
       id: localStorage.id,
       role_id: localStorage.role_id || null
@@ -57,6 +58,12 @@ export default {
     ])
   },
   methods: {
+    search () {
+      this.$store.dispatch('getApi', {
+        url: 'product?search=' + this.valueSearch,
+        mutation: 'SET_CARS'
+      })
+    },
     logout () {
       delete localStorage.id
       delete localStorage.role_id
