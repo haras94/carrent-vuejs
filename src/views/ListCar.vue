@@ -6,7 +6,7 @@
     </div>
     <div class="eersa23">
       <h2>Pilih Kota</h2>
-      <select name="kota" id="kota">
+      <select name="kota" id="kota" class="custom-select">
         <option selected="selected" value="">Semua Kota</option>
         <option value="depok">Depok</option>
         <option value="jakarta">Jakarta</option>
@@ -150,7 +150,8 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 45px;
+      // margin-right: 45px;
+      width: 500px;
       #kota{
         margin-right: 20px;
       }
