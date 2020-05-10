@@ -1,6 +1,12 @@
 <template>
 <div class="lsmeax">
   <div class="form">
+    <router-link to="/" class="semqwe">
+      <div class="kkasl3">
+        <img src="@/assets/img/logo.png" alt="">
+        <h1>ARRENT</h1>
+      </div>
+    </router-link>
     <h1 class="header">Masuk Akun</h1>
         <div v-if="code === 1" class="alertdiv color-red">
           <p class="alert"><i class="fas fa-exclamation-triangle" style="color:#c72e3f"></i> {{error}}</p>
@@ -105,11 +111,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.semqwe{
+  position: relative;
+  text-decoration: none;
+  .kkasl3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    img{
+      position: relative;
+      top: 4px;
+      width: 40px;
+      height: 40px;
+    }
+    h1{
+      font-size: 2.5rem;
+      color: #BC2122;
+    }
+  }
+}
+
 .lsmeax{
   border-radius: 10px;
   width: 560px;
   height: auto;
-  padding-top: 50px;
   padding-bottom: 40px;
   background: white;
   display: flex;

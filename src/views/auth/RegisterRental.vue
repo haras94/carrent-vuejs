@@ -2,6 +2,12 @@
 <div class="slzkm3">
   <div class="axvbwe">
     <div class="form" >
+      <router-link to="/" class="semqwe">
+        <div class="kkasl3">
+          <img src="@/assets/img/logo.png" alt="">
+          <h1>ARRENT</h1>
+        </div>
+      </router-link>
       <h1 class="header">Daftar Toko Rental</h1>
       <div v-if="alert === 1" class="alertdiv color-green">
         <p class="alert">{{error}}</p>
@@ -161,6 +167,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.semqwe{
+  position: relative;
+  text-decoration: none;
+  .kkasl3{
+    margin-top: 20px;
+    margin-bottom: 0px;
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    img{
+      position: relative;
+      top: 4px;
+      width: 40px;
+      height: 40px;
+    }
+    h1{
+      font-size: 2.5rem;
+      color: #BC2122;
+    }
+  }
+}
+
 .mkasls{
   margin-top: 10px;
   label{
@@ -193,7 +222,6 @@ export default {
   border-radius: 10px;
   width: 560px;
   height: auto;
-  padding-top: 50px;
   padding-bottom: 40px;
   background: white;
   display: flex;
@@ -259,7 +287,6 @@ export default {
   background: transparent;
   border: 1px solid #886969;
   outline: none;
-  // margin-bottom: 5px;
 }
 .alert-password{
   position: relative;
@@ -293,7 +320,6 @@ export default {
   outline: none;
   cursor: not-allowed;
   position: relative;
-  margin-bottom: 10px;
 }
 #button-success{
   background: #c82022;
@@ -301,7 +327,6 @@ export default {
 }
 .login{
   position: relative;
-  margin-top: 15px;
 }
 .regis{
   width: 185px;
