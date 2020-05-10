@@ -1,6 +1,10 @@
 <template>
   <div class="container-fluid">
     <aside class="side">
+      <div class="temp">
+        <i class="fas fa-image"></i>
+        <p>gambar akan muncul disini</p>
+      </div>
       <img :src="this.image" alt="">
       <input type="file" class="pick-files" ref="file" @change="editImage($event)">
     </aside>
@@ -48,7 +52,6 @@ export default {
                 this.image = f.target.result
               }
               fr.readAsDataURL(file)
-              this.image.push(file)
             })
         }
       }
@@ -65,12 +68,23 @@ export default {
   // background: #c82022;
   padding: 10px;
     .side {
+      position: relative;
       width: 30%;
       height: 300px;
       border: 1px solid rgba(0, 0, 0, 0.12);
       margin: 10px;
       border-radius: 3px;
       overflow: hidden;
+      .temp{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+      }
         img {
           width: 250px;
           height: 250px;

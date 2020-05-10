@@ -36,7 +36,7 @@
           </section>
         </div>
       </section>
-      <menuSetprofile v-bind:tablist="tablist" v-bind:sendImage="sendImage" />
+      <menuSetprofile v-bind:tablist="tablist" />
     </div>
   </div>
 </template>

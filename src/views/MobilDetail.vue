@@ -76,9 +76,6 @@
             <li class="p-2">
               <i class="fas fa-check-circle text-success mr-2"></i>driver : {{carDetail.manufacturingYear === undefined ? '' : carDetail.additionalDriver.name}}
             </li>
-            <!-- <li class="p-2">
-              <i class="fas fa-check-circle text-success mr-2"></i>tahun produksi : {{carDetail.manufacturingYear.name}}
-            </li> -->
             </ul>
           </div>
         </div>

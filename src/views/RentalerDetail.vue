@@ -3,7 +3,14 @@
     <div class="pembungkus-aja" v-if="rentallerDetail.id !== undefined">
       <div class="info-user row">
         <section class="image-user col-md-4">
-          <img src="../assets/img/isyangif.gif" alt="foto" class="img-user" />
+          <div class="img-tempt">
+            <!-- <img :src="rentallerDetail.image" alt=""> -->
+          <img :src="this.image" alt="foto" class="img-user" />
+          <div class="forHover">
+            <i class="fas fa-camera camera"></i>
+            <input type="file" ref="file" class="pick" @change="editImage($event)">
+          </div>
+          </div>
         </section>
         <section class="flash-info col-md-6">
           <article class="name-user">
@@ -48,7 +55,7 @@
             <section class="menu"
               v-if="userLogin.id === parseInt($route.params.idRentaler)"
             >
-              <router-link :to="'/' + $route.params.idRentaler + '/add-car'"><p  class="m-0 p-2">Add Car</p></router-link>
+              <router-link :to="'/' + $route.params.idRentaler + '/add-car'"><p  class="m-0 p-2 text-dark">Add Car</p></router-link>
             </section>
           </div>
         </section>
@@ -66,6 +73,7 @@
 import menuListCar from '../components/base_/menuListCar.vue'
 import PageNotFound from '../views/PageNotFound.vue'
 import { mapState } from 'vuex'
+import Axios from 'axios'
 
 export default {
   name: 'RentalerDetail',
@@ -75,7 +83,8 @@ export default {
   },
   data () {
     return {
-      tablist: 'List Car'
+      tablist: 'List Car',
+      image: null
     }
   },
   computed: {
@@ -114,6 +123,26 @@ export default {
       document.querySelector('.more-info').style.display = 'flex'
       document.querySelector('.enable-car').style.display = 'none'
       document.querySelector('.list-car').style.display = 'none'
+    },
+    editImage (e) {
+      if (localStorage.id) {
+        if (localStorage.id.length !== 0) {
+          const file = this.$refs.file.files[0]
+          this.image = file
+          console.log(file)
+          const fd = new FormData()
+          fd.append('image', this.image)
+          Axios.patch(`${process.env.VUE_APP_API}rentaller/upload/${localStorage.id}`, fd)
+            .then(res => {
+              const file = e.target.files[0]
+              const fr = new FileReader()
+              fr.onload = f => {
+                this.image = f.target.result
+              }
+              fr.readAsDataURL(file)
+            })
+        }
+      }
     }
   },
   created () {
@@ -147,6 +176,43 @@ export default {
       padding: 16px;
       margin-left: 20px;
       margin-right: 50px;
+      overflow: hidden;
+      .img-tempt {
+        position: relative;
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        overflow: hidden;
+        .forHover{
+          display: flex;
+          justify-content: center;
+          z-index: 2;
+          top: 80%;
+          height: 50%;
+          position: absolute;
+          width: 100%;
+          background: rgba(85, 80, 80, 0.548);
+          transition: 0.5s;
+          overflow: hidden;
+            .pick {
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              outline: none;
+            }
+            .camera{
+              position: absolute;
+              left: 45%;
+              top: 10%;
+              font-size: 26px;
+              color: white;
+            }
+         }
+          .forHover:hover {
+            top: 50%;
+            transition: 0.5s;
+          }
+        }
       .img-user {
         width: 350px;
         height: 350px;
@@ -206,5 +272,8 @@ export default {
       }
     }
   }
+}
+.ok {
+  text-decoration: none;
 }
 </style>

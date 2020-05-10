@@ -214,8 +214,15 @@ export default {
   },
   props: ['withButton'],
   methods: {
-    ok (e) {
-      console.log(e)
+    uploads () {
+      const fd = new FormData()
+      fd.append('image', this.images)
+      this.$store.dispatch('postApi', {
+        url: 'product',
+        data: fd
+      }).then(res => {
+        console.log(res)
+      })
     },
     upload (e) {
       const file = e.target.files[0]
@@ -270,6 +277,7 @@ export default {
         fd.append('image', files[i])
       }
       fd.append('car_title', this.car_title)
+      fd.append('image', this.images)
       fd.append('description', this.description)
       fd.append('car_brand', this.car_brand)
       fd.append('price_per_day', this.price_per_day)
@@ -284,6 +292,7 @@ export default {
       fd.append('avg_fuel_consumption', this.avg_fuel_consumption)
       fd.append('srs_airbag', this.srs_airbag)
       fd.append('rating', this.rating)
+      this.uploads()
       this.$store
         .dispatch('postApi', {
           url: 'product',
@@ -339,6 +348,7 @@ export default {
     Axios.get(`${process.env.VUE_APP_API}srsairbag`).then(res => {
       this.srsairbags = res.data.data
     })
+    console.log(this.images)
   }
 }
 </script>
