@@ -8,25 +8,27 @@
             type="text"
             class="form-control-plaintext"
             id="staticNama"
-            v-model="userLogin.fullname"
+            v-model="dataUser.fullname"
+            @change="save"
           />
         </div>
       </div>
       <div class="form-group row">
-        <label for="staticNama" class="col-sm-2 col-form-label mr-2">KTP</label>
+        <label for="staticKtp" class="col-sm-2 col-form-label mr-2">KTP</label>
         <div class="col-sm-9">
           <input
-            type="text"
+            type="number"
             class="form-control-plaintext"
-            id="staticNama"
-            v-model="userLogin.fullname"
+            id="staticKtp"
+            v-model="dataUser.id_card"
+            @change="save"
           />
         </div>
       </div>
       <div v-if="withButton || false" class="form-group row">
         <label  for="staticGender" class="col-sm-2 col-form-label mr-2">Gender</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control-plaintext" id="staticGender" v-model="gender" />
+          <input type="text" class="form-control-plaintext" id="staticGender" v-model="dataUser.gender" @change="save" />
         </div>
       </div>
       <div v-if="withButton || false" class="form-group row">
@@ -36,7 +38,8 @@
             class="form-control-plaintext"
             id="staticAdress"
             rows="3"
-            v-model="userLogin.address"
+            v-model="dataUser.address"
+            @change="save"
           ></textarea>
         </div>
       </div>
@@ -47,7 +50,8 @@
             type="text"
             class="form-control-plaintext"
             id="staticPhone"
-            v-model="userLogin.phone"
+            v-model="dataUser.phone_number"
+            @change="save"
           />
         </div>
       </div>
@@ -58,7 +62,8 @@
             type="text"
             class="form-control-plaintext"
             id="staticEmail"
-            v-model="userLogin.email"
+            v-model="dataUser.email"
+            @change="save"
           />
         </div>
       </div>
@@ -67,53 +72,71 @@
         <div class="col-sm-9">
           <input
             type="password"
-            class="form-control-plaintext"
+            class="form-control"
             id="inputPassword"
-            v-model="userLogin.password"
+            @change="save"
           />
         </div>
       </div>
     </form>
-    <footer class="foot">
-      <button v-if="withButton || false" class="save" @click="save">Save</button>
-    </footer>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import Swal from 'sweetalert2'
+import Axios from 'axios'
 
 export default {
   name: 'Form',
   props: ['withButton'],
-  data () {
-    return {
-      gender: ''
-    }
-  },
   computed: {
     ...mapState(['userLogin'])
   },
+  data () {
+    return {
+      dataUser: {}
+    }
+  },
   methods: {
     save () {
-      Swal.fire({
-        title: 'Data Anda Telah terupdate!',
-        icon: 'success',
-        showConfirmButton: false,
-        timer: 1200
-      })
+      if (localStorage.id) {
+        if (localStorage.id.length !== 0) {
+          this.$store
+            .dispatch('patchApi', {
+              url: 'user/' + localStorage.id,
+              data: {
+                fullname: this.dataUser.fullname,
+                id_card: this.dataUser.id_card,
+                gender: this.dataUser.gender,
+                adress: this.dataUser.address,
+                phone_number: this.dataUser.phone_number,
+                email: this.dataUser.email,
+                password: this.dataUser.password
+              }
+            })
+            .then(res => {
+              Swal.fire({
+                title: 'Data Anda Telah terupdate!',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1200
+              })
+              this.$store.dispatch('getApi', {
+                url: 'user/' + localStorage.id,
+                mutation: 'SET_USER_LOGIN'
+              })
+            })
+        }
+      }
     }
   },
   created () {
     if (localStorage.id) {
       if (localStorage.id.length !== 0) {
-        this.$store
-          .dispatch('patchApi', {
-            url: 'user/' + localStorage.id
-          })
+        Axios.get(`${process.env.VUE_APP_API}user/${localStorage.id}`)
           .then(res => {
-            console.log(res)
+            this.dataUser = res.data.data
           })
       }
     }

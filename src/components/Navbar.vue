@@ -1,6 +1,8 @@
 <template>
   <div class="navbarParent">
-    <router-link to="/" class="navLogo"><h1>CARRENT</h1></router-link>
+    <router-link to="/" class="navLogo">
+    <img class="logo" src="../assets/img/oook.png" width="35px" height="35px">
+    <h1 >ARRENT</h1></router-link>
     <div class="navSearch">
       <img src="../assets/img/search.svg" alt="search" width="20px" height="20px">
       <input type="text" placeholder="Search">
@@ -98,6 +100,9 @@ a {
   right: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   z-index: 20;
+  .logo {
+    object-fit: cover;
+  }
   .navLogo{
     width: 180px;
     margin-left: 50px;
