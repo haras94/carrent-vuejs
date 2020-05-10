@@ -11,11 +11,13 @@ export default new Vuex.Store({
     rentallerLogin: {},
     rentallerDetail: {},
     cars: [],
+    carsWithinLimit: [],
     modalLogin: false,
     carDetail: {},
     users: [],
     requests: [],
-    rentalers: []
+    rentalers: [],
+    allMerek: []
   },
   getters: {
     isLogin: (state) => localStorage.id !== undefined
@@ -32,6 +34,9 @@ export default new Vuex.Store({
     },
     SET_CARS (state, data) {
       state.cars = data
+    },
+    SET_CARS_WITHIN_LIMIT (state, data) {
+      state.carsWithinLimit = data.data
     },
     MODAL_LOGIN_ON (state) {
       state.modalLogin = true
@@ -50,6 +55,12 @@ export default new Vuex.Store({
     },
     SET_RENTALERS (state, data) {
       state.rentalers = data.data
+    },
+    SET_MEREK_MOBIL (state, data) {
+      state.allMerek = data.data
+    },
+    SET_PAGE (state, data) {
+      state.cars = data
     }
   },
   actions: {
@@ -83,16 +94,6 @@ export default new Vuex.Store({
             reject(new Error(err))
           })
       })
-    },
-    getCar (context) {
-      Axios.get(`${process.env.VUE_APP_API}product`)
-        .then((result) => {
-          console.log(result.data)
-          context.commit('getCars', result.data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
     }
   },
   modules: {

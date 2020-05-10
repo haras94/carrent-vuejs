@@ -54,15 +54,19 @@
         <div class="formemail">
           <input v-model="$v.nohp.$model" type="number" class="inputemail">
         </div>
+        <div class="mkasls">
+          <input type="checkbox" id="checkbox">
+          <label for="checkbox">Saya Menyetujui Syarat Dan Ketentuan Yang Berlaku</label>
+        </div>
         <div class="login">
           <button
           id="button-success"
           @click="daftar"
           v-if="
-          $v.yourname.required && $v.name.required && $v.nohp.required && $v.alamat.required">Daftar</button>
+           $v.checkbox.required && $v.yourname.required && $v.name.required && $v.nohp.required && $v.alamat.required">Daftar</button>
           <button
           v-if="
-          !$v.yourname.required || !$v.name.required || !$v.nohp.required || !$v.alamat.required"
+           !$v.checkbox.required || !$v.yourname.required || !$v.name.required || !$v.nohp.required || !$v.alamat.required"
           class="default">Daftar</button>
         </div>
       </div>
@@ -115,7 +119,7 @@ export default {
         .then((res) => {
           if (res.status === 200) {
             this.alert = 1
-            this.error = 'Toko Berhasil dibuat Silahkan Verifikasi Email Anda'
+            this.error = 'Toko Berhasil dibuat Silahkan Chat Admin untuk Aktivasi'
           }
           // console.log(res)
         })
@@ -145,12 +149,25 @@ export default {
     password: {
       required,
       minLength: minLength(6)
+    },
+    checkbox: {
+      required
+      // dirty
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.mkasls{
+  margin-top: 10px;
+  label{
+    left: 5px;
+    top: -2px;
+    position: relative;
+    font-size: 14px;
+  }
+}
 .changemail{
   background: none;
   border: none;

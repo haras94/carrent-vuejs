@@ -1,6 +1,6 @@
 <template>
 <div>
-  <router-link :to="car.rentaller_id+'/'+car.id" class="lapozzs">
+  <router-link :to="'/'+car.rentaller_id+'/'+car.id" class="lapozzs">
     <div class="lmskal" >
       <div>
         <div class="lksmkl" >

@@ -5,36 +5,31 @@
       <h2>List Car</h2>
     </div>
     <div class="eersa23">
-      <h2>Pilih Kota</h2>
-      <select name="kota" id="kota" class="custom-select">
+      <!-- <h2>Pilih Kota</h2>
+      <select name="kota" id="kota" >
         <option selected="selected" value="">Semua Kota</option>
         <option value="depok">Depok</option>
         <option value="jakarta">Jakarta</option>
         <option value="bogor">Bogor</option>
         <option value="bekasi">Bekasi</option>
         <option value="tanggerang">Tanggerang</option>
-      </select>
+      </select> -->
       <h2>Urutkan</h2>
-      <select name="sortby" id="product-sorty" class="custom-select">
+      <select @change="priceasc($event)" class="custom-select">
         <option selected="selected" value="">Relevansi</option>
-        <option value="price:asc">Termurah</option>
-        <option value="price:desc">Termahal</option>
-        <option value="rating:desc">Rating Tertinggi</option>
+        <option value="1">Termurah</option>
+        <option value="2">Termahal</option>
       </select>
     </div>
   </div>
   <div class="lkaskm">
-    <!-- <div class="klsme3"> -->
-      <Card v-for="car in cars.data" :key="car.id" :car="car"/>
-    <!-- </div> -->
+    <Card v-for="car in cars.data" :key="car.id" :car="car"/>
   </div>
   <div class="mmask2">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li @click="prevPages" class="page-item"><a class="page-link" >Previous</a></li>
         <li v-for="pagination in cars.total_page" :key="pagination" class="page-item"><a @click="pages(pagination)" class="page-link">{{pagination}}</a></li>
-        <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li> -->
         <li @click="nextPages" class="page-item"><a class="page-link">Next</a></li>
       </ul>
     </nav>
@@ -50,7 +45,8 @@ export default {
   name: 'ListCar',
   data () {
     return {
-      currentPage: 1
+      currentPage: 1,
+      sortby: 0
     }
   },
   components: {
@@ -62,8 +58,30 @@ export default {
     ])
   },
   methods: {
+    priceasc (value) {
+      console.log(value.target.value === '1')
+      // if (value.target.value === '0') {
+      //   this.$store.dispatch('getApi', {
+      //     url: 'product',
+      //     mutation: 'SET_CARS'
+      //   })
+      // }
+      if (value.target.value === '1') {
+        this.$store.dispatch('getApi', {
+          url: 'product?sort=price_per_day',
+          mutation: 'SET_PAGE'
+        })
+      }
+      if (value.target.value === '2') {
+        this.$store.dispatch('getApi', {
+          url: 'product?sort=price_per_day&sort_type=desc',
+          mutation: 'SET_PAGE'
+        })
+      }
+    },
     pages (id) {
       this.cars.current_page = 0 + id
+      this.cars.limit = 8
       this.$store.dispatch('getApi', {
         url: 'product?page=' + this.cars.current_page,
         mutation: 'SET_PAGE'
@@ -73,8 +91,10 @@ export default {
       console.log(this.cars.current_page)
       if (this.cars.current_page === 1) {
         this.cars.current_page = 1
+        this.cars.limit = 8
       } else {
         this.cars.current_page -= 1
+        this.cars.limit = 8
         this.$store.dispatch('getApi', {
           url: 'product?page=' + this.cars.current_page,
           mutation: 'SET_PAGE'
@@ -82,18 +102,14 @@ export default {
       }
     },
     nextPages () {
-      // this.$store.dispatch('getApi', {
-      //   url: 'product?page=2',
-      //   mutation: 'SET_PAGE'
-      // })
-      console.log(this.cars.current_page)
-
       if (this.cars.current_page === this.cars.total_page) {
         this.cars.current_page = this.cars.total_page
         console.log(this.cars.current_page)
+        this.cars.limit = 8
       } else {
         this.cars.current_page += 1
-        console.log(this.cars.current_page)
+        this.cars.limit = 8
+        console.log(this.cars.limit)
         this.$store.dispatch('getApi', {
           url: 'product?page=' + this.cars.current_page,
           mutation: 'SET_PAGE'
@@ -108,6 +124,9 @@ export default {
 .mmask2{
   display: flex;
   justify-content: center;
+}
+.pagination{
+  cursor: pointer;
 }
 .klemsa1{
   width: 100%;
@@ -135,7 +154,7 @@ export default {
       align-items: center;
       justify-content: center;
       // margin-right: 45px;
-      width: 500px;
+      width: 250px;
       #kota{
         margin-right: 20px;
       }
