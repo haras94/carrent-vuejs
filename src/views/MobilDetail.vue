@@ -5,11 +5,11 @@
       <div class="detail-car">
         <div class="images col-7">
           <div class="image-primary">
-            <img :src="!selectedImage ? carDetail.images[0].image : selectedImage" />
+            <img :src="!selectedImage ?  carDetail.images[0].image : selectedImage" />
           </div>
           <div class="image-secondary">
             <img
-              v-for="image in carDetail.images" :key="image"
+              v-for="(image, i) in carDetail.images" :key="i"
               @click="selectImage($event)"
               id="image-1"
               :src="image.image"
@@ -126,7 +126,7 @@ export default {
       } else this.modalCheckout = true
     }
   },
-  created () {
+  beforeCreate () {
     const idCar = this.$route.params.idMobil
     this.$store.dispatch('getApi', {
       url: `product/${idCar}`,
