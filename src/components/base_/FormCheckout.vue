@@ -2,16 +2,20 @@
   <form @submit.prevent="submit">
     <div class="form-group">
       <label for="departure-time">Waktu Penjemputan</label>
-      <input class="form-control" type="datetime-local" v-model="departureTime" id="departure-time">
+      <input v-if="checkout" class="form-control" type="datetime-local" v-model="departureTime" id="disabledInput" disabled>
+      <input v-else class="form-control" type="datetime-local" v-model="departureTime" id="departure-time">
     </div>
     <div class="form-group">
       <label for="return-time">Waktu Pengembalian</label>
-      <input class="form-control" type="datetime-local" v-model="returnTime" id="return-time">
+      <input v-if="checkout" class="form-control" type="datetime-local" v-model="returnTime" id="disabledInput" disabled>
+      <input v-else class="form-control" type="datetime-local" v-model="returnTime" id="return-time">
     </div>
     <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" @change="ok($event)">
+      <input v-if="checkout && driver" type="checkbox" class="form-check-input" id="exampleCheck1" @change="ok($event)" checked disabled>
+      <input v-if="checkout" type="checkbox" class="form-check-input" id="exampleCheck1" @change="ok($event)" disabled>
+      <input v-else type="checkbox" class="form-check-input" id="exampleCheck1" @change="ok($event)">
       <label class="form-check-label m-0 p-0" for="exampleCheck1" >Driver</label><br>
-      <em style="font-size: 12px">menggunakan addtional driver dikenakan biaya sebesar idr. 50.000</em>
+      <em v-if="!checkout" style="font-size: 12px">menggunakan addtional driver dikenakan biaya sebesar idr. 50.000</em>
     </div>
     <div class="d-flex flex-column">
       <div class="row">
@@ -33,7 +37,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'FormCheckout',
-  props: ['withButton'],
+  props: ['withButton', 'checkout'],
   computed: {
     totalPrice () {
       const price = this.carDetail.price_per_day
@@ -51,15 +55,25 @@ export default {
       const returnTime = Date.parse(this.returnTime)
       return ((returnTime - departure) / 3600000) / 24
     },
+    est () {
+      let counter = this.counter
+      if (counter < 1) {
+        counter = counter * 24 + ' Jam'
+        return counter
+      }
+      counter = counter + ' Hari'
+      return counter
+    },
     ...mapState([
-      'carDetail'
+      'carDetail',
+      'userLogin'
     ])
   },
   data () {
     return {
-      driver: false,
-      departureTime: new Date().toISOString().split(':')[0] + ':' + new Date().toISOString().split(':')[1],
-      returnTime: new Date().toISOString().split(':')[0] + ':' + new Date().toISOString().split(':')[1]
+      driver: this.checkout ? this.checkout.driver : false,
+      departureTime: this.checkout ? this.checkout.departure_time : new Date().toISOString().split(':')[0] + ':' + new Date().toISOString().split(':')[1],
+      returnTime: this.checkout ? this.checkout.return_time : new Date().toISOString().split(':')[0] + ':' + new Date().toISOString().split(':')[1]
     }
   },
   methods: {
@@ -67,8 +81,25 @@ export default {
       this.driver = e.target.checked
     },
     submit () {
-      console.log(this.departureTime)
-      this.$router.push('/user/checkout')
+      const data = {
+        user_id: this.userLogin.id,
+        product_id: this.carDetail.id,
+        rent_estimation: this.est,
+        status: 1,
+        departure_time: this.departureTime,
+        return_time: this.returnTime,
+        forfeit: 0,
+        payment: 0,
+        grand_total: this.totalPrice,
+        driver: this.driver
+      }
+      this.$store.commit('SET_CHECKOUT', data)
+      this.$store.dispatch('getApi', {
+        url: 'product/' + this.carDetail.id,
+        mutation: 'SET_CAR_IN_CHECKOUT'
+      }).then(res => {
+        this.$router.push('/user/checkout')
+      })
     }
   }
 }

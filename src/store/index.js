@@ -17,7 +17,9 @@ export default new Vuex.Store({
     users: [],
     requests: [],
     rentalers: [],
-    allMerek: []
+    allMerek: [],
+    checkout: {},
+    carInCheckout: {}
   },
   getters: {
     isLogin: (state) => localStorage.id !== undefined
@@ -61,6 +63,12 @@ export default new Vuex.Store({
     },
     SET_PAGE (state, data) {
       state.cars = data
+    },
+    SET_CHECKOUT (state, data) {
+      state.checkout = data
+    },
+    SET_CAR_IN_CHECKOUT (state, data) {
+      state.carInCheckout = data.data
     }
   },
   actions: {
