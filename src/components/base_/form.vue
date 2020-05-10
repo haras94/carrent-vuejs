@@ -50,7 +50,7 @@
             type="text"
             class="form-control-plaintext"
             id="staticPhone"
-            v-model="dataUser.phone"
+            v-model="dataUser.phone_number"
             @change="save"
           />
         </div>
@@ -79,9 +79,6 @@
         </div>
       </div>
     </form>
-    <footer class="foot">
-      <button v-if="withButton || false" class="save" @click="save">Save</button>
-    </footer>
   </div>
 </template>
 
@@ -113,7 +110,7 @@ export default {
                 id_card: this.dataUser.id_card,
                 gender: this.dataUser.gender,
                 address: this.dataUser.address,
-                phone: this.dataUser.phone,
+                phone_number: this.dataUser.phone_number,
                 email: this.dataUser.email,
                 password: this.dataUser.password
               }
@@ -140,7 +137,6 @@ export default {
         Axios.get(`${process.env.VUE_APP_API}user/${localStorage.id}`)
           .then(res => {
             this.dataUser = res.data.data
-            console.log(this.dataUser)
           })
       }
     }

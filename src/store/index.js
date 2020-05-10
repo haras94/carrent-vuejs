@@ -8,19 +8,35 @@ export default new Vuex.Store({
   state: {
     userLogin: {},
     adminLogin: {},
+    rentallerLogin: {},
     rentallerDetail: {},
+    cars: [],
+    carsWithinLimit: [],
     modalLogin: false,
-    allCar: {}
+    carDetail: {},
+    users: [],
+    requests: [],
+    rentalers: [],
+    allMerek: []
   },
   getters: {
     isLogin: (state) => localStorage.id !== undefined
   },
   mutations: {
     SET_USER_LOGIN (state, data) {
-      state.userLogin = data
+      state.userLogin = data.data
+    },
+    SET_RENTALLER_LOGIN (state, data) {
+      state.rentallerLogin = data.data
     },
     SET_RENTALLER_DETAIL (state, data) {
-      state.rentallerDetail = data
+      state.rentallerDetail = data.data
+    },
+    SET_CARS (state, data) {
+      state.cars = data
+    },
+    SET_CARS_WITHIN_LIMIT (state, data) {
+      state.carsWithinLimit = data.data
     },
     MODAL_LOGIN_ON (state) {
       state.modalLogin = true
@@ -28,20 +44,37 @@ export default new Vuex.Store({
     MODAL_LOGIN_OFF (state) {
       state.modalLogin = false
     },
-    GET_CAR (state, data) {
-      state.allCar = data
+    SET_CAR_DETAIL (state, data) {
+      state.carDetail = data.data
+    },
+    SET_USERS (state, data) {
+      state.users = data.data
+    },
+    SET_REQUESTS (state, data) {
+      state.requests = data.data
+    },
+    SET_RENTALERS (state, data) {
+      state.rentalers = data.data
+    },
+    SET_MEREK_MOBIL (state, data) {
+      state.allMerek = data.data
+    },
+    SET_PAGE (state, data) {
+      state.cars = data
     }
   },
   actions: {
     getApi ({ commit }, proto) {
-      Axios.get(`${process.env.VUE_APP_API + proto.url}`)
-        .then(res => {
-          const dataLogin = res.data.data
-          commit(proto.mutation, dataLogin)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      return new Promise((resolve, reject) => {
+        Axios.get(`${process.env.VUE_APP_API + proto.url}`)
+          .then(res => {
+            commit(proto.mutation, res.data)
+            resolve(res.data)
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      })
     },
     postApi ({ commit }, proto) {
       return new Promise((resolve, reject) => {

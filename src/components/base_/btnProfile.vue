@@ -1,10 +1,10 @@
 <template>
   <div class="btnProfileWrap">
     <div class="nameProfile">
-      <h6 class="mb-0 mr-3">{{ userLogin.fullname }}</h6>
+      <h6 class="mb-0 mr-3">{{ name }}</h6>
     </div>
     <div class="photoProfile">
-      <img src="../../assets/img/isyana-sarasvati.jpg" alt="user-photo">
+      <img :src="userLogin.image">
     </div>
   </div>
 </template>
@@ -15,6 +15,15 @@ import { mapState } from 'vuex'
 export default {
   name: 'BtnProfile',
   computed: {
+    name () {
+      let nama = ''
+      if (!localStorage.role_id) {
+        nama = this.userLogin.rental_name
+        return nama
+      }
+      nama = this.userLogin.fullname
+      return nama
+    },
     ...mapState([
       'userLogin'
     ])

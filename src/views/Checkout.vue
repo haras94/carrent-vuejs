@@ -24,11 +24,28 @@
             <h5>Grand Total :</h5>
             <h4 class="text-success">IDR. 120.000</h4>
           </section>
-          <button class="for-btn">Lanjut Ke Pembayaran</button>
+          <button class="for-btn" data-toggle="modal" data-target="#exampleModal">Lanjut Ke Pembayaran</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      <div class="modal-body">
+        ...
+      </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
       </div>
     </div>
-      </div>
   </div>
 </template>
 

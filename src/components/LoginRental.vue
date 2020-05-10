@@ -7,7 +7,7 @@
         <h1>ARRENT</h1>
       </div>
     </router-link>
-    <h1 class="header">Masuk Akun</h1>
+    <h1 class="header">Masuk Akun Toko</h1>
         <div v-if="code === 1" class="alertdiv color-red">
           <p class="alert"><i class="fas fa-exclamation-triangle" style="color:#c72e3f"></i> {{error}}</p>
         </div>
@@ -38,18 +38,17 @@
           <button
           v-if="!$v.email.email || !$v.email.required || !$v.password.required || !$v.password.minLength"
           class="default">Masuk</button>
-          <button id="google"><img src="@/assets/img/Google.svg"> Masuk Dengan Google</button>
+          <!-- <button id="google"><img src="@/assets/img/Google.svg"> Masuk Dengan Google</button> -->
         </div>
     <div class="regis">
-      <h1>Belum Punya Akun?</h1>
-      <router-link to="/register">Daftar</router-link>
+      <h1>Belum Punya Toko?</h1>
+      <router-link to="/add-shop">Daftar</router-link>
     </div>
   </div>
 </div>
 </template>
 
 <script>
-// import Axios from 'axios'
 import { required, email, minLength } from 'vuelidate/lib/validators'
 
 export default {
@@ -65,7 +64,7 @@ export default {
   methods: {
     login () {
       this.$store.dispatch('postApi', {
-        url: 'user/login',
+        url: 'rentaller/login',
         data: {
           email: this.email,
           password: this.password
@@ -79,14 +78,11 @@ export default {
           }
           if (res.data.status === 0) {
             this.code = 1
-            this.error = 'Email Belum Di Aktivasi'
+            this.error = 'Akun Belum diAktivasi Silahkan Hubungi Admin'
           }
           if (res.data.status === 1) {
-            console.log(res.data)
             this.code = 0
             localStorage.id = res.data.id
-            localStorage.role_id = res.data.role_id
-            this.$store.commit('MODAL_LOGIN_OFF')
             this.code = 0
             this.$router.go('/')
           }

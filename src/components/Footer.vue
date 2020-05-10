@@ -102,6 +102,8 @@ export default {
     border: 1px solid gray;
     padding: 10px 20px;
     box-sizing: border-box;
+    outline: none;
+    border: none;
   }
   .pplas1{
     position: relative;

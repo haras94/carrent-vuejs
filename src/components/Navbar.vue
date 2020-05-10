@@ -1,6 +1,8 @@
 <template>
   <div class="navbarParent">
-    <router-link to="/" class="navLogo"><h1>CARRENT</h1></router-link>
+    <router-link to="/" class="navLogo">
+    <img class="logo" src="../assets/img/oook.png" width="35px" height="35px">
+    <h1 >ARRENT</h1></router-link>
     <div class="navSearch">
       <img src="../assets/img/search.svg" alt="search" width="20px" height="20px">
       <input type="text" placeholder="Search">
@@ -8,13 +10,19 @@
     <div v-if="userLogin.id === undefined" class="navAdditional">
       <a @click="$emit('login-click')" class="btn-login"><p>Login</p></a>
       <router-link to="/register" class="btn-register"><p>Register</p></router-link>
+      <router-link to="/login-shop" class="ml-5">
+        <p class="ok">masuk sebagai rentaller</p>
+      </router-link>
     </div>
     <div
       v-else class="navAdditional"
       @mouseenter="dropdown = true"
       @mouseleave="dropdown = false"
     >
-      <router-link :to="`/user/${userLogin.id}`">
+      <router-link v-if="role_id" to="/user">
+        <btnprofile />
+      </router-link>
+      <router-link v-else :to="`/${id}`">
         <btnprofile />
       </router-link>
       <div class="user-login__detail" :class="{ 'dropdown': dropdown }">
@@ -35,7 +43,9 @@ export default {
   name: 'Navbar',
   data () {
     return {
-      dropdown: false
+      dropdown: false,
+      id: localStorage.id,
+      role_id: localStorage.role_id || null
     }
   },
   components: {
@@ -49,8 +59,8 @@ export default {
   methods: {
     logout () {
       delete localStorage.id
+      delete localStorage.role_id
       this.$router.go()
-      this.$router.push('/login')
     }
   }
 }
@@ -64,6 +74,7 @@ a {
   width: 170px;
   height: 0px;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 10px 0px;
   position: absolute;
   z-index: 21;
   top: 100%;
@@ -86,16 +97,17 @@ a {
   background-color: #c82022;
   height: 70px;
   display: flex;
-  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   z-index: 20;
+  .logo {
+    object-fit: cover;
+  }
   .navLogo{
-    width: 180px;
-    margin-left: 50px;
+    width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,7 +119,6 @@ a {
     }
   }
   .navSearch{
-    // background-color: sandybrown;
     width: 600px;
     display: flex;
     align-items: center;
@@ -128,28 +139,27 @@ a {
   .navAdditional{
     position: relative;
     width: 200px;
+    margin-left: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    .trolly{
-      width: 30px;
-      height: 30px;
-      position: absolute;
-      left: 120px;
-      img{
-        object-fit: contain;
-        width: 100%;
-        height: 100%;
+      p{
+        margin: 0;
+        margin-left: 50px;
+        font-size: 15px;
+        color: #ffffff;
       }
-    }
+      .ok{
+        font-size: 12px;
+      }
     .btn-login{
       border: 3px solid white;
       border-radius: 3px;
       width: 120px;
       height: 55%;
       position: absolute;
-      right: 170px;
+      right: 250px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -165,7 +175,7 @@ a {
       width: 120px;
       height: 55%;
       position: absolute;
-      right: 40px;
+      right: 120px;
       display: flex;
       justify-content: center;
       align-items: center;

@@ -6,10 +6,10 @@
     </nav>
     <div class="content">
         <div class="list-car">
-            <card v-for="car in 9" :key="car.id" />
+            <card v-for="car in cars.data" :key="car.id" :car="car" />
         </div>
         <div class="enable-car">
-            <card v-for="car in 3" :key="car.id" />
+            <card v-for="car in cars.data" :key="car.id" :car="car" />
         </div>
         <div class="more-info">
             <Request/>
@@ -28,7 +28,7 @@ export default {
     card,
     Request
   },
-  props: ['tablist']
+  props: ['tablist', 'cars']
 }
 </script>
 

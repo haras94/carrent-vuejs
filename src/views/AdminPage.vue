@@ -1,67 +1,74 @@
 <template>
   <div class="adminPageWrap">
     <div class="adminPage">
-      <div class="request">
+      <div @click="modulRequest" class="request">
         <h5>Request</h5>
-        <div class="requestPage" :class="{ 'dropdown': dropdown }">
-          <ul>
-            <li>Setting</li>
-            <li @click="logout" >Logout</li>
-          </ul>
-        </div>
       </div>
-      <div class="rentaler">
+      <div @click="modulRent" class="rentaler">
         <h5>Rentaler</h5>
       </div>
-      <div class="allUser">
+      <div @click="modulAlluser" class="allUser">
         <h5>All User</h5>
       </div>
     </div>
+    <CardRequest />
+    <CardRent />
+    <Alluser />
   </div>
 </template>
 
 <script>
+import CardRequest from '../components/base_/CardRequest.vue'
+import CardRent from '../components/base_/CardRent.vue'
+import Alluser from '../components/base_/Alluser.vue'
 
 export default {
   name: 'AdminPage',
-  data () {
-    return {
-      dropdown: false
+  components: {
+    CardRequest,
+    CardRent,
+    Alluser
+  },
+  methods: {
+    modulRequest () {
+      document.querySelector('.cardRentWrap').classList.remove('cardRentActive')
+      document.querySelector('.allUserWrap').classList.remove('allUserActive')
+      document.querySelector('.allUser').classList.remove('on')
+      document.querySelector('.rentaler').classList.remove('on')
+      document.querySelector('.request').classList.add('on')
+      document.querySelector('.cardRequestWrap').classList.add('cardRequestActive')
+    },
+    modulRent () {
+      document.querySelector('.allUserWrap').classList.remove('allUserActive')
+      document.querySelector('.cardRequestWrap').classList.remove('cardRequestActive')
+      document.querySelector('.request').classList.remove('on')
+      document.querySelector('.allUser').classList.remove('on')
+      document.querySelector('.rentaler').classList.add('on')
+      document.querySelector('.cardRentWrap').classList.add('cardRentActive')
+    },
+    modulAlluser () {
+      document.querySelector('.cardRequestWrap').classList.remove('cardRequestActive')
+      document.querySelector('.cardRentWrap').classList.remove('cardRentActive')
+      document.querySelector('.request').classList.remove('on')
+      document.querySelector('.rentaler').classList.remove('on')
+      document.querySelector('.allUser').classList.add('on')
+      document.querySelector('.allUserWrap').classList.add('allUserActive')
     }
+  },
+  created () {
+    if (localStorage.role_id === '0') this.$router.push('/')
   }
 }
 </script>
 
 <style lang="scss" scoped>
-a {
-  text-decoration: none;
-}
-.requestPage {
-  width: 170px;
-  height: 0px;
-  background-color: white;
-  position: absolute;
-  z-index: 21;
-  top: 100%;
-  right: 45px;
-  overflow: hidden;
-  transition: .2s;
-  border-radius: 3px;
-  li {
-    padding: 10px 20px;
-    cursor: pointer;
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.061);
-    }
-  }
-  &.dropdown {
-    height: 100px;
-  }
+.on {
+  background-color: rgba(0, 0, 0, 0.055);
 }
 .adminPageWrap{
   background-color: rgba(0, 0, 0, 0.055);
   width: 100%;
-  height: 1000px;
+  height: 3000px;
   display: flex;
 
   .adminPage{
@@ -70,15 +77,16 @@ a {
     margin-top: 70px;
     background-color: rgba(255, 255, 255, 0.904);
     display: flex;
+    cursor: pointer;
     .request{
       width: 33.33%;
       height: 100%;
-      // background-color: blueviolet;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-right: 1px solid rgba(0, 0, 0, 0.356);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.356);
+      border-right: 1px solid rgba(0, 0, 0, 0.199);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.199);
     }
     .rentaler{
       width: 33.33%;
@@ -87,8 +95,8 @@ a {
       display: flex;
       justify-content: center;
       align-items: center;
-      border-right: 1px solid rgba(0, 0, 0, 0.356);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.356);
+      border-right: 1px solid rgba(0, 0, 0, 0.199);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.199);
     }
     .allUser{
       width: 33.33%;
@@ -97,7 +105,7 @@ a {
       display: flex;
       justify-content: center;
       align-items: center;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.356);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.199);
     }
   }
 }

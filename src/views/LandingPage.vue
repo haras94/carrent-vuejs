@@ -46,30 +46,7 @@
       </div>
       <div class="partnerLogo">
         <div class="logoWrap">
-          <div class="firstLine">
-            <img src="../assets/img/logo-buggati.jpg" alt="buggati" width="120px" height="70px">
-            <h5>Ferrari</h5>
-            <h5>Bmw</h5>
-            <h5>Ford</h5>
-            <h5>Audi</h5>
-            <h5>Lamborghini</h5>
-          </div>
-          <div class="secondLine">
-            <h5>Toyota</h5>
-            <h5>Suzuki</h5>
-            <h5>Honda</h5>
-            <h5>Wuling</h5>
-            <h5>Mazda</h5>
-            <h5>Hyundai</h5>
-          </div>
-          <div class="thirdLine">
-            <h5>Volvo</h5>
-            <h5>Chevorlet</h5>
-            <h5>Nissan</h5>
-            <h5>Jeep</h5>
-            <h5>Mitsubishi</h5>
-            <h5>Daihatsu</h5>
-          </div>
+          <h5 v-for="all in allMerek" :key="all.id">{{all.name}}</h5>
         </div>
       </div>
     </div>
@@ -78,15 +55,14 @@
         <h1>ORDER NOW!</h1>
       </header>
       <div class="cardList">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card v-for="car in cars.data" :key="car.id" :car="car" />
       </div>
-      <div class="seeMore">
-        <header>See more</header>
-        <i class="fas fa-chevron-right"></i>
-      </div>
+      <router-link to="/list-car">
+        <div class="seeMore">
+          <header>See more</header>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </router-link>
     </div>
     <div class="bestProfile">
       <div class="upProfile">
@@ -95,6 +71,12 @@
       <div v-for="cardRentail in 1" :key="cardRentail" class="downProfile">
         <cardRentail />
       </div>
+      <router-link to="/add-shop">
+        <div class="btn-forRentaler">
+          <p>Ingin jadi rentaler?</p>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -103,6 +85,7 @@
 import Card from '../components/Card.vue'
 import Carousel from '../components/base_/Caroucel.vue'
 import cardRentail from '../components/base_/cardRentail.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'LandingPage',
@@ -110,6 +93,19 @@ export default {
     Card,
     Carousel,
     cardRentail
+  },
+  computed: {
+    ...mapState([
+      'cars',
+      'allMerek'
+    ])
+  },
+  created () {
+    this.$store.dispatch('getApi', {
+      url: 'carbrand',
+      mutation: 'SET_MEREK_MOBIL'
+    })
+    if (localStorage.role_id === '1') this.$router.push('/admin-page')
   }
 }
 </script>
@@ -155,34 +151,18 @@ export default {
       justify-content: center;
       .logoWrap {
         width: 80%;
-        height: 100%;
+        height: auto;
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        overflow: hidden;
+        // flex-direction: column;
         justify-content: center;
         opacity: 0.6;
         h5 {
+          margin: 7px;
           color: rgb(92, 91, 91);
-        }
-        .firstLine {
-          // background-color: #fff;
-          width: 100%;
-          height: 50px;
-          display: flex;
-          justify-content: space-around;
-        }
-        .secondLine {
-          // background-color: rgb(134, 134, 134);
-          width: 100%;
-          height: 50px;
-          display: flex;
-          justify-content: space-around;
-        }
-        .thirdLine {
-          // background-color: rgb(20, 19, 19);
-          width: 100%;
-          height: 50px;
-          display: flex;
-          justify-content: space-around;
+          width: auto;
+          height: auto;
         }
       }
     }
@@ -205,10 +185,6 @@ export default {
       }
     }
     .ourServiceCard {
-      // background-image: url('../assets/img/2018-bugatti-chiron-sport-2.jpg');
-      // background-size: cover;
-      // background-position: center;
-      // background-repeat: no-repeat;
       width: 100%;
       height: 400px;
       display: flex;
@@ -255,6 +231,7 @@ export default {
     align-items: center;
     padding-bottom: 50px;
     position: relative;
+    overflow: hidden;
     .cardList {
       display: flex;
       justify-content: center;
@@ -293,6 +270,7 @@ export default {
     margin-top: 80px;
     width: 100%;
     height: 500px;
+    position: relative;
     .upProfile {
       width: 100%;
       height: 50px;
@@ -309,6 +287,30 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    }
+    .btn-forRentaler{
+      position: absolute;
+      width: 200px;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &:hover i{
+        transform: translateX(5px);
+      }
+      p{
+        font-weight: 500;
+        color: white;
+        font-size: 18px;
+      }
+      i{
+        color: white;
+        font-size: 19px;
+        padding-left: 15px;
+        padding-bottom: 15px;
+        transition: ease .2s;
+      }
     }
   }
 }

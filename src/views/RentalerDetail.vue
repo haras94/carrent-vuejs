@@ -3,11 +3,18 @@
     <div class="pembungkus-aja" v-if="rentallerDetail.id !== undefined">
       <div class="info-user row">
         <section class="image-user col-md-4">
-          <img src="../assets/img/isyangif.gif" alt="foto" class="img-user" />
+          <div class="img-tempt">
+            <!-- <img :src="rentallerDetail.image" alt=""> -->
+          <img :src="this.image" alt="foto" class="img-user" />
+          <div class="forHover">
+            <i class="fas fa-camera camera"></i>
+            <input type="file" ref="file" class="pick" @change="editImage($event)">
+          </div>
+          </div>
         </section>
         <section class="flash-info col-md-6">
           <article class="name-user">
-            <h1>{{ rentallerDetail.fullname }}</h1>
+            <h1>{{ rentallerDetail.rental_name }}</h1>
           </article>
           <article class="adress">
             <i class="fas fa-map-pin mr-4"></i>
@@ -26,7 +33,7 @@
             <p>10 armada</p>
           </article>
           <article class="adress">
-            <i class="fas fa-star text-warning mr-1" v-for="star in 5" :key="star.id"></i>
+            <i class="fas fa-star text-warning mr-1" v-for="star in 5" :key="star"></i>
           </article>
         </section>
       </div>
@@ -34,20 +41,25 @@
         <section class="tablist">
           <div class="tab">
             <section class="menu" @click="listCar">
-              <p>List Car</p>
+              <p  class="m-0 p-2">List Car</p>
             </section>
             <section class="menu" @click="enableCar">
-              <p>Enable Car</p>
+              <p  class="m-0 p-2">Enable Car</p>
             </section>
-            <section class="menu" @click="info">
-              <p>Request</p>
+            <section class="menu"
+              @click="info"
+              v-if="userLogin.id === parseInt($route.params.idRentaler)"
+            >
+              <p  class="m-0 p-2">Request</p>
             </section>
-            <section class="menu">
-              <p>Add Car</p>
+            <section class="menu"
+              v-if="userLogin.id === parseInt($route.params.idRentaler)"
+            >
+              <router-link :to="'/' + $route.params.idRentaler + '/add-car'"><p  class="m-0 p-2 text-dark">Add Car</p></router-link>
             </section>
           </div>
         </section>
-        <menuListCar v-bind:tablist="tablist" />
+        <menuListCar v-bind:tablist="tablist" v-bind:cars="carsOnRentallerDetail" />
       </div>
     </div>
     <PageNotFound v-else
@@ -61,6 +73,7 @@
 import menuListCar from '../components/base_/menuListCar.vue'
 import PageNotFound from '../views/PageNotFound.vue'
 import { mapState } from 'vuex'
+import Axios from 'axios'
 
 export default {
   name: 'RentalerDetail',
@@ -70,12 +83,26 @@ export default {
   },
   data () {
     return {
-      tablist: 'List Car'
+      tablist: 'List Car',
+      image: null
     }
   },
   computed: {
+    carsOnRentallerDetail () {
+      let data = {}
+      if (this.cars.data === undefined) {
+        return data
+      }
+      const idRentaler = this.$route.params.idRentaler
+      const array = this.$store.state.carsWithinLimit.filter(item => item.rentaller_id === parseInt(idRentaler))
+      data = { data: array }
+      return data
+    },
     ...mapState([
-      'rentallerDetail'
+      'rentallerDetail',
+      'userLogin',
+      'cars',
+      'carsWithinLimit'
     ])
   },
   methods: {
@@ -96,6 +123,26 @@ export default {
       document.querySelector('.more-info').style.display = 'flex'
       document.querySelector('.enable-car').style.display = 'none'
       document.querySelector('.list-car').style.display = 'none'
+    },
+    editImage (e) {
+      if (localStorage.id) {
+        if (localStorage.id.length !== 0) {
+          const file = this.$refs.file.files[0]
+          this.image = file
+          console.log(file)
+          const fd = new FormData()
+          fd.append('image', this.image)
+          Axios.patch(`${process.env.VUE_APP_API}rentaller/upload/${localStorage.id}`, fd)
+            .then(res => {
+              const file = e.target.files[0]
+              const fr = new FileReader()
+              fr.onload = f => {
+                this.image = f.target.result
+              }
+              fr.readAsDataURL(file)
+            })
+        }
+      }
     }
   },
   created () {
@@ -103,6 +150,10 @@ export default {
     this.$store.dispatch('getApi', {
       url: `rentaller/${idRentaler}`,
       mutation: 'SET_RENTALLER_DETAIL'
+    })
+    this.$store.dispatch('getApi', {
+      url: 'product?limit=999',
+      mutation: 'SET_CARS_WITHIN_LIMIT'
     })
   }
 }
@@ -125,6 +176,43 @@ export default {
       padding: 16px;
       margin-left: 20px;
       margin-right: 50px;
+      overflow: hidden;
+      .img-tempt {
+        position: relative;
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        overflow: hidden;
+        .forHover{
+          display: flex;
+          justify-content: center;
+          z-index: 2;
+          top: 80%;
+          height: 50%;
+          position: absolute;
+          width: 100%;
+          background: rgba(85, 80, 80, 0.548);
+          transition: 0.5s;
+          overflow: hidden;
+            .pick {
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              outline: none;
+            }
+            .camera{
+              position: absolute;
+              left: 45%;
+              top: 10%;
+              font-size: 26px;
+              color: white;
+            }
+         }
+          .forHover:hover {
+            top: 50%;
+            transition: 0.5s;
+          }
+        }
       .img-user {
         width: 350px;
         height: 350px;
@@ -162,13 +250,9 @@ export default {
     display: flex;
     padding: 16px;
     .tablist {
-      display: flex;
       width: 20%;
       .tab {
-        display: flex;
-        flex-direction: column;
         width: 200px;
-        height: 190px;
         background: #ffffff;
         box-shadow: rgba(0, 0, 0, 0.164) 0px 2px 10px 0px;
         margin: 20px 0 0 50px;
@@ -188,5 +272,8 @@ export default {
       }
     }
   }
+}
+.ok {
+  text-decoration: none;
 }
 </style>

@@ -1,6 +1,12 @@
 <template>
 <div class="axvbwe">
   <div class="form" >
+    <router-link to="/" class="semqwe">
+      <div class="kkasl3">
+        <img src="@/assets/img/logo.png" alt="">
+        <h1>ARRENT</h1>
+      </div>
+    </router-link>
     <h1 class="header">Daftar Akun</h1>
     <div v-if="code === 1" class="alertdiv color-green">
       <p class="alert">{{error}}</p>
@@ -35,7 +41,7 @@
       <button
       v-if="!$v.email.email || !$v.email.required || !$v.fullname.required || !$v.password.required || !$v.password.minLength"
       class="default">Daftar</button>
-      <button id="google"><img src="@/assets/img/Google.svg"> Daftar Dengan Google</button>
+      <!-- <button id="google"><img src="@/assets/img/Google.svg"> Daftar Dengan Google</button> -->
     </div>
     <div class="regis">
       <h1>Sudah Punya Akun?</h1>
@@ -47,7 +53,7 @@
 
 <script>
 import { required, email, minLength } from 'vuelidate/lib/validators'
-import Axios from 'axios'
+// import Axios from 'axios'
 
 export default {
   name: 'ModalRegister',
@@ -62,19 +68,23 @@ export default {
   },
   methods: {
     daftar () {
-      Axios.post(process.env.VUE_APP_API + 'user/register', {
-        fullname: this.fullname,
-        email: this.email,
-        password: this.password
+      this.$store.dispatch('postApi', {
+        url: 'user/register',
+        data: {
+          fullname: this.fullname,
+          email: this.email,
+          password: this.password
+        }
       })
-        .then((result) => {
+        .then((res) => {
           this.code = 1
           this.error = 'Daftar Berhasil, Silahkan Cek Email Anda untuk Aktivasi'
+          // console.log(res)
         })
-        .catch((err) => {
+        .catch(() => {
           this.code = 2
           this.error = 'Email Sudah Terdaftar, Silahkan '
-          console.log(err)
+          // console.log(err)
         })
     }
   },
@@ -95,11 +105,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.semqwe{
+  position: relative;
+  text-decoration: none;
+  .kkasl3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    img{
+      position: relative;
+      top: 4px;
+      width: 40px;
+      height: 40px;
+    }
+    h1{
+      font-size: 2.5rem;
+      color: #BC2122;
+    }
+  }
+}
 .axvbwe{
   border-radius: 10px;
   width: 560px;
   height: auto;
-  padding-top: 50px;
   padding-bottom: 40px;
   background: white;
   display: flex;
