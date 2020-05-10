@@ -11,6 +11,11 @@ export default {
   name: 'Login',
   components: {
     ModalLogin
+  },
+  beforeCreate () {
+    this.$store.dispatch('patchApi', {
+      url: ''
+    })
   }
 }
 </script>

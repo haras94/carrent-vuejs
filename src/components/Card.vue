@@ -4,7 +4,7 @@
     <div class="lmskal" >
       <div>
         <div class="lksmkl" >
-          <img :src="car.images[0]">
+          <img :src="car.images.length <= 0 ? '' : car.images[0].image">
         </div>
         <div class="maskls">
           <div class="aslesk">

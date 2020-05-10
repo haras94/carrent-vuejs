@@ -32,10 +32,10 @@
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li @click="prevPages" class="page-item"><a class="page-link" >Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <li v-for="pagination in cars.total_page" :key="pagination" class="page-item"><a @click="pages(pagination)" class="page-link">{{pagination}}</a></li>
+        <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+        <li @click="nextPages" class="page-item"><a class="page-link">Next</a></li>
       </ul>
     </nav>
   </div>
@@ -62,8 +62,43 @@ export default {
     ])
   },
   methods: {
+    pages (id) {
+      this.cars.current_page = 0 + id
+      this.$store.dispatch('getApi', {
+        url: 'product?page=' + this.cars.current_page,
+        mutation: 'SET_PAGE'
+      })
+    },
     prevPages () {
-      console.log(this.cars.data[0].rentaller.rental_name)
+      console.log(this.cars.current_page)
+      if (this.cars.current_page === 1) {
+        this.cars.current_page = 1
+      } else {
+        this.cars.current_page -= 1
+        this.$store.dispatch('getApi', {
+          url: 'product?page=' + this.cars.current_page,
+          mutation: 'SET_PAGE'
+        })
+      }
+    },
+    nextPages () {
+      // this.$store.dispatch('getApi', {
+      //   url: 'product?page=2',
+      //   mutation: 'SET_PAGE'
+      // })
+      console.log(this.cars.current_page)
+
+      if (this.cars.current_page === this.cars.total_page) {
+        this.cars.current_page = this.cars.total_page
+        console.log(this.cars.current_page)
+      } else {
+        this.cars.current_page += 1
+        console.log(this.cars.current_page)
+        this.$store.dispatch('getApi', {
+          url: 'product?page=' + this.cars.current_page,
+          mutation: 'SET_PAGE'
+        })
+      }
     }
   }
 }
