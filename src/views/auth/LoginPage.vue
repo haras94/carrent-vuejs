@@ -12,11 +12,7 @@ export default {
   components: {
     ModalLogin
   },
-  created () {
-    console.log(this.$route.query.key)
-  },
   beforeCreate () {
-    console.log(this.$route.query.key)
     this.$store.dispatch('getApi', {
       url: `/user/auth?encrypt=${this.$route.query.key}`
     })
