@@ -3,9 +3,9 @@
     <h2>Form Pemesanan</h2>
     <div class="up">
       <div class="woz d-flex">
-      <Card />
+      <Card v-for="car in [carInCheckout]" :key="car.id" :car="car" />
       <div class="infoker">
-          <FormCheckout/>
+          <FormCheckout :checkout="checkout"/>
       </div>
       </div>
       <div class="wozasky">
@@ -22,7 +22,7 @@
           </section>
           <section>
             <h5>Grand Total :</h5>
-            <h4 class="text-success">IDR. 120.000</h4>
+            <h4 class="text-success">IDR. {{ checkout.grand_total === undefined ? '0' : checkout.grand_total }}</h4>
           </section>
           <button class="for-btn">Lanjut Ke Pembayaran</button>
         </div>
@@ -36,6 +36,7 @@
 import Card from '../components/Card'
 import FormCheckout from '../components/base_/FormCheckout'
 import Form from '../components/base_/form'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Checkout',
@@ -43,6 +44,12 @@ export default {
     Card,
     FormCheckout,
     Form
+  },
+  computed: {
+    ...mapState([
+      'checkout',
+      'carInCheckout'
+    ])
   }
 }
 </script>
