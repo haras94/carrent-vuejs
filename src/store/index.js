@@ -38,6 +38,7 @@ export default new Vuex.Store({
     },
     SET_CAR_DETAIL (state, data) {
       state.carDetail = data.data
+    }
   },
   actions: {
     getApi ({ commit }, proto) {
