@@ -46,30 +46,7 @@
       </div>
       <div class="partnerLogo">
         <div class="logoWrap">
-          <div class="firstLine">
-            <img src="../assets/img/logo-buggati.jpg" alt="buggati" width="120px" height="70px">
-            <h5>Ferrari</h5>
-            <h5>Bmw</h5>
-            <h5>Ford</h5>
-            <h5>Audi</h5>
-            <h5>Lamborghini</h5>
-          </div>
-          <div class="secondLine">
-            <h5>Toyota</h5>
-            <h5>Suzuki</h5>
-            <h5>Honda</h5>
-            <h5>Wuling</h5>
-            <h5>Mazda</h5>
-            <h5>Hyundai</h5>
-          </div>
-          <div class="thirdLine">
-            <h5>Volvo</h5>
-            <h5>Chevorlet</h5>
-            <h5>Nissan</h5>
-            <h5>Jeep</h5>
-            <h5>Mitsubishi</h5>
-            <h5>Daihatsu</h5>
-          </div>
+          <h5 v-for="all in allMerek" :key="all.id">{{all.name}}</h5>
         </div>
       </div>
     </div>
@@ -119,10 +96,15 @@ export default {
   },
   computed: {
     ...mapState([
-      'cars'
+      'cars',
+      'allMerek'
     ])
   },
   created () {
+    this.$store.dispatch('getApi', {
+      url: 'carbrand',
+      mutation: 'SET_MEREK_MOBIL'
+    })
     if (localStorage.role_id === '1') this.$router.push('/admin-page')
   }
 }
@@ -169,34 +151,18 @@ export default {
       justify-content: center;
       .logoWrap {
         width: 80%;
-        height: 100%;
+        height: auto;
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        overflow: hidden;
+        // flex-direction: column;
         justify-content: center;
         opacity: 0.6;
         h5 {
+          margin: 7px;
           color: rgb(92, 91, 91);
-        }
-        .firstLine {
-          // background-color: #fff;
-          width: 100%;
-          height: 50px;
-          display: flex;
-          justify-content: space-around;
-        }
-        .secondLine {
-          // background-color: rgb(134, 134, 134);
-          width: 100%;
-          height: 50px;
-          display: flex;
-          justify-content: space-around;
-        }
-        .thirdLine {
-          // background-color: rgb(20, 19, 19);
-          width: 100%;
-          height: 50px;
-          display: flex;
-          justify-content: space-around;
+          width: auto;
+          height: auto;
         }
       }
     }
