@@ -10,6 +10,9 @@
     <div v-if="userLogin.id === undefined" class="navAdditional">
       <a @click="$emit('login-click')" class="btn-login"><p>Login</p></a>
       <router-link to="/register" class="btn-register"><p>Register</p></router-link>
+      <router-link to="/add-shop">
+        <p>Jadi rentaler</p>
+      </router-link>
     </div>
     <div
       v-else class="navAdditional"
@@ -141,24 +144,19 @@ a {
     justify-content: center;
     align-items: center;
     position: relative;
-    .trolly{
-      width: 30px;
-      height: 30px;
-      position: absolute;
-      left: 120px;
-      img{
-        object-fit: contain;
-        width: 100%;
-        height: 100%;
+      p{
+        margin: 0;
+        margin-left: 50px;
+        font-size: 15px;
+        color: #ffffff;
       }
-    }
     .btn-login{
       border: 3px solid white;
       border-radius: 3px;
       width: 120px;
       height: 55%;
       position: absolute;
-      right: 170px;
+      right: 250px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -174,7 +172,7 @@ a {
       width: 120px;
       height: 55%;
       position: absolute;
-      right: 40px;
+      right: 120px;
       display: flex;
       justify-content: center;
       align-items: center;
