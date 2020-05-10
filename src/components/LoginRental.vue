@@ -101,8 +101,18 @@ export default {
       required,
       minLength: minLength(6)
     }
+  },
+  beforeCreate () {
+    this.$store.dispatch('getApi', {
+      url: `/rentaller/auth?encrypt=${this.$route.query.key}`
+    })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
-
 }
 </script>
 

@@ -129,7 +129,6 @@ export default {
         if (localStorage.id.length !== 0) {
           const file = this.$refs.file.files[0]
           this.image = file
-          console.log(file)
           const fd = new FormData()
           fd.append('image', this.image)
           Axios.patch(`${process.env.VUE_APP_API}rentaller/upload/${localStorage.id}`, fd)
@@ -140,6 +139,10 @@ export default {
                 this.image = f.target.result
               }
               fr.readAsDataURL(file)
+              this.$store.dispatch('getApi', {
+                url: 'rentaller/' + localStorage.id,
+                mutation: 'SET_USER_LOGIN'
+              })
             })
         }
       }
