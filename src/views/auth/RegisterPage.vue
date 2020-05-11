@@ -11,6 +11,9 @@ export default {
   name: 'SignUp',
   components: {
     ModalRegister
+  },
+  created () {
+    this.$store.commit('MODAL_LOGIN_OFF')
   }
 }
 </script>
