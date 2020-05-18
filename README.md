@@ -4,7 +4,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/HiRahmat-Dev/carrent-vuejs)
 ![GitHub stars](https://img.shields.io/github/stars/HiRahmat-Dev/carrent-vuejs?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/HiRahmat-Dev/carrent-vuejs?style=social)
-![Tweet](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2FHiRahmat-Dev%Fcarrent-vuejs
+![Tweet](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2FHiRahmat-Dev%2Fcarrent-vuejs
 )
 
 <p align="center">
