@@ -42,7 +42,7 @@
 2. Type `git clone https://github.com/HiRahmat-Dev/carrent-vuejs.git`
 3. Open the folder and type `npm install` for install dependencies
 4. Create Environment Variable [here](#create-environment-variable)
-5. Before run this, you must run backend first
+5. Before run this, you must run backend first, [check here](#related-project-backend)
 6. Type `npm run serve` for run this app.
 
 ## Create Environment Variable
