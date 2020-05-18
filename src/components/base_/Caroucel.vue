@@ -8,13 +8,6 @@
   </ol>
   <div class="carousel-inner our-wrapper">
     <div class="carousel-item active">
-      <img src="../../assets/img/isyana-sarasvati.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Isyana Sarasvati</h5>
-        <p>Artis asal Indonesia</p>
-      </div>
-    </div>
-    <div class="carousel-item">
       <img src="../../assets/img/2018-bugatti-chiron-sport-2.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Buggati Cheron</h5>
