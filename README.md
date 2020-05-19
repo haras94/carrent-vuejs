@@ -74,7 +74,7 @@ VUE_APP_SECRET_KEY_TOKEN=YOUR_SECRET_KEY
 
 ## Related Project (Backend)
 
-* [`Backend-Carrent`](https://github.com/HiRahmat-Dev/carrent-api)
+* [`Backend-Carrent`](https://github.com/haras94/carrent-api.git)
 
 ## Contributors
 <center>
@@ -107,7 +107,7 @@ VUE_APP_SECRET_KEY_TOKEN=YOUR_SECRET_KEY
       <td align="center">
         <a href="https://github.com/haras94">
           <img width="150" src="https://avatars2.githubusercontent.com/u/62143618?s=400&u=2e76db88db6de5ba0dddfa79c274c8e04f5e8f4a&v=4" alt="Harun"><br/>
-          <b>Harun</b>
+          <b>Harun Arrasyid Suparman</b>
         </a>
       </td>
     </tr>
