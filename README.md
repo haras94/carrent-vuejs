@@ -39,7 +39,7 @@
 ## Usage for development
 
 1. Open your terminal or command prompt
-2. Type `git clone https://github.com/haras94/carrent-vuejs`
+2. Type `git clone https://github.com/haras94/carrent-vuejs.git`
 3. Open the folder and type `npm install` for install dependencies
 4. Create Environment Variable [here](#create-environment-variable)
 5. Before run this, you must run backend first, [check here](#related-project-backend)
